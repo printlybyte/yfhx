@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/include_actionbar_back"
+        android:visibility="gone" />
+
+    <!-- This could be your fragment container, or something -->
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/bottomBar"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px_1"
+        android:background="@color/cbdbdbe" />
+
+    <com.chaychan.library.BottomBarLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:background="@color/tab_gb"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/tab_home_normal"
+            app:iconSelected="@mipmap/tab_home_selected"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="@string/tab_home"
+            app:itemTextSize="8sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/tab_selected_color"
+            app:touchDrawable="@drawable/selector_bg" />
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/tab_category_normal"
+            app:iconSelected="@mipmap/tab_category_selected"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="@string/tab_classify"
+            app:itemTextSize="8sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/tab_selected_color"
+            app:touchDrawable="@drawable/selector_bg"
+            app:unreadThreshold="99" />
+
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/tab_cart_normal"
+            app:iconSelected="@mipmap/tab_cart_selected"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="@string/tab_shopcart"
+            app:itemTextSize="8sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/tab_selected_color"
+            app:touchDrawable="@drawable/selector_bg" />
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/tab_me_normal"
+            app:iconSelected="@mipmap/tab_me_selected"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="@string/tab_mine"
+            app:itemTextSize="8sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/tab_selected_color"
+            app:touchDrawable="@drawable/selector_bg" />
+
+    </com.chaychan.library.BottomBarLayout>
+</LinearLayout>

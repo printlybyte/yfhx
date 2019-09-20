@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">银丰荟</string>
+
+    <string name="tab_home">首页</string>
+    <string name="tab_classify">分类</string>
+    <string name="tab_shopcart">购物车</string>
+    <string name="tab_mine">我的</string>
+
+    <string name="title_activity_test">TestActivity</string>
+    <!--首页-->
+    <string name="str_yfhx">银丰荟选</string>
+    <string name="str_ssqbsp">搜索全部商品</string>
+    <string name="str_yfth">银丰特惠</string>
+    <string name="str_zdkq">准点开抢</string>
+    <string name="str_ckqb">查看全部</string>
+    <string name="str_dptj">店铺推荐</string>
+    <string name="str_recomment_text">DAILY RECOMMENDATION</string>
+    <string name="str_newest_text">GUESS YOU LIKE</string>
+    <string name="str_wntj">为您推介</string>
+    <string name="str_zxsj">最新上架</string>
+
+
+    <!--temp-->
+    <string name="str_brandname">小熊家用电器</string>
+    <string name="str_productname">小熊吸奶器</string>
+    <string name="str_branddesc">以天然材料为制作基础的母婴护理品牌</string>
+    <string name="str_newest_title">OPERA 娥佩兰意水500ML+UNICHARM尤妮佳1/2化妆棉40片*2</string>
+    <string name="str_newest_buynumb">1899人购买</string>
+    <string name="str_newest_pricenow">￥70.00</string>
+    <string name="str_newest_pricepre">￥99.00</string>
+    <string name="str_mine_top_back_txt">购好物！就在银丰荟</string>
+    <string name="str_mine_top_back_txt1">击穿底价！没有中间商赚差价</string>
+
+    <!--首页-->
+
+
+    <!-- 我 -->
+    <string name="str_zshy">钻石会员</string>
+    <string name="str_wddd">我的订单</string>
+    <string name="str_qbdd">全部订单</string>
+    <string name="str_waitpay">待付款</string>
+    <string name="str_waitsend">待发货</string>
+    <string name="str_waitreceive">待收货</string>
+    <string name="str_waitcomment">待评价</string>
+    <string name="str_backandafter">退款/售后</string>
+    <string name="str_username">会员名称</string>
+    <string name="str_myservice">我的服务</string>
+
+    <string name="str_youhuiquan">优享券</string>
+    <string name="str_myhb">我的红包</string>
+    <string name="str_lipinka">礼品卡</string>
+    <string name="str_myfp">我的发票</string>
+    <string name="str_receiveaddress">收货地址</string>
+    <string name="str_myinfo">个人信息</string>
+    <string name="str_accountmanage">账号管理</string>
+
+    <string name="str_currentphonenumb">当前手机号</string>
+    <string name="str_bindnewaccount">绑定新账户</string>
+    <string name="str_bindnewphone">绑定新手机号</string>
+    <string name="str_phonecurrent_tip">更换手机号前，请先用当前手机号验证身份</string>
+    <string name="str_synccode">验证码</string>
+    <string name="str_input_phone">请输入手机验证码</string>
+    <string name="str_nextstep">下一步</string>
+    <string name="str_switch_account">切换账户</string>
+    <string name="str_bindphonenewtip">说明：关于切换账号及切换手机号的不同说明。微信一键切换帐号的功能需要更新版本到6.62以上才会出现。所以，如果没有这个功能的等方面需要先看下自己目前的版本和更新。点击我的设置关于微信。</string>
+    <string name="str_justchangephone">只更换手机号</string>
+    <string name="str_basicinfo">基本信息</string>
+    <string name="str_head">头像</string>
+    <string name="str_name">用户名</string>
+    <string name="str_phone_numb">手机号</string>
+    <string name="str_gender">性别</string>
+    <string name="str_smrz">实名认证</string>
+    <string name="str_realname">真实姓名</string>
+    <string name="str_id">身份证号</string>
+    <string name="str_ssgs">所属公司</string>
+    <string name="str_ssbm">所属公司</string>
+    <string name="str_xzfpxx">新增发票信息</string>
+    <string name="str_fflx">发票类型</string>
+    <string name="str_dwmc">单位名称</string>
+    <string name="str_sh">税号</string>
+    <string name="str_default">默认</string>
+    <string name="str_delete">删除</string>
+    <string name="str_edit">编辑</string>
+    <string name="str_save">保存</string>
+    <string name="str_fp_type">发票类型</string>
+    <string name="str_zzspp">增值税普票</string>
+    <string name="str_shdz">收货地址</string>
+
+    <!-- 我 -->
+
+    <!--登录-->
+    <string name="str_login_other_type">您还可以用以下方式登录</string>
+    <string name="str_username_hint">输入注册手机号</string>
+    <string name="str_password_hint">输入注册手机号</string>
+    <string name="str_get_smscode">获取验证码</string>
+    <string name="str_login">登 录</string>
+    <string name="str_login_username">用户名密码登录</string>
+    <string name="str_login_smscode">快速登录</string>
+    <string name="str_security_tip">银丰荟安全中心守护您的账户安全</string>
+    <!--登录-->
+
+</resources>

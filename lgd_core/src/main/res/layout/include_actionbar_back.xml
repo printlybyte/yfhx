@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_action_bar_group"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/main_action_bar_back"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/mainback_press_bg"
+        android:clickable="true"
+        android:focusable="false"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:clickable="false"
+            android:focusable="true"
+            android:src="@mipmap/ic_action_bar_back_black" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/main_action_bar_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="start|center"
+        android:paddingLeft="50dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/include_actionbar_back_btn"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:foreground="?android:attr/selectableItemBackground"-->
+        <!--android:gravity="center"-->
+        <!--android:text=""-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="16sp"-->
+        <!--app:bl_corners_radius="14dp"-->
+        <!--app:bl_solid_color="#3389FF" />-->
+
+
+
+</RelativeLayout>
