@@ -35,6 +35,8 @@
         android:layout_height="match_parent"
         android:gravity="start|center"
         android:paddingLeft="50dp"
+        android:singleLine="true"
+        android:maxLength="20"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />

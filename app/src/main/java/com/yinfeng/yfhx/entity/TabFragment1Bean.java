@@ -13,10 +13,11 @@ import java.util.List;
  **/
 public class TabFragment1Bean {
 
+
     private List<CategoriesBean> categories;
     private List<BannersBean> banners;
     private List<NavsBean> navs;
-    private List<?> topic;
+    private List<TopicBean> topic;
     private List<AdsBean> ads;
     private List<StoresBean> stores;
     private List<NewgoodsBean> newgoods;
@@ -48,11 +49,11 @@ public class TabFragment1Bean {
         this.navs = navs;
     }
 
-    public List<?> getTopic() {
+    public List<TopicBean> getTopic() {
         return topic;
     }
 
-    public void setTopic(List<?> topic) {
+    public void setTopic(List<TopicBean> topic) {
         this.topic = topic;
     }
 
@@ -172,10 +173,10 @@ public class TabFragment1Bean {
 
     public static class BannersBean {
         /**
-         * id : 18
+         * id : 21
          * url :
-         * pic : http://yinfenghui.oss-cn-beijing.aliyuncs.com/data/attached/banner/1567558243.png
-         * user_role : 502
+         * pic : http://yinfenghui.oss-cn-beijing.aliyuncs.com/data/attached/banner/1568605228.png
+         * user_role : 1014
          */
 
         private int id;
@@ -245,6 +246,52 @@ public class TabFragment1Bean {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getPic() {
+            return pic;
+        }
+
+        public void setPic(String pic) {
+            this.pic = pic;
+        }
+
+        public String getUser_role() {
+            return user_role;
+        }
+
+        public void setUser_role(String user_role) {
+            this.user_role = user_role;
+        }
+    }
+
+    public static class TopicBean {
+        /**
+         * id : 2
+         * url : http://mall.yinfengnet.com/mobile/#/activity/common/5
+         * pic : http://yinfenghui.oss-cn-beijing.aliyuncs.com/data/attached/banner/1568106532.png
+         * user_role : 1014
+         */
+
+        private int id;
+        private String url;
+        private String pic;
+        private String user_role;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
         }
 
         public String getUrl() {
@@ -458,7 +505,7 @@ public class TabFragment1Bean {
          * goods_img : http://yinfenghui.oss-cn-beijing.aliyuncs.com/images/201907/goods_img/0_G_1564128701756.jpg
          * shop_price : 34.90
          * market_price : 39.80
-         * sales_volume : 92
+         * sales_volume : 204
          * cat_id : 638
          */
 
@@ -697,22 +744,22 @@ public class TabFragment1Bean {
          * goods_name : 心相印优选郁金香200抽软抽 10提/组 DT19200抽纸  3包/提
          * id : 187
          * sec_price : 78.00
-         * sec_num : 42
+         * sec_num : 10
          * sec_limit : 10
-         * begin_time : 1567692000
-         * end_time : 1567710000
+         * begin_time : 1569420000
+         * end_time : 1569438000
          * sec_id : 37
          * acti_title : 心相印郁金香抽纸
          * acti_time : 1572422400
-         * sales_volume : {"total_order":8,"total_goods":"8","valid_order":8,"valid_goods":47}
+         * sales_volume : {"total_order":36,"total_goods":"40","valid_order":36,"valid_goods":217}
          * goods_img : http://yinfenghui.oss-cn-beijing.aliyuncs.com/images/201908/goods_img/6857_G_1565735813602.jpg
-         * current_time : 1567709299
+         * current_time : 1569437401
          * status : true
          * data_end_time : 06:00:00
          * sec_price_formated : ¥78.00
          * market_price_formated : ¥99.00
-         * valid_goods : 47
-         * percent : 53
+         * valid_goods : 217
+         * percent : 96
          * url : http://mall.yinfengnet.com/mobile/#/seckill/detail?seckill_id=187&tomorrow=0
          * pc_url : http://mall.yinfengnet.com/seckill.php?id=187&act=view
          */
@@ -945,10 +992,10 @@ public class TabFragment1Bean {
 
         public static class SalesVolumeBean {
             /**
-             * total_order : 8
-             * total_goods : 8
-             * valid_order : 8
-             * valid_goods : 47
+             * total_order : 36
+             * total_goods : 40
+             * valid_order : 36
+             * valid_goods : 217
              */
 
             private int total_order;

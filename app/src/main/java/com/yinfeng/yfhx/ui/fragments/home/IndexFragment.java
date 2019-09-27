@@ -1,29 +1,25 @@
 package com.yinfeng.yfhx.ui.fragments.home;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 
-import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lgd.lgd_core.base.BaseFragment;
-import com.lgd.lgd_core.entity.XBannerImageBean;
 import com.lgd.lgd_core.ui.utils.GsonUS;
-import com.lgd.lgd_core.ui.utils.ScreenUtilsx;
+import com.lgd.lgd_core.ui.utils.ITTUtils;
+import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
-import com.lgd.lgd_core.ui.utils.XbannerUtils;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
-import com.stx.xhb.xbanner.XBanner;
-import com.stx.xhb.xbanner.entity.LocalImageInfo;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.entity.MultipleTabHomeItem;
 import com.yinfeng.yfhx.entity.TabFragment1Bean;
+import com.yinfeng.yfhx.ui.fragments.adapter.HomeIndexAdapter;
+import com.yinfeng.yfhx.ui.webview.BrowserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +34,9 @@ import java.util.List;
  * ============================================
  **/
 public class IndexFragment extends BaseFragment {
-    private HomeAdapter mHomeAdapter;
+    private List<MultipleTabHomeItem> mParserList = null;
     private RecyclerView mIncludeRecyclerview;
-
-    private XBanner mBanner;
+    private HomeIndexAdapter homeIndexAdapter;
 
 
     public static IndexFragment newInstance() {
@@ -60,9 +55,7 @@ public class IndexFragment extends BaseFragment {
     protected void initView(View view) {
         mIncludeRecyclerview = (RecyclerView) view.findViewById(R.id.include_recyclerview);
 
-        mBanner = view.findViewById(R.id.item_fragment_tab1_banners_layout_banner);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtilsx.getScreenWidthx(getActivity()) / 2);
-        mBanner.setLayoutParams(layoutParams);
+
     }
 
     @Override
@@ -86,8 +79,13 @@ public class IndexFragment extends BaseFragment {
                     public void setOnCallBackResponseSuccess(String response) {
                         TabFragment1Bean bean = GsonUS.getIns().getGosn(response, TabFragment1Bean.class);
                         if (bean != null) {
-                            setBannerDate(bean);
-//                            setAdapter(bean);
+                            mParserList = parserMultipleItemData(bean);
+                            LogUS.I("mParserList.size: " + mParserList.size());
+                            if (mParserList == null) {
+                                ToastUS.Error("暂未请求到数据");
+                                return;
+                            }
+                            setAdapter();
                         }
                     }
 
@@ -100,73 +98,67 @@ public class IndexFragment extends BaseFragment {
     }
 
 
-    /**
-     * 设置xbanner数据
-     */
-    private void setBannerDate(TabFragment1Bean bean) {
-        mBanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
-            @Override
-            public void onItemClick(XBanner banner, Object model, View view, int position) {
-                ToastUS.Normal("点击了第" + (position + 1) + "图片");
-            }
-        });
-        List<XBannerImageBean> data = new ArrayList<>();
-        for (int i = 0; i < bean.getBanners().size(); i++) {
-            XBannerImageBean xBannerImageBean = new XBannerImageBean();
-            xBannerImageBean.setPath(bean.getBanners().get(i).getPic() + "");
-            data.add(xBannerImageBean);
-        }
-        XbannerUtils.getIns().setXbanner(mBanner, data);
-    }
-
-    /**
-     * 初始化本地banner数据
-     */
-    private void initLocalImage() {
-        List<LocalImageInfo> data = new ArrayList<>();
-        data.add(new LocalImageInfo(R.drawable.splash_start));
-        data.add(new LocalImageInfo(R.drawable.splash_start));
-        data.add(new LocalImageInfo(R.drawable.splash_start));
-        data.add(new LocalImageInfo(R.drawable.splash_start));
-        mBanner.setBannerData(data);
-        mBanner.setAutoPlayAble(true);
-    }
-
-    private void setAdapter(TabFragment1Bean bean) {
-        mHomeAdapter = new HomeAdapter(getActivity(), bean.getBanners());
-        mHomeAdapter.openLoadAnimation();
-        GridLayoutManager layoutManager = new GridLayoutManager(mContext, 1);
+    private void setAdapter() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mIncludeRecyclerview.setLayoutManager(layoutManager);
         mIncludeRecyclerview.setItemAnimator(new DefaultItemAnimator());
-        mIncludeRecyclerview.setAdapter(mHomeAdapter);
+        //消除嵌套卡顿
+        mIncludeRecyclerview.setNestedScrollingEnabled(false);
+        homeIndexAdapter = new HomeIndexAdapter(mParserList, getActivity());
+        homeIndexAdapter.openLoadAnimation();
+        mIncludeRecyclerview.setAdapter(homeIndexAdapter);
+        homeIndexAdapter.setOnItemChildClickListener(onItemChildClickListener);
     }
 
-    public static List<TabFragment1Bean> getMultipleItemData(TabFragment1Bean response) {
-        List<TabFragment1Bean> list = new ArrayList<>();
-        List<TabFragment1Bean.BannersBean> listBanner = new ArrayList<>();
-        for (int i = 0; i < response.getBanners().size(); i++) {
+    public List<MultipleTabHomeItem> parserMultipleItemData(TabFragment1Bean response) {
+        List<MultipleTabHomeItem> list = new ArrayList<>();
+        if (response.getNavs() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.banners, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getBanners()));
+        }
+
+        if (response.getNavs() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.navs, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getNavs()));
+        }
+        if (response.getTopic() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.topic, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getTopic()));
+        }
+        if (response.getNoticelist() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.noticelist, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getNoticelist()));
+        }
+        if (response.getSeckills() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.seckills, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getSeckills()));
+        }
+
+        if (response.getAds() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.ads, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getAds()));
+        }
+
+
+        if (response.getStores() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.stores, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getStores()));
+        }
+
+
+        if (response.getStores() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.newgoods, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getNewgoods()));
         }
         return list;
     }
 
 
-    private class HomeAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeItem, HomeAdapter.MyHolder> {
+    private BaseQuickAdapter.OnItemChildClickListener onItemChildClickListener = new BaseQuickAdapter.OnItemChildClickListener() {
         @Override
-        protected void convert(MyHolder helper, MultipleTabHomeItem item) {
-        }
+        public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            switch (view.getId()) {
+                case R.id.item_fragment_tab1_topic_layout_img:
+                    List<TabFragment1Bean.TopicBean> mListTopic = homeIndexAdapter.getData().get(position).getBean();
+                    ITTUtils.Jump(BrowserActivity.class, mListTopic.get(0).getUrl());
+                    break;
 
-        public HomeAdapter(Context context, List data) {
-            super(data);
-//            addItemType(MultipleTabHomeItem.ads, R.layout.item_fragment_tab1_ads_layout);
-        }
 
-
-        class MyHolder extends BaseViewHolder {
-            public MyHolder(View view) {
-                super(view);
+                default:
             }
         }
-    }
-
-
+    };
 }

@@ -52,7 +52,6 @@ public class OkgoBean {
     }
 
 
-
     public void postJsonArray() {
         postJsonArrayx();
 
@@ -183,6 +182,8 @@ public class OkgoBean {
 
     }
 
+    private String testToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJhdWQiOiJodHRwczpcL1wvd3d3LmRzY21hbGwuY24iLCJzdWIiOiJqcm9ja2V0QGV4YW1wbGUuY29tIiwiZXhwIjoxNTcyMDU4MzI2LCJ1c2VyX2lkIjo1MTYyMH0.AP_qmcyrwG5F2DooH8QKn23lAsAPOp7QX9SozUxIC5c";
+
     public void getx() {
         if (!NetworkUtils.isConnected()) {
             ToastUS.Warning(R.string.net_err);
@@ -190,6 +191,7 @@ public class OkgoBean {
         }
         LogUS.I("请求方式 get :" + '\n' + "请求参数 ：没有参数" + '\n' + "请求地址 " + mNetUrl);
         OkGo.<String>get(mNetUrl)
+                .params("token", testToken)
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override

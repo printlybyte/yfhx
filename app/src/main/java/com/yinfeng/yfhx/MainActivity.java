@@ -58,31 +58,6 @@ public class MainActivity extends BaseActivity {
     protected void initData() {
 
         selectFragment(0);
-
-//        initTimePrompt();
-
-
-//        Log.i("testre", "" + PhoneUtils.getIMEI() + "");
-//        Log.i("testre", "" + PhoneUtils.getIMSI() + "");
-//        Log.i("testre", "" + PhoneUtils.getMEID() + "");
-
-//        new OKGOBeanxxxxx.Builder()
-//                .setNetUrl("https://www.baidu.com/")
-//                .get()
-//                .setOnCallBackResponse(new OKGOBeanxxxxx.CallBackResponseListener() {
-//                    @Override
-//                    public void setOnCallBackResponseSuccess(String str) {
-//                        Log.i("testre", "Success " + str);
-//                    }
-//
-//                    @Override
-//                    public void setOnCallBackResponseError(String str) {
-//                        Log.i("testre", "Error " + str);
-//                    }
-//                })
-//                .build();
-
-
     }
 
     private void selectFragment(int position) {

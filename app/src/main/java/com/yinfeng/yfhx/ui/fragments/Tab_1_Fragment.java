@@ -93,7 +93,6 @@ public class Tab_1_Fragment extends BaseFragment {
                         TabFragment1Bean bean = GsonUS.getIns().getGosn(response, TabFragment1Bean.class);
                         if (bean != null) {
                             setTitleDate(bean);
-//                            setAdapter(bean);
                         }
                     }
 
@@ -128,7 +127,6 @@ public class Tab_1_Fragment extends BaseFragment {
         mFragmentTab1Viewpager.setAdapter(mAdapter);
         mTabLayout.setViewPager(mFragmentTab1Viewpager);
         mFragmentTab1Viewpager.setCurrentItem(0);
-
     }
 
     private MyPagerAdapter mAdapter;
