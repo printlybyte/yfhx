@@ -40,7 +40,8 @@
     <color name="cf9f2ec">#f9f2ec</color>
     <color name="ce7e7e7">#e7e7e7</color>
     <color name="cd9d9d9">#d9d9d9</color>
-
+    <color name="c_text_red">#c84d4f</color>
+    <color name="c_3333333">#333333</color>
 
 
 </resources>

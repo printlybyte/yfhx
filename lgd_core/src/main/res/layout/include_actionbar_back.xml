@@ -4,7 +4,8 @@
     android:id="@+id/main_action_bar_group"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/white">
+
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:id="@+id/main_action_bar_back"
@@ -24,7 +25,7 @@
             android:background="@null"
             android:clickable="false"
             android:focusable="true"
-            android:src="@mipmap/ic_action_bar_back_black" />
+            android:src="@drawable/ic_back_icon" />
 
     </LinearLayout>
 
@@ -33,13 +34,12 @@
         android:id="@+id/main_action_bar_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="start|center"
-        android:paddingLeft="50dp"
+        android:gravity="center"
         android:singleLine="true"
         android:maxLength="20"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold" />
+         />
 
     <!--<TextView-->
         <!--android:id="@+id/include_actionbar_back_btn"-->

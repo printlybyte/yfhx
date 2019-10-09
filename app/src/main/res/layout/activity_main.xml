@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_gravity="center"
-        android:background="@color/tab_gb"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -42,10 +42,10 @@
             app:iconWidth="@dimen/dp28"
             app:itemMarginTop="0dp"
             app:itemText="@string/tab_home"
-            app:itemTextSize="8sp"
+            app:itemTextSize="12sp"
             app:openTouchBg="true"
             app:textColorNormal="@color/tab_normal_color"
-            app:textColorSelected="@color/tab_selected_color"
+            app:textColorSelected="@color/cbcab9a"
             app:touchDrawable="@drawable/selector_bg" />
 
         <com.chaychan.library.BottomBarItem
@@ -58,10 +58,10 @@
             app:iconWidth="@dimen/dp28"
             app:itemMarginTop="0dp"
             app:itemText="@string/tab_classify"
-            app:itemTextSize="8sp"
+            app:itemTextSize="12sp"
             app:openTouchBg="true"
             app:textColorNormal="@color/tab_normal_color"
-            app:textColorSelected="@color/tab_selected_color"
+            app:textColorSelected="@color/cbcab9a"
             app:touchDrawable="@drawable/selector_bg"
             app:unreadThreshold="99" />
 
@@ -76,10 +76,10 @@
             app:iconWidth="@dimen/dp28"
             app:itemMarginTop="0dp"
             app:itemText="@string/tab_shopcart"
-            app:itemTextSize="8sp"
+            app:itemTextSize="12sp"
             app:openTouchBg="true"
             app:textColorNormal="@color/tab_normal_color"
-            app:textColorSelected="@color/tab_selected_color"
+            app:textColorSelected="@color/cbcab9a"
             app:touchDrawable="@drawable/selector_bg" />
 
         <com.chaychan.library.BottomBarItem
@@ -92,10 +92,10 @@
             app:iconWidth="@dimen/dp28"
             app:itemMarginTop="0dp"
             app:itemText="@string/tab_mine"
-            app:itemTextSize="8sp"
+            app:itemTextSize="12sp"
             app:openTouchBg="true"
             app:textColorNormal="@color/tab_normal_color"
-            app:textColorSelected="@color/tab_selected_color"
+            app:textColorSelected="@color/cbcab9a"
             app:touchDrawable="@drawable/selector_bg" />
 
     </com.chaychan.library.BottomBarLayout>

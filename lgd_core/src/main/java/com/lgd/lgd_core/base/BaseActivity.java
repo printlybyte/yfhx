@@ -2,8 +2,10 @@ package com.lgd.lgd_core.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.lgd.lgd_core.R;
 import com.lgd.lgd_core.event.ActResultRequest;
 import com.lgd.lgd_core.listener.PlaceHolderView;
@@ -34,6 +37,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
     private static long lastClickTime;
     public ActResultRequest actResultRequest;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         // 在 super.onCreate(savedInstanceState) 之前调用该方法
@@ -49,6 +53,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
             initBefore();
             initView();
             initData();
+
         } else {
             finish();
         }
@@ -124,6 +129,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
     /**
      * 初始化控件调用之前
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void initBefore() {
         mContext = this;
         ScreenUtilsx.setPortrait(this);
@@ -142,6 +148,8 @@ public abstract class BaseActivity extends SwipeBackActivity {
                 finish();
             }
         });
+        BarUtils.setNavBarColor(this, getResources().getColor(R.color.black));
+
     }
     /**
      * 初始化窗口 在界面为初始化之前调用

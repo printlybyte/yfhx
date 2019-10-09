@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity">
+
+    <include
+        layout="@layout/include_actionbar_back"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="@dimen/dp125"
+        android:layout_height="@dimen/dp39"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp54"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_login_logo" />
+
+    <ImageView
+        android:id="@+id/ivWxLogin"
+        android:layout_width="@dimen/dp24"
+        android:layout_height="@dimen/dp21"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp42"
+        android:src="@mipmap/ic_login_weixin_login" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ivWxLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/dp34"
+        android:layout_marginEnd="@dimen/dp34"
+        android:layout_marginBottom="@dimen/dp24">
+
+        <TextView
+            android:id="@+id/tvCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp8"
+            android:gravity="center"
+            android:text="@string/str_login_other_type"
+            android:textColor="@color/c686868" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/tvCenter"
+            android:background="@color/c686868" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/tvCenter"
+            android:background="@color/c686868" />
+
+    </RelativeLayout>
+
+
+    <!--中间登录部分-->
+
+    <LinearLayout
+        android:id="@+id/llSmsLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivLogo"
+        android:layout_marginStart="@dimen/dp34"
+        android:layout_marginTop="@dimen/dp60"
+        android:layout_marginEnd="@dimen/dp34"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp54"
+            android:background="@null"
+            android:hint="@string/str_username_hint"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textSize="@dimen/sp14" />
+
+        <View
+            android:id="@+id/underlineUserName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@color/c838383" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp54"
+                android:background="@null"
+                android:hint="@string/str_username_hint"
+                android:inputType="textPassword"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingStart="@dimen/dp6"
+                android:paddingTop="@dimen/dp4"
+                android:paddingEnd="@dimen/dp6"
+                android:paddingBottom="@dimen/dp4"
+                android:text="@string/str_get_smscode"
+                android:textSize="@dimen/sp14"
+                app:bl_corners_radius="3dp"
+                app:bl_solid_color="#ffffff"
+                app:bl_stroke_width="1dp"
+                app:bl_stroke_color="#838383"
+                />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/underlinePassWord"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@color/c838383" />
+
+        <Button
+            android:id="@+id/btLogin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp39"
+            android:layout_marginTop="@dimen/dp39"
+            android:layout_marginBottom="@dimen/dp24"
+            android:text="@string/str_login"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp14"
+            app:bl_corners_radius="3dp"
+            app:bl_solid_color="#ffc84d4f" />
+
+        <TextView
+            android:id="@+id/tvChangeLoginStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp24"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp12"
+            android:drawableRight="@mipmap/ic_jiantou_right_black"
+            android:drawablePadding="@dimen/dp8"
+            android:gravity="center"
+            android:text="@string/str_login_username"
+            android:textSize="@dimen/sp12" />
+    </LinearLayout>
+
+
+</RelativeLayout>

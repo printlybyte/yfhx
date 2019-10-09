@@ -4,10 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.annotation.RequiresPermission;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.FragmentUtils;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
@@ -36,7 +39,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        getFragments();
+       getFragments();
         mBottomBar = (BottomBarLayout) findViewById(R.id.bottomBar);
         mBottomBar.setOnItemSelectedListener(new BottomBarLayout.OnItemSelectedListener() {
             @Override

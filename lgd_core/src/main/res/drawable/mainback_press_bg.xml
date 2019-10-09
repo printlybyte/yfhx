@@ -7,5 +7,5 @@
     <!--点击状态是颜色-->
     <item android:drawable="@color/gray" android:state_pressed="true" />
     <!--默认颜色-->
-    <item android:drawable="@color/white" />
+    <item android:drawable="@color/colorPrimary" />
 </selector>
