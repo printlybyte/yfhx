@@ -1,33 +1,31 @@
-package com.yinfeng.yfhx.ui.fragments;
+package com.yinfeng.yfhx.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.lgd.lgd_core.base.BaseFragment;
 import com.lgd.lgd_core.ui.utils.GsonUS;
-import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.entity.TabFragment1Bean;
-import com.yinfeng.yfhx.ui.fragments.home.GeneralPurposeFragment;
-import com.yinfeng.yfhx.ui.fragments.home.IndexFragment;
+import com.yinfeng.yfhx.ui.home.GeneralPurposeFragment;
+import com.yinfeng.yfhx.ui.home.IndexFragment;
 
 import java.util.ArrayList;
 
 /**
  * ============================================
  * 描  述：
- * 包  名：com.yinfeng.yfhx.ui.fragments
+ * 包  名：com.yinfeng.yfhx.fragments
  * 类  名：Tab_1_Fragment
  * 创建人：liuguodong
  * 创建时间：2019/9/2 16:51
@@ -84,7 +82,7 @@ public class Tab_1_Fragment extends BaseFragment {
     }
 
     private void requestDate() {
-        new OKBuilder()
+        new OKBuilder(getActivity())
                 .setNetUrl(Api.shop_get)
                 .get()
                 .setOnCallBackResponse(new CallBackResponseListener() {

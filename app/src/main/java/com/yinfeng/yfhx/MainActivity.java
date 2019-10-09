@@ -12,10 +12,10 @@ import com.blankj.utilcode.util.FragmentUtils;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.lgd.lgd_core.base.BaseActivity;
-import com.yinfeng.yfhx.ui.fragments.Tab_1_Fragment;
-import com.yinfeng.yfhx.ui.fragments.Tab_2_Fragment;
-import com.yinfeng.yfhx.ui.fragments.Tab_3_Fragment;
-import com.yinfeng.yfhx.ui.fragments.Tab_4_Fragment;
+import com.yinfeng.yfhx.fragments.Tab_1_Fragment;
+import com.yinfeng.yfhx.fragments.Tab_2_Fragment;
+import com.yinfeng.yfhx.fragments.Tab_3_Fragment;
+import com.yinfeng.yfhx.fragments.Tab_4_Fragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;

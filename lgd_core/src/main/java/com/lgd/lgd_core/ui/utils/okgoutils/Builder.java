@@ -21,7 +21,7 @@ public abstract class Builder {
 
     public abstract Builder setJSONObject(JSONObject jsonObject);
 
-    public abstract Builder setParamsMap(LinkedHashMap map);
+    public abstract Builder setParamsMap(LinkedHashMap<?, ?> map);
 
     public abstract Builder get();
 
@@ -30,6 +30,10 @@ public abstract class Builder {
     public abstract Builder postJsonObject();
 
     public abstract Builder postStringFormBody();
+
+    public abstract Builder showLoading();
+
+    public abstract Builder showLoading(String msg);
 
 
     public abstract Builder setOnCallBackResponse(CallBackResponseListener callBackResponse);

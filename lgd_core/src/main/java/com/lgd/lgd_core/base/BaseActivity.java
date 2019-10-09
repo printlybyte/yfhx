@@ -11,15 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.lgd.lgd_core.R;
 import com.lgd.lgd_core.event.ActResultRequest;
 import com.lgd.lgd_core.listener.PlaceHolderView;
 import com.lgd.lgd_core.ui.utils.ScreenUtilsx;
 import com.noober.background.BackgroundLibrary;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-
-import es.dmoral.toasty.Toasty;
 
 
 public abstract class BaseActivity extends SwipeBackActivity {
@@ -52,11 +49,11 @@ public abstract class BaseActivity extends SwipeBackActivity {
             initBefore();
             initView();
             initData();
-
         } else {
             finish();
         }
     }
+
 
     protected void initWidows() {
         //设置屏幕适配 360为设计图尺寸px/2
@@ -107,8 +104,15 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     private void initSystemBar() {
         AppManager.getInstance().addActivity(this); //添加到栈中
-
     }
+
+//    public void showProgress() {
+//        LoadingFragment.getInstance().show(getSupportFragmentManager(), "android");
+//    }
+//
+//    public void dismisProgress() {
+//        LoadingFragment.getInstance().dismiss();
+//    }
 
     public void setTitle(String titlemsg) {
         if (mTitle == null) {
@@ -187,7 +191,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
     public void setPlaceHolderView(PlaceHolderView placeHolderView) {
         this.mPlaceHolderView = placeHolderView;
     }
-
 
 
     /**

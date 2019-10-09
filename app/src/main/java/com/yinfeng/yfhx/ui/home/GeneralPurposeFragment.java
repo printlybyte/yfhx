@@ -1,4 +1,4 @@
-package com.yinfeng.yfhx.ui.fragments.home;
+package com.yinfeng.yfhx.ui.home;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +9,7 @@ import com.yinfeng.yfhx.R;
 /**
  * ============================================
  * 描  述：首页-通用fragment
- * 包  名：com.yinfeng.yfhx.ui.fragments.home
+ * 包  名：com.yinfeng.yfhx.fragments.home
  * 类  名：GeneralPurposeFragment
  * 创建人：liuguodong
  * 创建时间：2019/9/20 15:39

@@ -11,13 +11,20 @@ package com.yinfeng.yfhx;
  **/
 public interface Api {
     /**
-    * main
-    */
+     * main
+     */
     String DO_MAIN = "http://mall.yinfengnet.com";
     /**
      * Tab 1
      */
     //首页数据
     String shop_get = DO_MAIN + "/api/v4/shop";
+    String catalog_list_get = DO_MAIN + "/api/v4/catalog/list";
+
+    /**
+     * 商品列表
+     */
+    String goodslist_post = DO_MAIN + "/api/v4/catalog/goodslist";
+
 
 }

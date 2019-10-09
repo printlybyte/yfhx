@@ -1,6 +1,7 @@
-package com.yinfeng.yfhx.ui.fragments.home;
+package com.yinfeng.yfhx.ui.home;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,11 +15,14 @@ import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
+import com.yinfeng.yfhx.adapter.home.HomeIndexAdapter;
 import com.yinfeng.yfhx.entity.MultipleTabHomeItem;
 import com.yinfeng.yfhx.entity.TabFragment1Bean;
-import com.yinfeng.yfhx.ui.fragments.adapter.HomeIndexAdapter;
 import com.yinfeng.yfhx.ui.webview.BrowserActivity;
 
 import java.util.ArrayList;
@@ -27,7 +31,7 @@ import java.util.List;
 /**
  * ============================================
  * 描  述：首页-
- * 包  名：com.yinfeng.yfhx.ui.fragments.home
+ * 包  名：com.yinfeng.yfhx.fragments.home
  * 类  名：IndexFragment
  * 创建人：liuguodong
  * 创建时间：2019/9/9 9:52
@@ -37,6 +41,7 @@ public class IndexFragment extends BaseFragment {
     private List<MultipleTabHomeItem> mParserList = null;
     private RecyclerView mIncludeRecyclerview;
     private HomeIndexAdapter homeIndexAdapter;
+    private SmartRefreshLayout mRefreshLayout;
 
 
     public static IndexFragment newInstance() {
@@ -54,8 +59,9 @@ public class IndexFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         mIncludeRecyclerview = (RecyclerView) view.findViewById(R.id.include_recyclerview);
-
-
+        mRefreshLayout = (SmartRefreshLayout) view.findViewById(R.id.refreshLayout);
+        mRefreshLayout.setOnRefreshListener(onRefreshListener);
+        mRefreshLayout.autoRefresh();
     }
 
     @Override
@@ -64,15 +70,25 @@ public class IndexFragment extends BaseFragment {
 //        GlideUS.loadHeader(path, mFragmentTab1Img);
 //        GlideUS.loadPhoto(path, mFragmentTab1Imgheader);
 
-        requestDate();
+
     }
+
+
+    OnRefreshListener onRefreshListener = new OnRefreshListener() {
+        @Override
+        public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+            requestDate();
+            mRefreshLayout.finishRefresh(1000);
+        }
+    };
 
     /**
      * 请求首页数据
      */
     private void requestDate() {
-        new OKBuilder()
+        new OKBuilder(getActivity())
                 .setNetUrl(Api.shop_get)
+                .showLoading("ni xxx")
                 .get()
                 .setOnCallBackResponse(new CallBackResponseListener() {
                     @Override
@@ -91,10 +107,8 @@ public class IndexFragment extends BaseFragment {
 
                     @Override
                     public void setOnCallBackResponseError(String response) {
-
                     }
-                })
-        ;
+                });
     }
 
 
@@ -129,16 +143,12 @@ public class IndexFragment extends BaseFragment {
         if (response.getSeckills() != null) {
             list.add(new MultipleTabHomeItem(MultipleTabHomeItem.seckills, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getSeckills()));
         }
-
         if (response.getAds() != null) {
             list.add(new MultipleTabHomeItem(MultipleTabHomeItem.ads, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getAds()));
         }
-
-
         if (response.getStores() != null) {
             list.add(new MultipleTabHomeItem(MultipleTabHomeItem.stores, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getStores()));
         }
-
 
         if (response.getStores() != null) {
             list.add(new MultipleTabHomeItem(MultipleTabHomeItem.newgoods, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getNewgoods()));
@@ -155,10 +165,9 @@ public class IndexFragment extends BaseFragment {
                     List<TabFragment1Bean.TopicBean> mListTopic = homeIndexAdapter.getData().get(position).getBean();
                     ITTUtils.Jump(BrowserActivity.class, mListTopic.get(0).getUrl());
                     break;
-
-
                 default:
             }
         }
     };
+
 }

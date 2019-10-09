@@ -1,38 +1,33 @@
-package com.yinfeng.yfhx.ui.fragments;
+package com.yinfeng.yfhx.fragments;
 
 import android.os.Bundle;
 import android.view.View;
 
 import com.lgd.lgd_core.base.BaseFragment;
-import com.lgd.lgd_core.ui.utils.LogUS;
 import com.yinfeng.yfhx.R;
 
 /**
  * ============================================
  * 描  述：
- * 包  名：com.yinfeng.yfhx.ui.fragments
+ * 包  名：com.yinfeng.yfhx.fragments
  * 类  名：Tab_1_Fragment
  * 创建人：liuguodong
  * 创建时间：2019/9/2 16:51
  * ============================================
  **/
-public class Tab_2_Fragment extends BaseFragment {
+public class Tab_4_Fragment extends BaseFragment {
 
-    public static Tab_2_Fragment newInstance() {
+    public static Tab_4_Fragment newInstance() {
         Bundle args = new Bundle();
-        Tab_2_Fragment sampleFragment = new Tab_2_Fragment();
+        Tab_4_Fragment sampleFragment = new Tab_4_Fragment();
         sampleFragment.setArguments(args);
         return sampleFragment;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        LogUS.I("onResume2");
-    }
+
     @Override
     protected int getContentLayoutId() {
-        return R.layout.fragment_tab_2;
+        return R.layout.fragment_tab_4;
     }
 
     @Override

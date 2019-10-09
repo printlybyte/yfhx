@@ -69,8 +69,11 @@ dependencies {
     api 'com.github.xiaohaibin:XBanner:1.7.0'
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 
-    api 'com.wang.avi:library:2.1.3'
     api 'com.classic.common:multiple-status-view:1.6'
+    api 'com.wang.avi:library:2.1.3'
+    api 'com.github.maning0303:MNProgressHUD:V1.1.8'
+
+//    api 'com.github.ybq:Android-SpinKit:1.4.0'
 
 
     api(name: 'bottomlibrary', ext: 'aar')

@@ -4,7 +4,33 @@
         <item name="android:windowEnterAnimation">@anim/selected_dialog_in_anim</item>
         <item name="android:windowExitAnimation">@anim/selected_dialog_out_anim</item>
     </style>
+
     <style name="transparentFrameWindowStyle" parent="android:style/Theme.Dialog">
         <item name="android:windowBackground">@drawable/selected_dialog_choose_bg</item>
+    </style>
+
+
+    <style name="TRANSPARENT_Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:backgroundDimEnabled">false</item><!--activity不变暗-->
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="singleLine_h">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">#ccc</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
+    <style name="singleLine_v">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:background">#ccc</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 </resources>

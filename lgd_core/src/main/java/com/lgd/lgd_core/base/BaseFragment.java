@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.lgd.lgd_core.R;
 import com.lgd.lgd_core.event.ActResultRequest;
 import com.lgd.lgd_core.listener.PlaceHolderView;
@@ -29,6 +29,8 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
     public Context mContext;
     public RxPermissions rxPermissions;
     public ActResultRequest actResultRequest;
+
+    protected FragmentManager mFragmentManager;
 
     public void setIntentFinsh(String msg, int resultCode) {
         Intent intent = new Intent();
@@ -54,6 +56,17 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
         getActivity().setResult(resultCode, intent);
         getActivity().finish();
     }
+
+
+//    public void showProgress() {
+//        LoadingFragment.getInstance().dismiss();
+//        LoadingFragment.getInstance().show(getFragmentManager(), "android");
+//    }
+//
+//    public void dismisProgress() {
+//        LoadingFragment.getInstance().dismiss();
+//    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -128,7 +141,7 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
     }
 
     protected void initBefore() {
-
+        mFragmentManager=getFragmentManager();
     }
 
     /**
@@ -145,14 +158,14 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
      * 初始化控件
      */
 
-    protected abstract void initView(View view)  ;
+    protected abstract void initView(View view);
 
 //    protected  abstract void initWidget(View root, Bundle savedInstanceState) ;
 
     /**
      * 初始化数据
      */
-    protected abstract void initData()  ;
+    protected abstract void initData();
 
     /**
      * 当首次初始化数据的时候会调用的方法
@@ -160,7 +173,6 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
     protected void onFirstInit() {
 
     }
-
 
 
     /**

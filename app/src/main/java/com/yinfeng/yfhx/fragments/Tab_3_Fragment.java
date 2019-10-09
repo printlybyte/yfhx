@@ -1,4 +1,4 @@
-package com.yinfeng.yfhx.ui.fragments;
+package com.yinfeng.yfhx.fragments;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +9,7 @@ import com.yinfeng.yfhx.R;
 /**
  * ============================================
  * 描  述：
- * 包  名：com.yinfeng.yfhx.ui.fragments
+ * 包  名：com.yinfeng.yfhx.fragments
  * 类  名：Tab_1_Fragment
  * 创建人：liuguodong
  * 创建时间：2019/9/2 16:51

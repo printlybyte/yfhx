@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="MissingDefaultResource">
-    <TextView
-        android:text="2"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
-</LinearLayout>
+    android:background="@color/white"
+    app:srlEnableFooterFollowWhenLoadFinished="true"
+    app:srlEnableScrollContentWhenLoaded="true">
+
+
+    <!--<com.scwang.smartrefresh.header.StoreHouseHeader-->
+    <!--android:id="@+id/storeHouseHeader"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--app:shhLineWidth="2dp"-->
+    <!--app:shhText="Loading..." />-->
+
+
+    <com.scwang.smartrefresh.header.MaterialHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srlClassicsSpinnerStyle="Translate" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_search_layout"
+           />
+
+        <View style="@style/singleLine_h"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="@dimen/dp100"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/include_recyclerview_pure" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fragment_tab_2_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></FrameLayout>
+            <!--<include layout="@layout/include_recyclerview_pure" />-->
+        </LinearLayout>
+    </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

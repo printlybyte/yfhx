@@ -1,5 +1,7 @@
 package com.lgd.lgd_core.ui.utils.okgoutils;
 
+import android.content.Context;
+
 import com.blankj.utilcode.util.NetworkUtils;
 import com.lgd.lgd_core.R;
 import com.lgd.lgd_core.ui.utils.LogUS;
@@ -23,13 +25,12 @@ import java.util.LinkedHashMap;
  * ============================================
  **/
 public class OKBuilder extends Builder {
+    private OkgoBean okgoBean;
+    private Context mContext;
 
-
-    OkgoBean okgoBean = new OkgoBean();
-
-
-    public OKBuilder(){
-
+    public OKBuilder(Context context) {
+        mContext = context;
+        okgoBean = new OkgoBean(mContext);
     }
 
     @Override
@@ -58,10 +59,8 @@ public class OKBuilder extends Builder {
 
     @Override
     public Builder get() {
-
         okgoBean.getx();
         return this;
-
     }
 
     @Override
@@ -82,14 +81,24 @@ public class OKBuilder extends Builder {
         return this;
     }
 
+    @Override
+    public Builder showLoading() {
+        okgoBean.showLoadingAnim();
+        return this;
+    }
+
+    @Override
+    public Builder showLoading(String msg) {
+        okgoBean.showLoadingAnim(msg);
+        return this;
+    }
+
 
     @Override
     public Builder setOnCallBackResponse(CallBackResponseListener callBackResponse) {
         okgoBean.setOnCallBackResponse(callBackResponse);
         return this;
     }
-
-
 
 
     @Override
