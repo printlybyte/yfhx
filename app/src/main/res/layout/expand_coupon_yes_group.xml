@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="112dp"
+    android:background="#fafafa"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/ic_coupon_line_bga"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp1"
+        android:paddingTop="@dimen/dp1"
+        android:paddingRight="@dimen/dp1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/expand_coupon_not_group_price"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:gravity="left"
+                android:singleLine="true"
+                android:text="￥25.00"
+                android:textColor="#969696"
+                android:textSize="24sp" />
+
+
+            <LinearLayout
+                android:id="@+id/expand_coupon_not_group_tg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/expand_coupon_not_group_use"
+                android:layout_toRightOf="@+id/expand_coupon_not_group_price"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/expand_coupon_not_group_cou_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="满100元可用"
+                    android:textColor="#464646"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/expand_coupon_not_group_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/expand_coupon_not_group_price"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="2019.4.1至2019.5.1"
+                    android:textColor="#464646"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/expand_coupon_not_group_use"
+                android:layout_width="63dp"
+                android:layout_height="21dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:background="#969696"
+                android:gravity="center"
+                android:text="已使用"
+                android:textColor="#ffffff"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_coupon_sawtooth_gray"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/expand_coupon_not_group_cou_type_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#969696"
+                android:paddingLeft="25dp"
+                android:text=""
+                android:textColor="#ffffff"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:id="@+id/expand_coupon_not_group_downg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp25"
+                android:src="@mipmap/ic_jiantou_down_write" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

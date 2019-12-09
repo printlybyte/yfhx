@@ -79,6 +79,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/activity_login_phone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp54"
             android:background="@null"
@@ -98,14 +99,17 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/activity_login_regist_code"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp54"
                 android:background="@null"
-                android:hint="@string/str_username_hint"
-                android:inputType="textPassword"
+                android:hint="请输入验证码"
+                android:maxLength="6"
+                android:inputType="number"
                 android:textSize="@dimen/sp14" />
 
             <TextView
+                android:id="@+id/activity_login_getvercode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Style for "anjian_5" -->
+    <!-- Add this snippet to layer-list xml in drawable. -->
+    <item android:width="168dp" android:height="39dp">
+        <shape android:shape="rectangle">
+            <corners android:topLeftRadius="3dp" android:topRightRadius="0dp" android:bottomLeftRadius="3dp" android:bottomRightRadius="0dp" />
+            <solid android:color="#c84d4f" />
+        </shape>
+    </item>
+</selector>

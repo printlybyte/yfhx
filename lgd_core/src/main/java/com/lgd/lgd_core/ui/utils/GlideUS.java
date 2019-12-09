@@ -23,11 +23,11 @@ public class GlideUS {
 
     private static Context mContext = Latte.getApplicationContext();
 
-    private static int PhotoPlaceholderImg = R.mipmap.ic_svg_glide_photo_placeholder;
-    private static int PhotoErrorImg = R.drawable.ic_svg_glide_photo_error;
+    public static int PhotoPlaceholderImg = R.mipmap.ic_svg_glide_photo_placeholder;
+    public static int PhotoErrorImg = R.drawable.ic_svg_glide_photo_error;
 
-    private static int HeaderPlaceholderImg = R.drawable.ic_svg_glide_header_placeholder;
-    private static int HeaderErrorImg = R.drawable.ic_svg_glide_header_erray;
+    public static int HeaderPlaceholderImg = R.drawable.ic_svg_glide_header_placeholder;
+    public static int HeaderErrorImg = R.drawable.ic_svg_glide_header_erray;
 
     public static void loadPhoto(String ImgPath, ImageView imageView) {
         RequestOptions requestOptions = new RequestOptions()

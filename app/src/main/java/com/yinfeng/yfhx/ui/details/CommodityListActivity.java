@@ -2,8 +2,6 @@ package com.yinfeng.yfhx.ui.details;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +13,8 @@ import com.classic.common.MultipleStatusView;
 import com.lgd.lgd_core.base.BaseActivity;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GsonUS;
+import com.lgd.lgd_core.ui.utils.ITTUtils;
 import com.lgd.lgd_core.ui.utils.IntentUtilsConstant;
-import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
@@ -26,13 +24,10 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.details.CommodityListAdapter;
-import com.yinfeng.yfhx.adapter.home.NavAdapter;
 import com.yinfeng.yfhx.entity.CommodityListActivityBean;
-import com.yinfeng.yfhx.entity.TabFragment1Bean;
+import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * ============================================
@@ -102,7 +97,7 @@ public class CommodityListActivity extends BaseActivity {
         new OKBuilder(this)
                 .setNetUrl(Api.goodslist_post)
                 .setParamsMap(mParamsMapx)
-//                .showLoading("ni xxx")
+//                .showLoading("loading...")
                 .postStringFormBody()
                 .setOnCallBackResponse(new CallBackResponseListener() {
                     @Override
@@ -134,12 +129,22 @@ public class CommodityListActivity extends BaseActivity {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()) {
                     case R.id.ri_details_commodilylist_item_group:
-
+                        ITTUtils.Jump(CommodityDetailsActivity.class, commodityListAdapter.getData().get(position).getGoods_id() + "");
                         break;
                     case R.id.ri_details_commodilylist_item_add_shop:
+                        String Goods_id = commodityListAdapter.getData().get(position).getGoods_id() + "";
+                        String mProd = commodityListAdapter.getData().get(position).getProd() + "";
+                        if (!TextUtils.isEmpty(mProd)) {
+                            if (mProd.equals("1")) {
+                                ShopCarUtils.getInstance().add(Goods_id, null,false);
+                            }else {
+                                ITTUtils.Jump(CommodityDetailsActivity.class, commodityListAdapter.getData().get(position).getGoods_id() + "");
+                            }
+                        }else {
+                            ToastUS.Warning("err err");
+                        }
                         break;
                 }
-                ToastUS.Warning(position + "1");
             }
         });
     }

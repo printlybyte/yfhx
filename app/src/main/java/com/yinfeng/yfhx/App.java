@@ -5,6 +5,11 @@ import android.util.Log;
 import com.lgd.lgd_core.base.BaseApplication;
 import com.lgd.lgd_core.ui.utils.LogUS;
 import com.tencent.smtt.sdk.QbSdk;
+import com.zhy.http.okhttp.OkHttpUtils;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 /**
  * ============================================
@@ -20,11 +25,21 @@ public class App extends BaseApplication {
     public void onCreate() {
         super.onCreate();
 
-
+        initOkHttpClient();
         initTbs();
     }
 
 
+    private void initOkHttpClient() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .addInterceptor(new LoggerInterceptor("TAG"))
+                .connectTimeout(10000L, TimeUnit.MILLISECONDS)
+                .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                //其他配置
+                .build();
+
+        OkHttpUtils.initClient(okHttpClient);
+    }
     private void initTbs() {
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
             @Override

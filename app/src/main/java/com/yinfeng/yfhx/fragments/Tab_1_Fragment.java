@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
@@ -60,7 +61,6 @@ public class Tab_1_Fragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        ToastUS.Normal("initData");
 
         requestDate();
     }
@@ -109,14 +109,17 @@ public class Tab_1_Fragment extends BaseFragment {
         if (mTitles == null) {
             mTitles = new ArrayList<>();
         }
-        for (int i = 0; i < bean.getCategories().size(); i++) {
-            String catName = bean.getCategories().get(i).getCat_alias_name() + "";
+        for (int i = 0; i < bean.getData().getCategories().size(); i++) {
+            String catName = bean.getData().getCategories().get(i).getCat_alias_name() + "";
+            String catId = bean.getData().getCategories().get(i).getCat_id() + "";
+            Log.i("testre","catId: "+catId);
+
             if (!TextUtils.isEmpty(catName)) {
                 if (i == 0) {
                     mFragments.add(IndexFragment.newInstance());
                     mTitles.add("首页");
                 } else {
-                    mFragments.add(GeneralPurposeFragment.newInstance());
+                    mFragments.add(GeneralPurposeFragment.newInstance(catId));
                     mTitles.add(catName);
                 }
             }

@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/item_fragment_tab2_header_layout_title"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:gravity="center"
         />
 </LinearLayout>

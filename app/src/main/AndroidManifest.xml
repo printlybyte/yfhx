@@ -30,15 +30,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.details.CommodityListActivity"></activity>
+        <activity android:name=".ui.me.HistoryIndexActivity"></activity>
+        <activity android:name=".ui.me.MeCelledGoodsActivity"></activity>
+        <activity android:name=".ui.me.MeCelledStorgeActivity"></activity>
+        <activity android:name=".ui.alculation.CalculationActivity" />
+        <activity android:name=".ui.shop.ShopActivity" />
+        <activity android:name=".ui.me.coupon.MeCouponActivity" />
+        <activity android:name=".ui.me.savecard.MeSaveCardActivity" />
+        <activity android:name=".ui.me.redpack.MeReadPackActivity" />
+        <activity android:name=".ui.me.AddAddressActivity" />
+        <activity android:name=".ui.me.MeAddressActivity" />
+        <activity android:name=".ui.me.AddMeInvoiceActivity" />
+        <activity android:name=".ui.me.MeInvoiceActivity" />
+        <activity android:name=".ui.me.PersonalInfoActivity" />
+        <activity android:name=".ui.details.CommodityListActivity" />
         <activity android:name=".ui.details.CommodityDetailsActivity" />
-        <activity android:name=".ui.login.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".Main2Activity" />
 
         <meta-data
@@ -48,7 +55,13 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.login.SplashActivity"
-            android:theme="@style/SplashTheme" />
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.webview.BrowserActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />

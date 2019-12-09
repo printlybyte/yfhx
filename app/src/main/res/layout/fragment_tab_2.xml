@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    app:srlEnableFooterFollowWhenLoadFinished="true"
-    app:srlEnableScrollContentWhenLoaded="true">
+    android:orientation="vertical"
+     >
 
 
     <!--<com.scwang.smartrefresh.header.StoreHouseHeader-->
@@ -17,10 +17,7 @@
     <!--app:shhText="Loading..." />-->
 
 
-    <com.scwang.smartrefresh.header.MaterialHeader
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srlClassicsSpinnerStyle="Translate" />
+
 
 
     <LinearLayout
@@ -40,13 +37,16 @@
             android:orientation="horizontal">
 
             <FrameLayout
+                android:background="#fafafa"
                 android:layout_width="@dimen/dp100"
                 android:layout_height="match_parent">
 
                 <include layout="@layout/include_recyclerview_pure" />
 
             </FrameLayout>
-
+            <View
+                style="@style/singleLine_v"
+                android:layout_alignParentRight="true"></View>
             <FrameLayout
                 android:id="@+id/fragment_tab_2_container"
                 android:layout_width="match_parent"
@@ -55,4 +55,4 @@
             <!--<include layout="@layout/include_recyclerview_pure" />-->
         </LinearLayout>
     </LinearLayout>
-</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="145dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@mipmap/ic_me_redpack_item_bga"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+
+
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ri_me_redpack_item_invalid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_me_redpack_invalid_item_bga"
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="已激活"
+            android:textColor="#c84d4f"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/ri_me_redpack_item_vc_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="面值"
+            android:textColor="#ffffff"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="查看详情"
+            android:textColor="#ffffff"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ri_me_redpack_item_card_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="余额￥100.00"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/ri_me_redpack_item_bind_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="发放时间：2019-05-24 09：28：33"
+            android:textColor="#ffffff"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/ri_me_redpack_item_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:text="发放时间：2019-05-24 09：28：33"
+            android:textColor="#ffffff"
+            android:textSize="9sp" />
+    </LinearLayout>
+</LinearLayout>

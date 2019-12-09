@@ -28,7 +28,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 //            RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
     protected RxPermissions mRxPermissions;
     protected PlaceHolderView mPlaceHolderView;
-    protected Context mContext;
+    protected BaseActivity mContext;
     protected FragmentManager mFragmentManager;
     protected TextView mTitle;
     protected LinearLayout mBack;
@@ -137,7 +137,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
         mRxPermissions = new RxPermissions(this);
         mFragmentManager = getSupportFragmentManager();
         mTitle = findViewById(R.id.main_action_bar_title);
-//        mTitletBtn = findViewById(R.id.include_actionbar_back_btn);
+        mTitletBtn = findViewById(R.id.include_actionbar_back_btn);
         mActivbarGroup = findViewById(R.id.main_action_bar_group);
         //返回
         mBack = findViewById(R.id.main_action_bar_back);

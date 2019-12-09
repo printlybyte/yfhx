@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_f_evaluation_all_layout_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_f_evaluation_all_layout_user_img"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/item_f_evaluation_all_layout_user_name"
+            android:layout_width="61dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:text="李****买家"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_evaluation_maijia_bga"
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="钻石会员"
+            android:textColor="#ffffff"
+            android:textSize="11sp" />
+
+
+        <TextView
+            android:id="@+id/item_f_evaluation_all_layout_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="2019-05-12 18:25:56"
+            android:textColor="#858585"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:id="@+id/item_f_evaluation_all_layout_ratingbar"
+        style="@style/Widget.MaterialRatingBar.RatingBar.Indicator.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:stepSize="0.01" />
+
+
+    <TextView
+        android:id="@+id/item_f_evaluation_all_layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:gravity="start"
+        android:text="这次巴厘岛之旅非常开心，感谢团友们和六人游后勤保障部的所有工作人员，特别感谢顾问小陈和地陪安娜水，小陈工作认真负责，非常有耐心，安娜水很热情很尽职，让我们度过一个愉快的假期。"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp">
+
+        <include layout="@layout/include_nine_gridview" />
+
+    </FrameLayout>
+
+    <View style="@style/singleLine_h" />
+</LinearLayout>
+

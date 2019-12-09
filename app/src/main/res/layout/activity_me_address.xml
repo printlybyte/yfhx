@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.me.MeInvoiceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_actionbar_back" />
+
+        <include layout="@layout/include_recyclerview_multiple" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_me_address_add"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp39"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginEnd="@dimen/dp12"
+        android:layout_marginBottom="@dimen/dp39"
+        android:background="@drawable/shape_red_stroke_corner"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/dp14"
+            android:layout_height="@dimen/dp14"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_add_txt_center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp14"
+            android:gravity="center_vertical"
+            android:text="新增地址"
+            android:textColor="@color/cc84d4f" />
+    </LinearLayout>
+</RelativeLayout>

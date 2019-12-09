@@ -23,7 +23,7 @@ import java.util.List;
  * 创建时间：2019/9/24 17:42
  * ============================================
  **/
-public class NavAdapter extends BaseQuickAdapter<TabFragment1Bean.NavsBean, NavAdapter.MyHolder> {
+public class NavAdapter extends BaseQuickAdapter<TabFragment1Bean.DataBean.NavsBean, NavAdapter.MyHolder> {
 
     public NavAdapter(int layoutResId, List data) {
         super(layoutResId, data);
@@ -31,7 +31,7 @@ public class NavAdapter extends BaseQuickAdapter<TabFragment1Bean.NavsBean, NavA
 
 
     @Override
-    protected void convert(@NonNull MyHolder helper, TabFragment1Bean.NavsBean item) {
+    protected void convert(@NonNull MyHolder helper, TabFragment1Bean.DataBean.NavsBean item) {
 
         GlideUS.loadPhoto(item.getPic(), helper.imageView);
         String tipStr = Latte.getApplicationContext().getResources().getString(R.string.re_empty_date_tip_txt);

@@ -9,4 +9,5 @@
     <string name="re_empty_date_tip_txt">暂无数据</string>
 
 
+    <string name="behavior_details_title">com.lgd.lgd_core.ui.utils.behahior.DetailsTitleBehavior</string>
 </resources>

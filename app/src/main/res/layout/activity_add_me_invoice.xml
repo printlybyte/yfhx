@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.me.AddMeInvoiceActivity">
+
+    <include layout="@layout/include_actionbar_back" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/cf5f5f5"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="@string/str_fp_type"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tvFpType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:drawableEnd="@mipmap/ic_jiantou_right_black"
+                    android:drawablePadding="@dimen/dp8"
+                    android:gravity="center_vertical"
+                    android:text="@string/str_zzspp"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="@string/str_dwmc"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:id="@+id/etDwName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请填写单位名称"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="纳税人识别码"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:digits="1234567890qazwsxedcrfvtgbyhnujmiklop"
+                    android:id="@+id/etNashuiRenCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入纳税人识别码"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="注册地址"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:id="@+id/etRegistAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入注册地址"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="注册电话"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+
+                    android:maxLength="11"
+                    android:inputType="number"
+                    android:id="@+id/etRegistPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入注册电话"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="开户银行"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:id="@+id/etBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入开户银行"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="银行账户"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:inputType="number"
+                    android:maxLength="22"
+                    android:id="@+id/etBankAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入银行账户"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp39"
+                android:background="@color/cf5f5f5"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dp22"
+                android:text="票据收件信息"
+                android:textColor="@color/c464646"
+                android:textSize="@dimen/sp14" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="姓名"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:inputType="textPersonName"
+                    android:id="@+id/etName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入姓名"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="手机号"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:inputType="number"
+                    android:id="@+id/etPhone"
+                    android:maxLength="11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入收票人手机号"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+
+            <RelativeLayout
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:id="@+id/activity_add_me_invoice_sl_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="所在地区"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tvChooseAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:drawableEnd="@mipmap/ic_jiantou_right_black"
+                    android:drawablePadding="@dimen/dp8"
+                    android:gravity="center_vertical|right"
+                    android:hint="请选择地区"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp42">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="所在地址"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入详细地址"
+                    android:textColor="@color/c464646"
+                    android:textColorHint="@color/cb3b3b3"
+                    android:textSize="@dimen/sp12" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp88"
+        android:background="@color/cf5f5f5"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:foreground="?android:attr/selectableItemBackground"
+            android:id="@+id/activity_add_me_invoice_save"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp39"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dp12"
+            android:layout_marginEnd="@dimen/dp12"
+            android:background="@drawable/btn_save_shape"
+            android:gravity="center"
+            android:text="@string/str_save"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp14" />
+
+    </LinearLayout>
+</LinearLayout>

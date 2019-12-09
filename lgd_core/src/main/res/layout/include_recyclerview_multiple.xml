@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@null"
     android:orientation="vertical">
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -32,7 +32,7 @@
                 android:id="@+id/include_multiple_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#fafafa"
+                android:background="@null"
                 android:focusableInTouchMode="false"
                 android:overScrollMode="never"
                 android:scrollbars="none" />

@@ -7,5 +7,5 @@
 
 
 
-    <include layout="@layout/include_recyclerview_pure" />
+    <include layout="@layout/include_recyclerview_multiple" />
 </LinearLayout>

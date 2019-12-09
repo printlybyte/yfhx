@@ -48,7 +48,6 @@ public class XbannerUtils {
         });
 
         mBanner.setAutoPlayAble(data.size() > 1);
-        mBanner.setIsClipChildrenMode(true);
         //老方法，不推荐使用
         mBanner.setBannerData(data);
     }

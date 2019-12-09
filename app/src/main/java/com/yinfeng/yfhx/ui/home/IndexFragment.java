@@ -88,7 +88,7 @@ public class IndexFragment extends BaseFragment {
     private void requestDate() {
         new OKBuilder(getActivity())
                 .setNetUrl(Api.shop_get)
-                .showLoading("ni xxx")
+                .showLoading("loading...")
                 .get()
                 .setOnCallBackResponse(new CallBackResponseListener() {
                     @Override
@@ -127,31 +127,31 @@ public class IndexFragment extends BaseFragment {
 
     public List<MultipleTabHomeItem> parserMultipleItemData(TabFragment1Bean response) {
         List<MultipleTabHomeItem> list = new ArrayList<>();
-        if (response.getNavs() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.banners, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getBanners()));
+        if (response.getData().getNavs() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.banners, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getBanners()));
         }
 
-        if (response.getNavs() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.navs, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getNavs()));
+        if (response.getData().getNavs() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.navs, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getNavs()));
         }
-        if (response.getTopic() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.topic, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getTopic()));
+        if (response.getData().getTopic() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.topic, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getTopic()));
         }
-        if (response.getNoticelist() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.noticelist, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getNoticelist()));
+        if (response.getData().getNoticelist() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.noticelist, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getNoticelist()));
         }
-        if (response.getSeckills() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.seckills, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getSeckills()));
+        if (response.getData().getSeckills() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.seckills, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getSeckills()));
         }
-        if (response.getAds() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.ads, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getAds()));
+        if (response.getData().getAds() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.ads, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getAds()));
         }
-        if (response.getStores() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.stores, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getStores()));
+        if (response.getData().getStores() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.stores, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getStores()));
         }
 
-        if (response.getStores() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.newgoods, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getNewgoods()));
+        if (response.getData().getStores() != null) {
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.newgoods, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getNewgoods()));
         }
         return list;
     }
@@ -162,7 +162,7 @@ public class IndexFragment extends BaseFragment {
         public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
             switch (view.getId()) {
                 case R.id.item_fragment_tab1_topic_layout_img:
-                    List<TabFragment1Bean.TopicBean> mListTopic = homeIndexAdapter.getData().get(position).getBean();
+                    List<TabFragment1Bean.DataBean.TopicBean> mListTopic = homeIndexAdapter.getData().get(position).getBean();
                     ITTUtils.Jump(BrowserActivity.class, mListTopic.get(0).getUrl());
                     break;
                 default:

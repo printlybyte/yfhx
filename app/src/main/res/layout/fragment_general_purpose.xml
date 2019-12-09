@@ -5,6 +5,6 @@
     android:orientation="vertical">
 
 
-<include layout="@layout/include_recyclerview_multiple"/>
 
+    <include layout="@layout/include_recyclerview_multiple" />
 </LinearLayout>

@@ -5,14 +5,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.IntentUtils;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.ITTUtils;
-import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.entity.TabFragment2Bean_Child;
 import com.yinfeng.yfhx.ui.details.CommodityListActivity;
@@ -66,7 +63,7 @@ public class ChildAdapter extends BaseMultiItemQuickAdapter<MultipleTab2ChildIte
 
     private void setContentDate(ChildAdapter.MyHolder helper, List<TabFragment2Bean_Child.DataBean.ChildBean> mList) {
         if (mList != null && mList.size() > 0) {
-            Child_Child_Adapter child_child_adapter = new Child_Child_Adapter(R.layout.ri_category_child_child_item, mList);
+            T2_Child_Adapter child_child_adapter = new T2_Child_Adapter(R.layout.ri_category_child_child_item, mList);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(Latte.getApplicationContext(), 3) {
                 @Override
                 public boolean canScrollVertically() {

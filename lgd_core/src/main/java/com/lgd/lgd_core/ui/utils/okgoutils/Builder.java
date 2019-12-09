@@ -30,6 +30,9 @@ public abstract class Builder {
     public abstract Builder postJsonObject();
 
     public abstract Builder postStringFormBody();
+    public abstract Builder getStringFormBody();
+    public abstract Builder deleteStringFormBody();
+    public abstract Builder putStringFormBody();
 
     public abstract Builder showLoading();
 

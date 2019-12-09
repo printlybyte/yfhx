@@ -82,6 +82,23 @@ public class OKBuilder extends Builder {
     }
 
     @Override
+    public Builder getStringFormBody() {
+        okgoBean.getStringFormBody();
+        return this;
+    }
+
+    @Override
+    public Builder deleteStringFormBody() {
+        okgoBean.deleteStringFormBody();
+        return this;
+    }
+
+    @Override
+    public Builder putStringFormBody() {
+        return this;
+    }
+
+    @Override
     public Builder showLoading() {
         okgoBean.showLoadingAnim();
         return this;

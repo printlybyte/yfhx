@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context=".ui.shop.ShopActivity">
+
+    <include layout="@layout/include_actionbar_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/activity_shop_bga"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_svg_glide_photo_placeholder" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/activity_shop_name_header"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_svg_glide_photo_placeholder" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/activity_shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|bottom"
+                    android:singleLine="true"
+                    android:text="格力电器期旗舰店"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/activity_shop_name_fs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="1.1万粉丝"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_shop_celled_oc"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginRight="20dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/activity_shop_celled_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_shop_celled_no" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收藏"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:orientation="vertical">
+
+            <!--<com.flyco.tablayout.SlidingTabLayout-->
+            <!--android:id="@+id/activity_shop_tablayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:background="@null"-->
+            <!--tl:tl_indicator_color="@color/white"-->
+            <!--tl:tl_indicator_corner_radius="1.5dp"-->
+            <!--tl:tl_indicator_height="3dp"-->
+            <!--tl:tl_indicator_width="10dp"-->
+            <!--tl:tl_indicator_width_equal_title="true"-->
+            <!--tl:tl_tab_padding="@dimen/dp_10"-->
+            <!--tl:tl_tab_width="80dp"-->
+            <!--tl:tl_textSelectColor="@color/white"-->
+            <!--tl:tl_textUnselectColor="#7a7a7a"-->
+            <!--tl:tl_textsize="12sp" />-->
+
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/activity_shop_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@null"
+                app:tabBackground="@android:color/transparent"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="fixed"
+                app:tabPaddingEnd="0px"
+                app:tabPaddingStart="0px"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/c999999" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/activity_shop_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

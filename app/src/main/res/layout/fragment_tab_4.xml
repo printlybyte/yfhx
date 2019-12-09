@@ -1,12 +1,418 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+
     tools:ignore="MissingDefaultResource">
+
     <TextView
-        android:text="4"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:paddingTop="20dp"
+        android:text="银丰荟 coperight 1999-2019"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnablePureScrollMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_me_header_bga" />
+
+                <ImageView
+                    android:id="@+id/fragment_tab_4_headerimg"
+                    android:layout_width="57dp"
+                    android:layout_height="57dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:src="@color/white" />
+
+                <TextView
+                    android:id="@+id/fragment_tab_4_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/fragment_tab_4_headerimg"
+                    android:gravity="left"
+                    android:text="287253237"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="left"
+                    android:text="普通会员"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="我的订单"
+                    android:textColor="#464646"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableRight="@mipmap/ic_jiantou_right_black"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="25dp"
+                    android:text="我的订单"
+                    android:textColor="#464646"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/singleLine_h"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_daifukuan" />
+
+                    <TextView
+                        style="@style/me_text_style"
+                        android:text="待付款" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_daifahuo" />
+
+                    <TextView
+                        style="@style/me_text_style"
+                        android:text="待发货" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_daishouhuo" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="待收货" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_daipingjia" />
+
+                    <TextView
+                        style="@style/me_text_style"
+                        android:text="待评价" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_tuihuo" />
+
+                    <TextView
+                        style="@style/me_text_style"
+                        android:text="退款/售后" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="#fafafa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_me_coupon"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_youhuiquan" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="优惠券" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_redpack_oc"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_wodehognbao" />
+
+                    <TextView
+                        style="@style/me_text_style"
+                        android:text="我的红包" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_savecade_oc"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_lipinka" />
+
+                    <TextView
+                        style="@style/me_text_style"
+                        android:text="礼品卡" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_me_invoice"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_wodefapiao" />
+
+                    <TextView
+                        style="@style/me_text_style"
+                        android:text="我的发票" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_me_address"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_shouhuodizhi" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="收货地址" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_personal_info"
+                    style="@style/me_group_style">
+
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_gerenxinxi" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="个人信息" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_account_management_oc"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_zhanghaoguanli" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="账号管理" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_me_celled_oc"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_wodeshoucang" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="我的收藏" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_follow_stores_oc"
+
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_guanzhudianpu" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="关注店铺" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_my_footprint_oc"
+                    style="@style/me_group_style">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_wodezuji" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="我的足迹" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/fragment_tab_4_my_invite_friends_oc"
+                    style="@style/me_group_style">
+
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_yaoqinghaoyou" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="邀请好友" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/me_group_style"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_zhanghaoguanli" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="账号管理" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/me_group_style"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_header_bga" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="我的收藏" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/me_group_style"
+
+                    android:visibility="invisible">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_header_bga" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="关注店铺" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/me_group_style"
+
+                    android:visibility="invisible">
+
+                    <ImageView
+                        style="@style/me_img_style"
+                        android:src="@mipmap/ic_me_header_bga" />
+
+                    <TextView
+
+                        style="@style/me_text_style"
+                        android:text="我的足迹" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</RelativeLayout>

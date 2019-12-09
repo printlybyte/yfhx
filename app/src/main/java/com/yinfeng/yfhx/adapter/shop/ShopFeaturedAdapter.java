@@ -1,4 +1,4 @@
-package com.yinfeng.yfhx.adapter.categray;
+package com.yinfeng.yfhx.adapter.shop;
 
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -9,7 +9,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GlideUS;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.entity.TabFragment2Bean_Child;
+import com.yinfeng.yfhx.entity.shop.ShopCategrayFragmentBean;
 
 import java.util.List;
 
@@ -22,26 +22,30 @@ import java.util.List;
  * 创建时间：2019/9/24 17:42
  * ============================================
  **/
-public class Child_Child_Adapter  extends BaseQuickAdapter<TabFragment2Bean_Child.DataBean.ChildBean, Child_Child_Adapter.MyHolder> {
+public class ShopFeaturedAdapter extends BaseQuickAdapter<ShopCategrayFragmentBean.DataBean, ShopFeaturedAdapter.MyHolder> {
 
-    public Child_Child_Adapter(int layoutResId, List data) {
+    public ShopFeaturedAdapter(int layoutResId, List data) {
         super(layoutResId, data);
     }
 
-    @Override
-    protected void convert(@NonNull Child_Child_Adapter.MyHolder helper, TabFragment2Bean_Child.DataBean.ChildBean item) {
 
-        GlideUS.loadPhoto(item.getTouch_icon(), helper.imageView);
+    @Override
+    protected void convert(@NonNull MyHolder helper, ShopCategrayFragmentBean.DataBean item) {
+
+        GlideUS.loadPhoto(item.getGoods_img(), helper.imageView);
         String tipStr = Latte.getApplicationContext().getResources().getString(R.string.re_empty_date_tip_txt);
-        helper.setText(R.id.ri_category_child_child_item_txt, item.getCat_name() == "" ? tipStr : item.getCat_name());
-        helper.addOnClickListener(R.id.ri_category_child_child_item_group);
+        helper.setText(R.id.ri_shop_featured_item_title, item.getGoods_name() == "" ? tipStr : item.getGoods_name());
+        helper.setText(R.id.ri_shop_featured_item_price, item.getShop_price_formated()+"" == "" ? tipStr : item.getShop_price_formated()+"");
+        helper.addOnClickListener(R.id.ri_shop_featured_item_group);
+
     }
 
     class MyHolder extends BaseViewHolder {
         ImageView imageView;
+
         public MyHolder(View view) {
             super(view);
-            imageView = view.findViewById(R.id.ri_category_child_child_item_img);
+            imageView = view.findViewById(R.id.ri_shop_featured_item_img);
         }
     }
 }

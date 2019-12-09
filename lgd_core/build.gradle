@@ -25,7 +25,7 @@ android {
 
     repositories {
         flatDir {
-            dirs 'libs',aar_comm_path
+            dirs 'libs', aar_comm_path
         }
     }
 }
@@ -39,6 +39,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     api 'com.android.support:percent:28.0.0'
+
+
 
     //1.0.5及以前版本的老用户升级需谨慎，API改动过大
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
@@ -72,11 +74,30 @@ dependencies {
     api 'com.classic.common:multiple-status-view:1.6'
     api 'com.wang.avi:library:2.1.3'
     api 'com.github.maning0303:MNProgressHUD:V1.1.8'
+    api 'com.github.chihane:JDAddressSelector:1.1.4'
 
 //    api 'com.github.ybq:Android-SpinKit:1.4.0'
 
 
     api(name: 'bottomlibrary', ext: 'aar')
     api(name: 'tbs_core-release', ext: 'aar')
+
+    api 'com.zhy:okhttputils:2.6.2'
+    api 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
+
+    //星际评分
+    api 'me.zhanghai.android.materialratingbar:library:1.3.3'
+    //九宫格图
+    api 'com.jaeger.ninegridimageview:library:1.1.1'
+    //图片预览
+    api 'com.ycjiang:ImagePreview:2.2.5'
+    //tag 标签 流式布局
+    api 'com.hyman:flowlayout-lib:1.1.2'
+    //京东地址选择
+//    api 'com.github.chihane:JDAddressSelector:1.1.3'
+
+    api 'com.sackcentury:shinebutton:0.2.0'
+//    api project(path: ':shinebuttonlib')
+
 }
 

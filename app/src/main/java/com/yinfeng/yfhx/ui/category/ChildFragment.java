@@ -35,7 +35,6 @@ import java.util.List;
  **/
 public class ChildFragment extends BaseFragment {
 
-    private TextView mFragmentTab2ChildLayoutTxt;
     private RecyclerView mIncludeRecyclerview;
 
     public static ChildFragment newInstance(String f_name, String f_id) {
@@ -55,17 +54,14 @@ public class ChildFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         String f_id = "";
-//        mFragmentTab2ChildLayoutTxt = (TextView) view.findViewById(R.id.fragment_tab2_child_layout_txt);
         Bundle bundle = getArguments();
         if (bundle != null && !TextUtils.isEmpty(bundle.getString("f_name"))) {
             String f_name = bundle.getString("f_name");
             f_id = bundle.getString("f_id");
-//            mFragmentTab2ChildLayoutTxt.setText(f_name);
         } else {
-//            mFragmentTab2ChildLayoutTxt.setText(getTag());
         }
 
-        mIncludeRecyclerview = (RecyclerView) view.findViewById(R.id.include_recyclerview);
+        mIncludeRecyclerview = (RecyclerView) view.findViewById(R.id.include_multiple_recyclerview);
         requestDate(f_id);
     }
 
@@ -81,7 +77,7 @@ public class ChildFragment extends BaseFragment {
     private void requestDate(String categray_id) {
         new OKBuilder(getActivity())
                 .setNetUrl(Api.catalog_list_get + "/" + categray_id)
-                .showLoading("ni xxx")
+                .showLoading("loading...")
                 .get()
                 .setOnCallBackResponse(new CallBackResponseListener() {
                     @Override

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,9 @@ import com.stx.xhb.xbanner.XBanner;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.entity.MultipleTabHomeItem;
 import com.yinfeng.yfhx.entity.TabFragment1Bean;
+import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
+import com.yinfeng.yfhx.ui.shop.ShopActivity;
+import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 import com.yinfeng.yfhx.ui.webview.BrowserActivity;
 
 import java.util.ArrayList;
@@ -47,37 +51,37 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
         addOnClickListener(helper);
         switch (helper.getItemViewType()) {
             case MultipleTabHomeItem.banners:
-                List<TabFragment1Bean.BannersBean> mListBanner = item.getBean();
+                List<TabFragment1Bean.DataBean.BannersBean> mListBanner = item.getBean();
                 setBannerDate(helper, mListBanner);
                 break;
             case MultipleTabHomeItem.navs:
-                List<TabFragment1Bean.NavsBean> mListNav = item.getBean();
+                List<TabFragment1Bean.DataBean.NavsBean> mListNav = item.getBean();
                 setNavAdapter(helper, mListNav);
                 break;
             case MultipleTabHomeItem.topic:
-                List<TabFragment1Bean.TopicBean> mListTopic = item.getBean();
+                List<TabFragment1Bean.DataBean.TopicBean> mListTopic = item.getBean();
                 setTopicAdapter(helper, mListTopic);
 
                 break;
             case MultipleTabHomeItem.noticelist:
-                List<TabFragment1Bean.NoticelistBean> mListNotice = item.getBean();
+                List<TabFragment1Bean.DataBean.NoticelistBean> mListNotice = item.getBean();
                 setNoticeAdapter(helper, mListNotice);
                 break;
             case MultipleTabHomeItem.seckills:
-                List<TabFragment1Bean.SeckillsBean> mListSeckills = item.getBean();
+                List<TabFragment1Bean.DataBean.SeckillsBean> mListSeckills = item.getBean();
                 setSeckillsAdapter(helper, mListSeckills);
                 break;
             case MultipleTabHomeItem.ads:
-                List<TabFragment1Bean.AdsBean> mListAds = item.getBean();
+                List<TabFragment1Bean.DataBean.AdsBean> mListAds = item.getBean();
                 setAdsAdapter(helper, mListAds);
                 break;
 
             case MultipleTabHomeItem.stores:
-                List<TabFragment1Bean.StoresBean> mListStores = item.getBean();
+                List<TabFragment1Bean.DataBean.StoresBean> mListStores = item.getBean();
                 setStoresAdapter(helper, mListStores);
                 break;
             case MultipleTabHomeItem.newgoods:
-                List<TabFragment1Bean.NewgoodsBean> mListNewgoods = item.getBean();
+                List<TabFragment1Bean.DataBean.NewgoodsBean> mListNewgoods = item.getBean();
                 setNewGoodsAdapter(helper, mListNewgoods);
                 break;
         }
@@ -88,7 +92,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
     /**
      * 设置xbanner数据
      */
-    private void setBannerDate(MyHolder helper, List<TabFragment1Bean.BannersBean> mList) {
+    private void setBannerDate(MyHolder helper, List<TabFragment1Bean.DataBean.BannersBean> mList) {
         if (mList != null && mList.size() > 0) {
             helper.mBanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
                 @Override
@@ -119,16 +123,10 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
 //        mBanner.setBannerData(data);
 //        mBanner.setAutoPlayAble(true);
 //    }
-    private void setNavAdapter(MyHolder helper, List<TabFragment1Bean.NavsBean> mList) {
+    private void setNavAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.NavsBean> mList) {
         if (mList != null && mList.size() > 0) {
             NavAdapter navAdapter = new NavAdapter(R.layout.ri_home_nav_item, mList);
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(Latte.getApplicationContext(), 4) {
-                @Override
-                public boolean canScrollVertically() {
-                    //禁止滑动
-                    return false;
-                }
-            };
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(Latte.getApplicationContext(), 4);
             helper.recyclerView_nav.setLayoutManager(gridLayoutManager);
             helper.recyclerView_nav.setAdapter(navAdapter);
             navAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
@@ -140,7 +138,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
         }
     }
 
-    private void setTopicAdapter(MyHolder helper, List<TabFragment1Bean.TopicBean> mList) {
+    private void setTopicAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.TopicBean> mList) {
         if (mList != null && mList.size() > 0) {
             String mPath = mList.get(0).getPic();
             GlideUS.loadPhoto(mPath, helper.imageView_topic);
@@ -148,7 +146,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
         }
     }
 
-    private void setNoticeAdapter(MyHolder helper, List<TabFragment1Bean.NoticelistBean> mList) {
+    private void setNoticeAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.NoticelistBean> mList) {
         if (mList != null && mList.size() > 0) {
             final List<AutoVerticalViewDataData> data = new ArrayList<AutoVerticalViewDataData>();
             for (int i = 0; i < mList.size(); i++) {
@@ -167,7 +165,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
         }
     }
 
-    private void setSeckillsAdapter(MyHolder helper, List<TabFragment1Bean.SeckillsBean> mList) {
+    private void setSeckillsAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.SeckillsBean> mList) {
         if (mList != null && mList.size() > 0 && mList.size() == 3) {
             GlideUS.loadPhoto(mList.get(0).getGoods_img(), helper.imageView_seckils1);
             GlideUS.loadPhoto(mList.get(1).getGoods_img(), helper.imageView_seckils2);
@@ -175,30 +173,31 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
             helper.linearLayout_seckils1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastUS.Error(""+mList.get(0).getGoods_name());
+                    ToastUS.Error("" + mList.get(0).getGoods_name());
                 }
             });
             helper.linearLayout_seckils2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastUS.Error(""+mList.get(1).getGoods_name());
+                    ToastUS.Error("" + mList.get(1).getGoods_name());
                 }
             });
             helper.linearLayout_seckils3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastUS.Error(""+mList.get(2).getGoods_name());
+                    ToastUS.Error("" + mList.get(2).getGoods_name());
                 }
-            }); helper.textView_seckils_query_all.setOnClickListener(new View.OnClickListener() {
+            });
+            helper.textView_seckils_query_all.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastUS.Error("all"  );
+                    ToastUS.Error("all");
                 }
             });
         }
     }
 
-    private void setAdsAdapter(MyHolder helper, List<TabFragment1Bean.AdsBean> mList) {
+    private void setAdsAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.AdsBean> mList) {
         if (mList != null && mList.size() > 0 && mList.size() == 4) {
             GlideUS.loadPhoto(mList.get(0).getPic(), helper.imageView_ads1);
             GlideUS.loadPhoto(mList.get(1).getPic(), helper.imageView_ads2);
@@ -246,7 +245,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
         }
     };
 
-    private void setStoresAdapter(MyHolder helper, List<TabFragment1Bean.StoresBean> mList) {
+    private void setStoresAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.StoresBean> mList) {
         if (mList != null && mList.size() > 0) {
             StoresAdapter storesAdapter = new StoresAdapter(R.layout.ri_home_stores_item, mList);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Latte.getApplicationContext()) {
@@ -262,21 +261,26 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
             storesAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    TabFragment1Bean.StoresBean bean = storesAdapter.getData().get(position);
+                    TabFragment1Bean.DataBean.StoresBean bean = storesAdapter.getData().get(position);
                     switch (view.getId()) {
                         case R.id.ri_home_stores_item_group:
-                            ToastUS.Error("店铺 1");
+                            ITTUtils.Jump(ShopActivity.class, bean.getRu_id() + "");
                             break;
                         case R.id.ri_home_stores_item_mark_group1:
-                            ToastUS.Error("shop 1");
+                            TabFragment1Bean.DataBean.StoresBean.GoodsBean goodsBean1 = bean.getGoods().get(0);
+                            ITTUtils.Jump(CommodityDetailsActivity.class, goodsBean1.getGoods_id() + "");
                             break;
                         case R.id.ri_home_stores_item_mark_group2:
-                            ToastUS.Error("shop 2");
+                            TabFragment1Bean.DataBean.StoresBean.GoodsBean goodsBean2 = bean.getGoods().get(1);
+//                            ToastUS.Error(""+goodsBean2.getGoods_name() + "");
+                            ITTUtils.Jump(CommodityDetailsActivity.class, goodsBean2.getGoods_id() + "");
 
                             break;
                         case R.id.ri_home_stores_item_mark_group3:
-                            ToastUS.Error("shop 3");
+                            TabFragment1Bean.DataBean.StoresBean.GoodsBean goodsBean3 = bean.getGoods().get(2);
+                            ITTUtils.Jump(CommodityDetailsActivity.class, goodsBean3.getGoods_id() + "");
                             break;
+
 
                         default:
                     }
@@ -286,7 +290,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
     }
 
 
-    private void setNewGoodsAdapter(MyHolder helper, List<TabFragment1Bean.NewgoodsBean> mList) {
+    private void setNewGoodsAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.NewgoodsBean> mList) {
         if (mList != null && mList.size() > 0) {
             NewGoodsAdapter newGoodsAdapter = new NewGoodsAdapter(R.layout.ri_home_newgoods_item, mList);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Latte.getApplicationContext()) {
@@ -302,13 +306,27 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
             newGoodsAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    TabFragment1Bean.NewgoodsBean bean = newGoodsAdapter.getData().get(position);
+
+                    TabFragment1Bean.DataBean.NewgoodsBean bean = newGoodsAdapter.getData().get(position);
+                    String Goods_id = newGoodsAdapter.getData().get(position).getGoods_id() + "";
                     switch (view.getId()) {
                         case R.id.ri_home_newgoods_item_group:
-                            ToastUS.Warning(position + "" + bean.getGoods_name());
+                            ITTUtils.Jump(CommodityDetailsActivity.class, Goods_id + "");
+
+//                            ToastUS.Warning(position + "" + bean.getGoods_name());
                             break;
                         case R.id.ri_home_newgoods_item_add_shop:
-                            ToastUS.Error(position + "" + bean.getGoods_name());
+                            String mProd = newGoodsAdapter.getData().get(position).getProd() + "";
+                            if (!TextUtils.isEmpty(mProd)) {
+                                if (mProd.equals("1")) {
+                                    ShopCarUtils.getInstance().add(Goods_id, null, false);
+                                } else {
+                                    ITTUtils.Jump(CommodityDetailsActivity.class, Goods_id);
+                                }
+                            } else {
+                                ToastUS.Warning("err err");
+                            }
+//                            ToastUS.Error(position + "" + bean.getGoods_name());
                             break;
                         default:
                     }

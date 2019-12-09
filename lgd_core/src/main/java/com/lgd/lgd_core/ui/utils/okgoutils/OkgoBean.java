@@ -10,6 +10,7 @@ import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.orhanobut.hawk.Hawk;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -87,6 +88,20 @@ public class OkgoBean {
 
     }
 
+    public void getStringFormBody() {
+        getStringFormBodyx();
+
+    }
+
+    public void deleteStringFormBody() {
+        deleteStringFormBodyx();
+
+    }
+
+    public void putStringFormBody() {
+        putStringFormBodyx();
+
+    }
 
     public void get() {
         getx();
@@ -109,11 +124,12 @@ public class OkgoBean {
         LogUS.I("请求方式 postJsonArray :" + '\n' + "请求参数 ：" + mJsonArray.toString() + '\n' + "请求地址 " + mNetUrl);
         OkGo.<String>post(mNetUrl)
                 .tag(this)
+                .headers("token", testToken)
                 .upJson(mJsonArray)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body());
+                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body()+'\n' + "请求地址 " + mNetUrl);
                         if (backResponseListener != null) {
                             backResponseListener.setOnCallBackResponseSuccess(response.body());
                         }
@@ -160,7 +176,7 @@ public class OkgoBean {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body());
+                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body()+'\n' + "请求地址 " + mNetUrl);
 
                         if (backResponseListener != null) {
                             backResponseListener.setOnCallBackResponseSuccess(response.body());
@@ -199,14 +215,15 @@ public class OkgoBean {
         if (mIsLoadingAnim) {
             MT.show(mContext, loadingMsg);
         }
-        LogUS.I("请求方式 postFormBody :" + '\n' + "请求参数 ：" + mParamsMap.toString() + '\n' + "请求地址 " + mNetUrl);
+        LogUS.I("请求方式 postStringFormBodyx :" + '\n' + "请求参数 ：" + mParamsMap.toString() + '\n' + "请求地址 " + mNetUrl);
         OkGo.<String>post(mNetUrl)
                 .tag(this)
+                .headers("token", testToken)
                 .params(mParamsMap)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body());
+                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body()+'\n' + "请求地址 " + mNetUrl);
                         if (backResponseListener != null) {
                             backResponseListener.setOnCallBackResponseSuccess(response.body());
                         }
@@ -231,7 +248,97 @@ public class OkgoBean {
 
     }
 
-    private String testToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJhdWQiOiJodHRwczpcL1wvd3d3LmRzY21hbGwuY24iLCJzdWIiOiJqcm9ja2V0QGV4YW1wbGUuY29tIiwiZXhwIjoxNTcyMDU4MzI2LCJ1c2VyX2lkIjo1MTYyMH0.AP_qmcyrwG5F2DooH8QKn23lAsAPOp7QX9SozUxIC5c";
+    private void deleteStringFormBodyx() {
+        if (!NetworkUtils.isConnected()) {
+            ToastUS.Warning(R.string.net_err);
+            return;
+        }
+        if (mParamsMap == null) {
+            ToastUS.Warning(R.string.post_params_empty);
+            return;
+        }
+        if (mIsLoadingAnim) {
+            MT.show(mContext, loadingMsg);
+        }
+        LogUS.I("请求方式 deleteStringFormBodyx :" + '\n' + "请求参数 ：" + mParamsMap.toString() + '\n' + "请求地址 " + mNetUrl);
+        OkGo.<String>delete(mNetUrl)
+                .tag(this)
+                .headers("token", testToken)
+                .params(mParamsMap)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body()+'\n' + "请求地址 " + mNetUrl);
+                        if (backResponseListener != null) {
+                            backResponseListener.setOnCallBackResponseSuccess(response.body());
+                        }
+                        if (mIsLoadingAnim) {
+                            MT.hide();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        checkErrorCode(response.code());
+                        LogUS.E("请求结果: 失败" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body());
+                        if (backResponseListener != null) {
+                            backResponseListener.setOnCallBackResponseError(response.body());
+                        }
+                        if (mIsLoadingAnim) {
+                            MT.hide();
+                        }
+                    }
+                });
+
+    }
+
+    private void putStringFormBodyx() {
+        if (!NetworkUtils.isConnected()) {
+            ToastUS.Warning(R.string.net_err);
+            return;
+        }
+        if (mParamsMap == null) {
+            ToastUS.Warning(R.string.post_params_empty);
+            return;
+        }
+        if (mIsLoadingAnim) {
+            MT.show(mContext, loadingMsg);
+        }
+        LogUS.I("请求方式 putStringFormBodyx :" + '\n' + "请求参数 ：" + mParamsMap.toString() + '\n' + "请求地址 " + mNetUrl);
+        OkGo.<String>put(mNetUrl)
+                .tag(this)
+                .headers("token", testToken)
+                .params(mParamsMap)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body()+'\n' + "请求地址 " + mNetUrl);
+                        if (backResponseListener != null) {
+                            backResponseListener.setOnCallBackResponseSuccess(response.body());
+                        }
+                        if (mIsLoadingAnim) {
+                            MT.hide();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        checkErrorCode(response.code());
+                        LogUS.E("请求结果: 失败" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body());
+                        if (backResponseListener != null) {
+                            backResponseListener.setOnCallBackResponseError(response.body());
+                        }
+                        if (mIsLoadingAnim) {
+                            MT.hide();
+                        }
+                    }
+                });
+
+    }
+
+    private String testToken = Hawk.get("Apc_token", "");
 
     public void getx() {
         if (!NetworkUtils.isConnected()) {
@@ -243,12 +350,12 @@ public class OkgoBean {
             MT.show(mContext, loadingMsg);
         }
         OkGo.<String>get(mNetUrl)
-                .params("token", testToken)
+                .headers("token", testToken)
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body());
+                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body()+'\n' + "请求地址 " + mNetUrl);
 
                         if (backResponseListener != null) {
                             backResponseListener.setOnCallBackResponseSuccess(response.body());
@@ -271,6 +378,52 @@ public class OkgoBean {
                             MT.hide();
                         }
 
+                    }
+                });
+
+    }
+
+
+    private void getStringFormBodyx() {
+        if (!NetworkUtils.isConnected()) {
+            ToastUS.Warning(R.string.net_err);
+            return;
+        }
+        if (mParamsMap == null) {
+            ToastUS.Warning(R.string.post_params_empty);
+            return;
+        }
+        if (mIsLoadingAnim) {
+            MT.show(mContext, loadingMsg);
+        }
+        LogUS.I("请求方式 getStringFormBodyx :" + '\n' + "请求参数 ：" + mParamsMap.toString() + '\n' + "请求地址 " + mNetUrl);
+        OkGo.<String>get(mNetUrl)
+                .tag(this)
+                .headers("token", testToken)
+                .params(mParamsMap)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        LogUS.I("请求结果: 成功" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body() +'\n' + "请求地址 " + mNetUrl);
+                        if (backResponseListener != null) {
+                            backResponseListener.setOnCallBackResponseSuccess(response.body());
+                        }
+                        if (mIsLoadingAnim) {
+                            MT.hide();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        checkErrorCode(response.code());
+                        LogUS.E("请求结果: 失败" + '\n' + "响应码" + response.code() + '\n' + "请求结果 " + response.body());
+                        if (backResponseListener != null) {
+                            backResponseListener.setOnCallBackResponseError(response.body());
+                        }
+                        if (mIsLoadingAnim) {
+                            MT.hide();
+                        }
                     }
                 });
 

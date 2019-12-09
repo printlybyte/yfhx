@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+
     compileSdkVersion 28
     buildToolsVersion "29.0.1"
     defaultConfig {
@@ -9,6 +10,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         compileOptions {
             targetCompatibility JavaVersion.VERSION_1_8
@@ -38,8 +40,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(path: ':lgd_core')
+    implementation project(path: ':lgd_address')
 
     implementation(name: 'bottomlibrary', ext: 'aar')
     implementation(name: 'tbs_core-release', ext: 'aar')
+    implementation(name: 'dialog-release', ext: 'aar')
 
+//    implementation project(path: ':address_library')
+
+//    收藏按钮
+//    implementation 'com.sackcentury:shinebutton:1.0.0'
 }

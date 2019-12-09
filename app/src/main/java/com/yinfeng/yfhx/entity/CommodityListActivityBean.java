@@ -190,7 +190,7 @@ public class CommodityListActivityBean {
         private int default_shipping;
         private String market_price;
         private String cost_price;
-        private int shop_price;
+        private String shop_price;
         private String promote_price;
         private int promote_start_date;
         private int promote_end_date;
@@ -422,11 +422,11 @@ public class CommodityListActivityBean {
             this.cost_price = cost_price;
         }
 
-        public int getShop_price() {
+        public String getShop_price() {
             return shop_price;
         }
 
-        public void setShop_price(int shop_price) {
+        public void setShop_price(String shop_price) {
             this.shop_price = shop_price;
         }
 

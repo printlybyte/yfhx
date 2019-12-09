@@ -23,7 +23,7 @@ import java.util.List;
  * 创建时间：2019/9/24 17:42
  * ============================================
  **/
-public class StoresAdapter extends BaseQuickAdapter<TabFragment1Bean.StoresBean, StoresAdapter.MyHolder> {
+public class StoresAdapter extends BaseQuickAdapter<TabFragment1Bean.DataBean.StoresBean, StoresAdapter.MyHolder> {
 
     public StoresAdapter(int layoutResId, List data) {
         super(layoutResId, data);
@@ -31,7 +31,7 @@ public class StoresAdapter extends BaseQuickAdapter<TabFragment1Bean.StoresBean,
 
 
     @Override
-    protected void convert(@NonNull MyHolder helper, TabFragment1Bean.StoresBean item) {
+    protected void convert(@NonNull MyHolder helper, TabFragment1Bean.DataBean.StoresBean item) {
 
         GlideUS.loadPhoto(item.getShop_logo(), helper.imageView_logo);
         GlideUS.loadPhoto(item.getGoods().get(0).getGoods_img(), helper.imageView_mark1);

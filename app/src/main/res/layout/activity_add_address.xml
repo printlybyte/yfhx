@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cf5f5f5"
+    android:orientation="vertical"
+   >
+
+    <include layout="@layout/include_actionbar_back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="收货人"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|end"
+                    android:hint="请输入收货人姓名"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="手机号码"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <EditText
+
+                    android:id="@+id/etPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:background="@null"
+                    android:gravity="center_vertical|end"
+                    android:hint="请输入收货人电话"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <RelativeLayout
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:id="@+id/activity_add_address_sd_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp22"
+                    android:gravity="center_vertical"
+                    android:text="所在地区"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp22"
+                    android:drawableEnd="@mipmap/ic_jiantou_right_black"
+                    android:drawablePadding="@dimen/dp8"
+                    android:gravity="center_vertical"
+                    android:text="" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:layout_marginStart="@dimen/dp12"
+                android:layout_marginEnd="@dimen/dp12"
+                android:background="@color/cbfbfbf" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48"
+                android:layout_marginStart="@dimen/dp22"
+                android:gravity="center_vertical"
+                android:text="详细信息"
+                android:textColor="@color/c464646"
+                android:textSize="@dimen/sp14" />
+
+            <EditText
+                android:id="@+id/etDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp22"
+                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginEnd="@dimen/dp22"
+                android:background="@null"
+                android:gravity="left"
+                android:hint="请输入详细信息"
+                android:lines="5"
+                android:textSize="@dimen/sp12" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp1"
+                android:background="@color/cbfbfbf" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btSave"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp39"
+        android:layout_marginStart="@dimen/dp12"
+        android:layout_marginEnd="@dimen/dp12"
+        android:layout_marginBottom="@dimen/dp22"
+        android:background="@drawable/btn_save_shape"
+        android:gravity="center"
+        android:text="@string/str_save"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp14" />
+</LinearLayout>

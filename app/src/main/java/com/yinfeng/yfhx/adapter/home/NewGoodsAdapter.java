@@ -24,7 +24,7 @@ import java.util.List;
  * 创建时间：2019/9/24 17:42
  * ============================================
  **/
-public class NewGoodsAdapter extends BaseQuickAdapter<TabFragment1Bean.NewgoodsBean, NewGoodsAdapter.MyHolder> {
+public class NewGoodsAdapter extends BaseQuickAdapter<TabFragment1Bean.DataBean.NewgoodsBean, NewGoodsAdapter.MyHolder> {
 
     public NewGoodsAdapter(int layoutResId, List data) {
         super(layoutResId, data);
@@ -32,7 +32,7 @@ public class NewGoodsAdapter extends BaseQuickAdapter<TabFragment1Bean.NewgoodsB
 
 
     @Override
-    protected void convert(@NonNull MyHolder helper, TabFragment1Bean.NewgoodsBean item) {
+    protected void convert(@NonNull MyHolder helper, TabFragment1Bean.DataBean.NewgoodsBean item) {
 
         GlideUS.loadPhoto(item.getGoods_img(), helper.imageView_logo);
 
