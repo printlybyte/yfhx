@@ -240,4 +240,12 @@ public interface Api {
      */
     String collect_shop_get = DO_MAIN + "/api/v4/collect/shop";
 
+
+    /**
+     * 订单列表
+     */
+    String order_list_post = DO_MAIN + "/api/v4/order/list";
+
+
+
 }

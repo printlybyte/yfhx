@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -65,28 +66,27 @@ public class MeAddressActivity extends BaseActivity {
 
         Intent intent = getIntent();
         String flags = intent.getStringExtra(IntentUtilsConstant.INTENT_PARAMS_1);
-        if (flags.equals("address")) {
-            isShowSingleCheck = false;
-            //结算页发票信息选择
-            mTitletBtn.setText("确认");
-            mTitletBtn.setVisibility(View.VISIBLE);
-            mTitletBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        if (!TextUtils.isEmpty(flags)) {
+            if (flags.equals("address")) {
+                isShowSingleCheck = false;
+                //结算页发票信息选择
+                mTitletBtn.setText("确认");
+                mTitletBtn.setVisibility(View.VISIBLE);
+                mTitletBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
 //                    Intent intent1 = new Intent();
 //                    intent1.putExtra("Inv_type", Inv_type);
 //                    intent1.putExtra("Company_name", Company_name);
 //                    intent1.putExtra("Inv_id", Inv_id);
 //                    intent1.putExtra("Tax_id", Tax_id);
+                        setResult(786);
+                        finish();
+                    }
+                });
 
-                    setResult(786);
-                    finish();
-
-
-                }
-            });
-
+            }
         }
 
     }
@@ -189,9 +189,6 @@ public class MeAddressActivity extends BaseActivity {
                         }
                         bean.setSelected_single(true);
                         meAddressAdapter.notifyDataSetChanged();
-
-
-
 
 
                         break;

@@ -18,6 +18,7 @@ import com.yinfeng.yfhx.entity.TAB3CounterUpdateBean;
 import com.yinfeng.yfhx.entity.TAB3CounterUpdateErrBean;
 import com.yinfeng.yfhx.entity.Trade_change_bean;
 import com.yinfeng.yfhx.entity.Trade_done_bean;
+import com.yinfeng.yfhx.entity.Trade_done_extra_bean;
 import com.yinfeng.yfhx.entity.child.ChildInvoiceBean;
 import com.yinfeng.yfhx.entity.t3.ChangeValueArrBean;
 import com.yinfeng.yfhx.entity.t3.ShopCarCartValueBean;
@@ -332,25 +333,25 @@ public class ShopCarUtils {
                     public void setOnCallBackResponseSuccess(String response) {
                         CommonExternalBean beanx = GsonUS.getIns().getGosn(response, CommonExternalBean.class);
                         if (beanx.getStatus().equals("success")) {
-                            Trade_done_bean bean_e = GsonUS.getIns().getGosn(response, Trade_done_bean.class);
-                            if (bean_e.getData() != null) {
+                            Trade_done_extra_bean extra_bean = GsonUS.getIns().getGosn(response, Trade_done_extra_bean.class);
+
+                            if (extra_bean.getData().getError() == 0) {
+                                Trade_done_bean bean_e = GsonUS.getIns().getGosn(response, Trade_done_bean.class);
                                 if (mTradeDoneListener != null) {
-                                    mTradeDoneListener.onTradeDoneClick(1);
+                                    mTradeDoneListener.onTradeDoneClick(1,bean_e);
                                 }
                             } else {
-
+                                CommonStatusSuccessBeantest bean_e = GsonUS.getIns().getGosn(response, CommonStatusSuccessBeantest.class);
+                                ToastUS.Error(bean_e.getData().getMsg());
                             }
 
-
-//                            CommonStatusSuccessBeantest bean_e = GsonUS.getIns().getGosn(response, CommonStatusSuccessBeantest.class);
-//                            ToastUS.Error(bean_e.getData().getMsg());
 
                         } else if (beanx.getStatus().equals("failed")) {
                             if (beanx != null) {
                                 CommonStatusErrorBean bean_e = GsonUS.getIns().getGosn(response, CommonStatusErrorBean.class);
                                 ToastUS.Error(bean_e.getErrors().getMessage());
                                 if (mTradeDoneListener != null) {
-                                    mTradeDoneListener.onTradeDoneClick(0);
+                                    mTradeDoneListener.onTradeDoneClick(0,null);
                                 }
                             }
                         }
@@ -400,7 +401,7 @@ public class ShopCarUtils {
      * 下单
      */
     public interface OnTradeDoneListener {
-        void onTradeDoneClick(int status);
+        void onTradeDoneClick(int status,Trade_done_bean bean);
     }
 
     public void setOnTradeDoneListener(OnTradeDoneListener tradeDoneListener) {

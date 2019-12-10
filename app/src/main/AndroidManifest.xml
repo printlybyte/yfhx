@@ -30,9 +30,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.me.HistoryIndexActivity"></activity>
-        <activity android:name=".ui.me.MeCelledGoodsActivity"></activity>
-        <activity android:name=".ui.me.MeCelledStorgeActivity"></activity>
+        <activity android:name=".ui.order.OrderActivity"></activity>
+        <activity android:name=".ui.search.SearchActivity"></activity>
+        <activity android:name=".ui.search.SearchListActivity"></activity>
+        <activity android:name=".ui.me.HistoryIndexActivity" />
+        <activity android:name=".ui.me.MeCelledGoodsActivity" />
+        <activity android:name=".ui.me.MeCelledStorgeActivity" />
         <activity android:name=".ui.alculation.CalculationActivity" />
         <activity android:name=".ui.shop.ShopActivity" />
         <activity android:name=".ui.me.coupon.MeCouponActivity" />

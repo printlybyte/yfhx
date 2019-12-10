@@ -2,21 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
+    android:background="@color/white"
     android:orientation="vertical">
-
 
 
     <LinearLayout
         android:id="@+id/ri_calculation_child_item_group"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-               android:foreground="?android:attr/selectableItemBackground"
 
-        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
         android:paddingLeft="20dp">
 
@@ -38,12 +37,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:maxLength="15"
                 android:id="@+id/ri_calculation_child_item_goods_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="bottom"
+                android:maxLength="15"
                 android:text="得力大铅笔盒"
                 android:textColor="@color/c464646"
                 android:textSize="@dimen/sp12" />

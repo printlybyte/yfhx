@@ -1,7 +1,10 @@
 package com.yinfeng.yfhx.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,8 +27,8 @@ import com.yinfeng.yfhx.ui.me.MeInvoiceActivity;
 import com.yinfeng.yfhx.ui.me.PersonalInfoActivity;
 import com.yinfeng.yfhx.ui.me.coupon.MeCouponActivity;
 import com.yinfeng.yfhx.ui.me.redpack.MeReadPackActivity;
-import com.yinfeng.yfhx.ui.me.redpack.MeRedPackFragmentNot;
 import com.yinfeng.yfhx.ui.me.savecard.MeSaveCardActivity;
+import com.yinfeng.yfhx.ui.order.OrderActivity;
 
 /**
  * ============================================
@@ -55,6 +58,12 @@ public class Tab_4_Fragment extends BaseFragment implements View.OnClickListener
     private LinearLayout mFragmentTab4MyInviteFriendsOc;
     private LinearLayout mFragmentTab4RedpackOc;
     private LinearLayout mFragmentTab4SavecadeOc;
+    private LinearLayout mFragmentTab4AllOrder;
+    private LinearLayout mFragmentTab4DaiFukuan;
+    private LinearLayout mFragmentTab4DaiFahuo;
+    private LinearLayout mFragmentTab4DaiShouhuo;
+    private LinearLayout mFragmentTab4DaiPingjia;
+    private LinearLayout mFragmentTab4DaiTuikaun;
 
     public static Tab_4_Fragment newInstance() {
         Bundle args = new Bundle();
@@ -95,6 +104,18 @@ public class Tab_4_Fragment extends BaseFragment implements View.OnClickListener
         mFragmentTab4RedpackOc.setOnClickListener(this);
         mFragmentTab4SavecadeOc = (LinearLayout) view.findViewById(R.id.fragment_tab_4_savecade_oc);
         mFragmentTab4SavecadeOc.setOnClickListener(this);
+        mFragmentTab4AllOrder = (LinearLayout) view.findViewById(R.id.fragment_tab_4_all_order);
+        mFragmentTab4AllOrder.setOnClickListener(this);
+        mFragmentTab4DaiFukuan = (LinearLayout) view.findViewById(R.id.fragment_tab_4_dai_fukuan);
+        mFragmentTab4DaiFukuan.setOnClickListener(this);
+        mFragmentTab4DaiFahuo = (LinearLayout) view.findViewById(R.id.fragment_tab_4_dai_fahuo);
+        mFragmentTab4DaiFahuo.setOnClickListener(this);
+        mFragmentTab4DaiShouhuo = (LinearLayout) view.findViewById(R.id.fragment_tab_4_dai_shouhuo);
+        mFragmentTab4DaiShouhuo.setOnClickListener(this);
+        mFragmentTab4DaiPingjia = (LinearLayout) view.findViewById(R.id.fragment_tab_4_dai_pingjia);
+        mFragmentTab4DaiPingjia.setOnClickListener(this);
+        mFragmentTab4DaiTuikaun = (LinearLayout) view.findViewById(R.id.fragment_tab_4_dai_tuikaun);
+        mFragmentTab4DaiTuikaun.setOnClickListener(this);
     }
 
     @Override
@@ -182,9 +203,27 @@ public class Tab_4_Fragment extends BaseFragment implements View.OnClickListener
                 ActivityUtils.startActivity(MeSaveCardActivity.class);
 
                 break;
+            case R.id.fragment_tab_4_all_order:
+                ActivityUtils.startActivity(OrderActivity.class);
+                break;
+            case R.id.fragment_tab_4_dai_fukuan:
+                ActivityUtils.startActivity(OrderActivity.class);
+
+                break;
+            case R.id.fragment_tab_4_dai_fahuo:
+                ActivityUtils.startActivity(OrderActivity.class);
+
+                break;
+            case R.id.fragment_tab_4_dai_shouhuo:
+                ActivityUtils.startActivity(OrderActivity.class);
+
+                break;
+            case R.id.fragment_tab_4_dai_pingjia:
+                break;
+            case R.id.fragment_tab_4_dai_tuikaun:
+                break;
         }
     }
-
 
 
 }

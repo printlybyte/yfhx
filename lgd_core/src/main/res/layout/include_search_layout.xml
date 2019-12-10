@@ -20,17 +20,18 @@
 
 
     <TextView
+
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/include_search_bga"
         android:clickable="true"
-
         android:drawableRight="@drawable/ic_search_icon"
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:id="@+id/include_search_layout_oc"
         android:text="商品搜索" />
 </LinearLayout>

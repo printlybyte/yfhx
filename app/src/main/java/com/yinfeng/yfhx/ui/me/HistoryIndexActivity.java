@@ -138,8 +138,6 @@ public class HistoryIndexActivity extends BaseActivity implements View.OnClickLi
                         ITTUtils.Jump(CommodityDetailsActivity.class, bean.getId() + "");
                         break;
                 }
-
-
             }
         });
     }

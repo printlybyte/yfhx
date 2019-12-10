@@ -69,6 +69,7 @@ public class MeInvoiceActivity extends BaseActivity implements View.OnClickListe
     protected void initView() {
         Intent intent = getIntent();
         String flags = intent.getStringExtra(IntentUtilsConstant.INTENT_PARAMS_1);
+        if (!TextUtils.isEmpty(flags)){
         if (flags.equals("calculation")) {
             isShowSingleCheck = true;
             //结算页发票信息选择
@@ -90,7 +91,7 @@ public class MeInvoiceActivity extends BaseActivity implements View.OnClickListe
 
                 }
             });
-
+        }
         }
 
 

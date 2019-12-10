@@ -6,8 +6,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.FragmentUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lgd.lgd_core.base.BaseFragment;
@@ -20,6 +24,7 @@ import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.categray.GroupAdapter;
 import com.yinfeng.yfhx.entity.TabFragment2Bean_Group;
 import com.yinfeng.yfhx.ui.category.ChildFragment;
+import com.yinfeng.yfhx.ui.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +38,15 @@ import java.util.List;
  * 创建时间：2019/9/2 16:51
  * ============================================
  **/
-public class Tab_2_Fragment extends BaseFragment {
+public class Tab_2_Fragment extends BaseFragment implements View.OnClickListener {
     private RecyclerView mIncludeRecyclerview;
 
     private ArrayList<Fragment> mFragments = null;
+    private View view;
+    /**
+     * 商品搜索
+     */
+    private TextView mIncludeSearchLayoutOc;
 
 
     public static Tab_2_Fragment newInstance() {
@@ -60,6 +70,8 @@ public class Tab_2_Fragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         mIncludeRecyclerview = (RecyclerView) view.findViewById(R.id.include_recyclerview);
+        mIncludeSearchLayoutOc = (TextView) view.findViewById(R.id.include_search_layout_oc);
+        mIncludeSearchLayoutOc.setOnClickListener(this);
     }
 
     @Override
@@ -108,7 +120,7 @@ public class Tab_2_Fragment extends BaseFragment {
             String catName = bean.getData().get(i).getCat_name() + "";
             String catId = bean.getData().get(i).getCat_id() + "";
             if (!TextUtils.isEmpty(catName)) {
-                mFragments.add(ChildFragment.newInstance(catName,catId));
+                mFragments.add(ChildFragment.newInstance(catName, catId));
                 if (i == 0) {
                     dataBean.setSelected(true);
                 } else {
@@ -169,4 +181,16 @@ public class Tab_2_Fragment extends BaseFragment {
         }
     }
 
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            default:
+                break;
+            case R.id.include_search_layout_oc:
+                ActivityUtils.startActivity(SearchActivity.class);
+                break;
+        }
+    }
 }

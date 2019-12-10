@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="bottom"
-                android:maxLength="15"
+                android:maxLength="12"
                 android:text="得力大铅笔盒"
                 android:textColor="@color/c464646"
                 android:textSize="@dimen/sp12" />

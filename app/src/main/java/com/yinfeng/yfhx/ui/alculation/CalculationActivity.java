@@ -11,6 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.kongzue.dialog.interfaces.OnDismissListener;
+import com.kongzue.dialog.v3.TipDialog;
+import com.kongzue.dialog.v3.WaitDialog;
 import com.lgd.lgd_core.base.BaseActivity;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GsonUS;
@@ -25,6 +28,7 @@ import com.yinfeng.yfhx.adapter.calculation.CalculationAdapter;
 import com.yinfeng.yfhx.entity.CalculationActivityBean;
 import com.yinfeng.yfhx.entity.CommonExternalBean;
 import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.Trade_done_bean;
 import com.yinfeng.yfhx.entity.child.ChildInvoiceBean;
 import com.yinfeng.yfhx.ui.me.MeAddressActivity;
 import com.yinfeng.yfhx.ui.me.MeInvoiceActivity;
@@ -277,8 +281,32 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
                 if (bean != null) {
                     if (bean.getData().getNoshipping_list() != null && bean.getData().getNoshipping_list().size() == 0) {
                         //下单
+                        WaitDialog.show(CalculationActivity.this, "请稍候...");
                         ShopCarUtils.getInstance().trade_done_post(bean.getData(), childInvoiceBean);
+                        ShopCarUtils.getInstance().setOnTradeDoneListener(new ShopCarUtils.OnTradeDoneListener() {
+                            @Override
+                            public void onTradeDoneClick(int status, Trade_done_bean bean) {
+                                if (status==1){
+                                    TipDialog.show(CalculationActivity.this, "成功！", TipDialog.TYPE.SUCCESS).setOnDismissListener(new OnDismissListener() {
+                                        @Override
+                                        public void onDismiss() {
 
+
+
+                                        }
+                                    });
+                                }else {
+                                    TipDialog.show(CalculationActivity.this, "失败", TipDialog.TYPE.SUCCESS).setOnDismissListener(new OnDismissListener() {
+                                        @Override
+                                        public void onDismiss() {
+
+
+
+                                        }
+                                    });
+                                }
+                            }
+                        });
                     } else {
                         ToastUS.Error("有不支持配送的商品,请重新选择地址");
                     }
