@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply from: 'shared.gradle'
 android {
 
     compileSdkVersion 28
@@ -30,6 +30,23 @@ android {
             dirs 'libs'
         }
     }
+
+
+    //配置自定义打包名称
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def fileName
+            def date = new Date()
+            def formattedDate = date.format('yyyyMMdd')
+            if (variant.buildType.name.equals('release')) {
+                fileName = "${variant.mergedFlavor.versionName}_release_${formattedDate}.apk"
+            } else if (variant.buildType.name.equals('debug')) {
+                fileName = "${variant.mergedFlavor.versionName}_debug_${formattedDate}.apk"
+            }
+            outputFileName = fileName;
+        }
+    }
+
 }
 
 dependencies {
@@ -40,7 +57,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(path: ':lgd_core')
-    implementation project(path: ':lgd_address')
+
 
     implementation(name: 'bottomlibrary', ext: 'aar')
     implementation(name: 'tbs_core-release', ext: 'aar')
@@ -50,4 +67,22 @@ dependencies {
 
 //    收藏按钮
 //    implementation 'com.sackcentury:shinebutton:1.0.0'
+
+
+    implementation 'cn.bingoogolapple:bga-baseadapter:1.2.9@aar'
+    implementation 'cn.bingoogolapple:bga-photopicker:1.2.9@aar'
+
+    //微信支付
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+//    implementation 'com.github.javen205.JPay:AliPay:0.0.5'
+//    implementation 'com.github.javen205.JPay:WxPay:0.0.6'
+    implementation project(':WxPay')
+    implementation project(':status_layout')
+
+    implementation 'io.github.rockerhieu:emojicon:1.4.2'
+
+    api 'com.just.agentweb:agentweb:4.1.2'
+
+
 }

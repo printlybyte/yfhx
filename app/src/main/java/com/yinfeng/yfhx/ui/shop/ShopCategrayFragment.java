@@ -20,14 +20,11 @@ import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.stx.xhb.xbanner.XBanner;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.shop.ShopCategrayAdapter;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
-import com.yinfeng.yfhx.entity.TabFragment2Bean_Group;
-import com.yinfeng.yfhx.entity.details.FragmentEvaluationListTitleBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.shop.ShopCategrayFragmentBean;
 import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
 

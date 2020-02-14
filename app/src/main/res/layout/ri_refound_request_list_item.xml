@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+ 
+
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:id="@+id/ri_refound_requstlist_item_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:focusable="true"
+
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+
+        <ImageView
+            android:id="@+id/ri_refound_requstlist_item_goods_img"
+            android:layout_width="@dimen/dp66"
+            android:layout_height="@dimen/dp66"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_shopcar_img_bga"
+            android:padding="0.5dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ri_refound_requstlist_item_goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:maxLength="15"
+                android:text="得力大铅笔盒"
+                android:textColor="@color/c464646"
+                android:textSize="@dimen/sp12" />
+
+            <TextView
+                android:id="@+id/ri_refound_requstlist_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:text="黑色"
+                android:textColor="#c84d4f"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/ri_refound_requstlist_item_goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="￥25.00"
+                android:textColor="#c84d4f"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/ri_refound_requstlist_item_goods_nums"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:text="X1"
+                android:textColor="#949494"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <View style="@style/singleLine_h" />
+
+    <LinearLayout
+        android:id="@+id/ri_refound_requstlist_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical|right"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"></LinearLayout>
+</LinearLayout>

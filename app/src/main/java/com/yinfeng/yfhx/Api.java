@@ -29,8 +29,19 @@ public interface Api {
      * 商品列表
      */
     String goodslist_post = DO_MAIN + "/api/v4/catalog/goodslist";
+    /**
+     * 微信登录
+     */
+    String usert_wxLogin_post = DO_MAIN + "/api/v4/user/wxLogin";
+    String getwx_login_userinfo_get ="https://api.weixin.qq.com/sns/userinfo";
 
     String goods_details_post = DO_MAIN + "/api/v4/goods/show";
+
+
+    /**
+     * 图片上传
+     */
+    String user_material_post = DO_MAIN + "/api/v4/user/material";
 
 
     /**
@@ -190,14 +201,27 @@ public interface Api {
      */
     String valuecard_post = DO_MAIN + "/api/v4/valuecard/list";
     /**
-    *订单信息确认
-    */
+     * 订单信息确认
+     */
     String trade_orderinfo_post = DO_MAIN + "/api/v4/trade/orderinfo";
 
+
     /**
-     *商品优惠券
+     * 订单信息详情
+     */
+    String trade_orderdetail_post = DO_MAIN + "/api/v4/order/detail";
+
+
+    /**
+     * 商品优惠券
      */
     String coupon_goods_post = DO_MAIN + "/api/v4/coupon/goods";
+
+
+    /**
+     * 购物车猜你喜欢
+     */
+    String goods_goodsguess_post = DO_MAIN + "/api/v4/goods/goodsguess";
 
     /**
      * 优惠券使用
@@ -217,15 +241,14 @@ public interface Api {
     String trade_done_post = DO_MAIN + "/api/v4/trade/done";
 
 
-
     /**
-    * 我的足迹
-    */
+     * 我的足迹
+     */
     String history_index_get = DO_MAIN + "/api/v4/history/mindex";
 
     /**
-    * 清楚我的足迹
-    */
+     * 清楚我的足迹
+     */
     String history_mdestroy_delected = DO_MAIN + "/api/v4/history/mdestroy";
 
 
@@ -246,6 +269,72 @@ public interface Api {
      */
     String order_list_post = DO_MAIN + "/api/v4/order/list";
 
+    /**
+     * 退换货列表
+     */
+    String refound_post = DO_MAIN + "/api/v4/refound";
+
+
+    /**
+     * 当前售后列表
+     */
+    String refound_returngoods_post = DO_MAIN + "/api/v4/refound/returngoods";
+    /**
+     * 待评价
+     */
+    String comment_commentlist_post = DO_MAIN + "/api/v4/comment/commentlist";
+
+    /**
+     * 取消 申请
+     */
+    String refound_cancel_post = DO_MAIN + "/api/v4/refound/cancel";
+
+
+    /**
+     * 确认收货
+     */
+    String order_confirm_post = DO_MAIN + "/api/v4/order/confirm";
+
+
+    /**
+     * 申请售后 详情
+     */
+    String refound_applyreturn_post = DO_MAIN + "/api/v4/refound/applyreturn";
+
+    /**
+     * 申请售后 提交申请
+     */
+    String refound_submit_return_post = DO_MAIN + "/api/v4/refound/submit_return";
+
+    /**
+     * 评价晒单  提交
+     */
+    String comment_addgoodscomment_post = DO_MAIN + "/api/v4/comment/addgoodscomment";
+    /**
+     * 评价晒单  当前陀
+     */
+    String comment_addcomment_post = DO_MAIN + "/api/v4/comment/addcomment";
+
+    /**
+     * 取消订单
+     */
+    String order_cancel_post = DO_MAIN + "/api/v4/order/cancel";
+
+    /**
+     * 删除订单
+     */
+    String order_delete_post = DO_MAIN + "/api/v4/order/delete";
+
+
+    /**
+     * 微信支付
+     */
+    String payment_code_post = DO_MAIN + "/api/v4/payment/code";
+
+    /**
+     * 微信支付不知道为啥调用
+     */
+    String trade_paycheck_post = DO_MAIN + "/api/v4/trade/paycheck";
 
 
 }

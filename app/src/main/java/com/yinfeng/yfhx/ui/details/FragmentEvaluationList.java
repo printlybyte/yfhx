@@ -16,8 +16,8 @@ import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.details.FragmentEvaluationListTitleBean;
 import com.yinfeng.yfhx.ui.details.evaluation.FragmentEvaluation_All;
 

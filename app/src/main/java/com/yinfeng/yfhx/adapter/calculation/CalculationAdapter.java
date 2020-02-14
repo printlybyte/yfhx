@@ -9,12 +9,10 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lgd.lgd_core.event.Latte;
-import com.lgd.lgd_core.ui.utils.GlideUS;
 import com.lgd.lgd_core.ui.utils.ITTUtils;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.entity.CalculationActivityBean;
 import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
-import com.yinfeng.yfhx.ui.shop.ShopActivity;
 
 import java.util.List;
 

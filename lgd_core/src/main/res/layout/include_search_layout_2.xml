@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@mipmap/ic_action_bar_back_black"
+        android:visibility="gone" />
+
+
+    <EditText
+        android:id="@+id/include_search_layout_input"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/include_search_bga"
+        android:drawableRight="@drawable/ic_search_icon"
+        android:gravity="center_vertical"
+        android:hint="商品搜索"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="11sp" />
+
+
+    <TextView
+        android:id="@+id/include_search_layout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="5dp"
+        android:text="搜索"
+        />
+</LinearLayout>

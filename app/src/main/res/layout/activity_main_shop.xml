@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/include_actionbar_back"
+         />
+
+    <!-- This could be your fragment container, or something -->
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/bottomBar_shop"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px_1"
+        android:background="@color/cbdbdbe" />
+
+    <com.chaychan.library.BottomBarLayout
+        android:id="@+id/bottomBar_shop"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/ic_shop_shouye_2"
+            app:iconSelected="@mipmap/ic_shop_shouye_1"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="@string/tab_home"
+            app:itemTextSize="12sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/cbcab9a"
+            app:touchDrawable="@drawable/selector_bg" />
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/ic_shop_quanbu_2"
+            app:iconSelected="@mipmap/ic_shop_quanbu_1"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="全部商品"
+            app:itemTextSize="12sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/cbcab9a"
+            app:touchDrawable="@drawable/selector_bg"
+            app:unreadThreshold="99" />
+
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/ic_shop_fenlei_2"
+            app:iconSelected="@mipmap/ic_shop_fenlei_1"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="分类"
+            app:itemTextSize="12sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/cbcab9a"
+            app:touchDrawable="@drawable/selector_bg" />
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="@dimen/dp28"
+            app:iconNormal="@mipmap/ic_shop_kefu2_1"
+            app:iconSelected="@mipmap/ic_shop_kefu_1"
+            app:iconWidth="@dimen/dp28"
+            app:itemMarginTop="0dp"
+            app:itemText="联系客服"
+            app:itemTextSize="12sp"
+            app:openTouchBg="true"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/cbcab9a"
+            app:touchDrawable="@drawable/selector_bg" />
+
+    </com.chaychan.library.BottomBarLayout>
+</LinearLayout>

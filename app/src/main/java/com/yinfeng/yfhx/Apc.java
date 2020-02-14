@@ -26,4 +26,8 @@ public interface Apc {
 //    String Apc_car_sel_attr_name_content="Apc_car_sel_attr_name_content=";
     String Apc_car_sel_attr_id="Apc_car_sel_attr_id";
 
+
+
+  String WXPAY_AppID ="wx280b433ff9277295";
+  String WXPAY_AppSecret  ="a654f2d1ac8678f782064619463ad1d7";
 }

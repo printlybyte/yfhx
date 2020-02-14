@@ -4,11 +4,8 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.lgd.lgd_core.R;
 import com.lgd.lgd_core.event.Latte;
-import com.lgd.lgd_core.ui.glideTransformation.CropCircleTransformation;
-import com.lgd.lgd_core.ui.glideTransformation.RoundedCornersTransformation;
 
 /**
  * ============================================
@@ -30,23 +27,35 @@ public class GlideUS {
     public static int HeaderErrorImg = R.drawable.ic_svg_glide_header_erray;
 
     public static void loadPhoto(String ImgPath, ImageView imageView) {
-        RequestOptions requestOptions = new RequestOptions()
-                .placeholder(PhotoPlaceholderImg)
-                .centerCrop()
-                .error(PhotoErrorImg);
-        Glide.with(mContext).load(ImgPath)
-                .apply(requestOptions)
-                .apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(5, 3)))
+//        RequestOptions requestOptions = new RequestOptions()
+//                .placeholder(PhotoPlaceholderImg)
+//                .centerCrop()
+//                .error(PhotoErrorImg);
+//        Glide.with(mContext).load(ImgPath)
+//                .apply(requestOptions)
+//                .apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation(5, 3)))
+//                .into(imageView);
+
+        Glide.with(mContext)
+                .load(ImgPath)
+                .placeholder(PhotoPlaceholderImg).error(PhotoErrorImg)
                 .into(imageView);
+
     }
 
     public static void loadHeader(String ImgPath, ImageView imageView) {
-        RequestOptions requestOptions = new RequestOptions()
-                .placeholder(HeaderPlaceholderImg)
-                .error(HeaderErrorImg);
-        Glide.with(mContext).load(ImgPath)
-                .apply(requestOptions)
-                .apply(RequestOptions.bitmapTransform(new CropCircleTransformation()))
+//        RequestOptions requestOptions = new RequestOptions()
+//                .placeholder(HeaderPlaceholderImg)
+//                .error(HeaderErrorImg);
+//        Glide.with(mContext).load(ImgPath)
+//                .apply(requestOptions)
+//                .apply(RequestOptions.bitmapTransform(new CropCircleTransformation()))
+//                .into(imageView);
+
+        Glide.with(mContext)
+                .load(ImgPath)
+                .circleCrop()
+                .placeholder(HeaderPlaceholderImg).error(HeaderErrorImg)
                 .into(imageView);
     }
 

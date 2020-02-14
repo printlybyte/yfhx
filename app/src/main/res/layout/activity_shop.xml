@@ -7,9 +7,10 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context=".ui.shop.ShopActivity">
+    tools:context=".ui.shop.ShopFragmentHome">
 
-    <include layout="@layout/include_actionbar_back" />
+    <include layout="@layout/include_actionbar_back"
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,7 +83,18 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+                <ImageView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:id="@+id/activity_shop_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_search_icon_write" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/activity_shop_celled_oc"

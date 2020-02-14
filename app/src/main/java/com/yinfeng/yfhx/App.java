@@ -1,14 +1,18 @@
 package com.yinfeng.yfhx;
 
+import android.content.MutableContextWrapper;
 import android.util.Log;
+import android.webkit.WebView;
 
 import com.lgd.lgd_core.base.BaseApplication;
 import com.lgd.lgd_core.ui.utils.LogUS;
 import com.tencent.smtt.sdk.QbSdk;
+import com.yinfeng.yfhx.ui.utils.BGAGlideImageLoader490;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.concurrent.TimeUnit;
 
+import cn.bingoogolapple.photopicker.imageloader.BGAImage;
 import okhttp3.OkHttpClient;
 
 /**
@@ -26,6 +30,18 @@ public class App extends BaseApplication {
         super.onCreate();
 
         initOkHttpClient();
+
+        BGAImage.setImageLoader(new BGAGlideImageLoader490());
+
+
+        /**
+         * 说明， WebView 初处初始化耗时 250ms 左右。
+         * 提前初始化WebView ，好处可以提升页面初始化速度，减少白屏时间，
+         * 坏处，拖慢了App 冷启动速度，如果 WebView 配合 VasSonic 使用，
+         * 建议不要在此处提前初始化 WebView 。
+         */
+        new WebView(new MutableContextWrapper(this));
+
         initTbs();
     }
 

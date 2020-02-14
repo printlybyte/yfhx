@@ -29,6 +29,8 @@ import com.yinfeng.yfhx.ui.me.coupon.MeCouponActivity;
 import com.yinfeng.yfhx.ui.me.redpack.MeReadPackActivity;
 import com.yinfeng.yfhx.ui.me.savecard.MeSaveCardActivity;
 import com.yinfeng.yfhx.ui.order.OrderActivity;
+import com.yinfeng.yfhx.ui.order.OrderDaiPingJiaListActivity;
+import com.yinfeng.yfhx.ui.order.OrderRefoundActivity;
 
 /**
  * ============================================
@@ -51,7 +53,6 @@ public class Tab_4_Fragment extends BaseFragment implements View.OnClickListener
     private LinearLayout mFragmentTab4MeInvoice;
     private LinearLayout mFragmentTab4MeAddress;
     private LinearLayout mFragmentTab4MeCoupon;
-    private LinearLayout mFragmentTab4AccountManagementOc;
     private LinearLayout mFragmentTab4MeCelledOc;
     private LinearLayout mFragmentTab4FollowStoresOc;
     private LinearLayout mFragmentTab4MyFootprintOc;
@@ -90,8 +91,6 @@ public class Tab_4_Fragment extends BaseFragment implements View.OnClickListener
         mFragmentTab4MeAddress.setOnClickListener(this);
         mFragmentTab4MeCoupon = (LinearLayout) view.findViewById(R.id.fragment_tab_4_me_coupon);
         mFragmentTab4MeCoupon.setOnClickListener(this);
-        mFragmentTab4AccountManagementOc = (LinearLayout) view.findViewById(R.id.fragment_tab_4_account_management_oc);
-        mFragmentTab4AccountManagementOc.setOnClickListener(this);
         mFragmentTab4MeCelledOc = (LinearLayout) view.findViewById(R.id.fragment_tab_4_me_celled_oc);
         mFragmentTab4MeCelledOc.setOnClickListener(this);
         mFragmentTab4FollowStoresOc = (LinearLayout) view.findViewById(R.id.fragment_tab_4_follow_stores_oc);
@@ -180,9 +179,7 @@ public class Tab_4_Fragment extends BaseFragment implements View.OnClickListener
             case R.id.fragment_tab_4_me_coupon:
                 ActivityUtils.startActivity(MeCouponActivity.class);
                 break;
-            case R.id.fragment_tab_4_account_management_oc:
 
-                break;
             case R.id.fragment_tab_4_me_celled_oc:
                 ActivityUtils.startActivity(MeCelledGoodsActivity.class);
                 break;
@@ -219,8 +216,11 @@ public class Tab_4_Fragment extends BaseFragment implements View.OnClickListener
 
                 break;
             case R.id.fragment_tab_4_dai_pingjia:
+                ActivityUtils.startActivity(OrderDaiPingJiaListActivity.class);
+
                 break;
             case R.id.fragment_tab_4_dai_tuikaun:
+                ActivityUtils.startActivity(OrderRefoundActivity.class);
                 break;
         }
     }

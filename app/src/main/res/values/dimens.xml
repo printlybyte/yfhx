@@ -10,6 +10,7 @@
     <dimen name="sp16">16sp</dimen>
     <dimen name="sp18">18sp</dimen>
     <dimen name="sp24">24sp</dimen>
+    <dimen name="grid_expected_size">120dp</dimen>
 
     <dimen name="dp1">1dp</dimen>
     <dimen name="dp2">2dp</dimen>

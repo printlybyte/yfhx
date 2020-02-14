@@ -144,188 +144,13 @@
         android:background="@color/ce8e8e8" />
 
 
-    <LinearLayout
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/include_recyclerview_seckills"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:overScrollMode="never">
 
-        <LinearLayout
-            android:id="@+id/item_fragment_tab1_seckills_layout_group1"
-            android:layout_width="0dp"
-            android:layout_height="128dp"
-            android:layout_marginLeft="@dimen/dp20"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:orientation="vertical"
-            android:padding="@dimen/dp1"
-            app:bl_stroke_color="#999"
-            app:bl_stroke_width="0.5dp">
-
-            <ImageView
-                android:id="@+id/item_fragment_tab1_seckills_layout_img1"
-                android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_svg_glide_photo_placeholder" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/dp10"
-                android:background="@color/cf5f5f5"
-                android:paddingStart="@dimen/dp4"
-                android:paddingEnd="@dimen/dp4">
-
-                <TextView
-                    android:id="@+id/item_fragment_tab1_seckills_layout_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp18"
-                    android:layout_marginStart="@dimen/dp2"
-                    android:layout_marginTop="@dimen/dp2"
-                    android:text="￥19.00"
-                    android:textColor="@color/ca58d75"
-                    android:textSize="@dimen/sp14" />
-
-                <TextView
-                    android:id="@+id/item_fragment_tab1_seckills_layout_price_old"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp12"
-                    android:layout_below="@id/item_fragment_tab1_seckills_layout_price"
-                    android:layout_marginStart="@dimen/dp4"
-                    android:text="￥9.00"
-                    android:textColor="@color/c999999"
-                    android:textSize="@dimen/sp10" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp24"
-                    android:layout_height="@dimen/dp24"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ms_pic" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/item_fragment_tab1_seckills_layout_group2"
-            android:layout_width="0dp"
-            android:layout_height="128dp"
-            android:layout_marginLeft="@dimen/dp10"
-            android:layout_marginRight="@dimen/dp10"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:orientation="vertical"
-            android:padding="@dimen/dp1"
-            app:bl_stroke_color="#666"
-            app:bl_stroke_width="0.5dp">
-
-            <ImageView
-                android:id="@+id/item_fragment_tab1_seckills_layout_img2"
-                android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_svg_glide_photo_placeholder" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/dp10"
-                android:background="@color/cf5f5f5"
-                android:paddingStart="@dimen/dp4"
-                android:paddingEnd="@dimen/dp4">
-
-                <TextView
-                    android:id="@+id/item_fragment_tab1_seckills_layout_price2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp18"
-                    android:layout_marginStart="@dimen/dp2"
-                    android:layout_marginTop="@dimen/dp2"
-                    android:text="￥19.00"
-                    android:textColor="@color/ca58d75"
-                    android:textSize="@dimen/sp14" />
-
-                <TextView
-                    android:id="@+id/item_fragment_tab1_seckills_layout_price_old2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp12"
-                    android:layout_below="@id/item_fragment_tab1_seckills_layout_price2"
-                    android:layout_marginStart="@dimen/dp4"
-                    android:text="￥9.00"
-                    android:textColor="@color/c999999"
-                    android:textSize="@dimen/sp10" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp24"
-                    android:layout_height="@dimen/dp24"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ms_pic" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/item_fragment_tab1_seckills_layout_group3"
-            android:layout_width="0dp"
-            android:layout_height="128dp"
-            android:layout_marginRight="@dimen/dp20"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:orientation="vertical"
-            android:padding="@dimen/dp1"
-            app:bl_stroke_color="#666"
-            app:bl_stroke_width="0.5dp">
-
-            <ImageView
-                android:id="@+id/item_fragment_tab1_seckills_layout_img3"
-                android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_svg_glide_photo_placeholder" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/dp10"
-                android:background="@color/cf5f5f5"
-                android:paddingStart="@dimen/dp4"
-                android:paddingEnd="@dimen/dp4">
-
-                <TextView
-                    android:id="@+id/item_fragment_tab1_seckills_layout_price3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp18"
-                    android:layout_marginStart="@dimen/dp2"
-                    android:layout_marginTop="@dimen/dp2"
-                    android:text="￥19.00"
-                    android:textColor="@color/ca58d75"
-                    android:textSize="@dimen/sp14" />
-
-                <TextView
-                    android:id="@+id/item_fragment_tab1_seckills_layout_price_old3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp12"
-                    android:layout_below="@id/item_fragment_tab1_seckills_layout_price3"
-                    android:layout_marginStart="@dimen/dp4"
-                    android:text="￥9.00"
-                    android:textColor="@color/c999999"
-                    android:textSize="@dimen/sp10" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp24"
-                    android:layout_height="@dimen/dp24"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ms_pic" />
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
     <TextView
         android:id="@+id/item_fragment_tab1_seckills_layout_query_all"
@@ -333,14 +158,14 @@
         android:layout_height="@dimen/dp24"
         android:layout_marginTop="@dimen/dp12"
         android:layout_marginBottom="@dimen/dp12"
+        android:clickable="true"
         android:drawableEnd="@mipmap/ic_jiantou_right_black"
         android:drawablePadding="@dimen/dp6"
+        android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:paddingLeft="@dimen/dp10"
         android:paddingRight="@dimen/dp10"
         android:text="@string/str_ckqb"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
         android:textColor="@color/c6f6f6f"
         android:textSize="@dimen/sp12" />
 

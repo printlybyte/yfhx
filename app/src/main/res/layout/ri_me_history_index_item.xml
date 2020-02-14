@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
 
 
     <LinearLayout
@@ -31,21 +31,29 @@
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/ri_history_index_item_goods_name"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:maxLength="15"
-                android:text="得力大铅笔盒"
-                android:textColor="@color/c464646"
-                android:textSize="@dimen/sp12" />
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/ri_history_index_item_goods_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:minLines="2"
+                    android:maxLines="2"
+                    android:text="得力大铅笔盒"
+                    android:textColor="@color/c464646"
+                    android:textSize="@dimen/sp12" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,7 +71,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_weight="1"
             android:gravity="right"
             android:orientation="horizontal"
             android:paddingRight="20dp">

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="25dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:background="@drawable/shape_search_flow_tag_bg"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:gravity="center"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:text="Helloworld"
+    android:textColor="@drawable/shape_seearch_flow_text_color"
+    android:textSize="11dp">
+
+</TextView>

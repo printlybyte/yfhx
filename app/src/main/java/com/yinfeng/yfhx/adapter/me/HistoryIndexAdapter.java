@@ -37,7 +37,7 @@ public class HistoryIndexAdapter extends BaseQuickAdapter<HistoryIndexActivityBe
         GlideUS.loadPhoto(item.getImg(), helper.imageView);
         String tipStr = Latte.getApplicationContext().getResources().getString(R.string.re_empty_date_tip_txt);
         helper.setText(R.id.ri_history_index_item_goods_name, item.getName() == "" ? tipStr : item.getName());
-        helper.setText(R.id.ri_history_index_item_goods_price, item.getPrice()+"" == "" ? tipStr : ""+item.getPrice());
+        helper.setText(R.id.ri_history_index_item_goods_price, item.getPrice()+"" == "" ? tipStr : "￥"+item.getPrice());
 
         helper.addOnClickListener(R.id.ri_history_index_item_group);
 

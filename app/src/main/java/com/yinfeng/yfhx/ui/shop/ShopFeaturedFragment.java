@@ -25,11 +25,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.stx.xhb.xbanner.XBanner;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.adapter.shop.ShopCategrayAdapter;
 import com.yinfeng.yfhx.adapter.shop.ShopFeaturedAdapter;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
-import com.yinfeng.yfhx.entity.TabFragment2Bean_Group;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.shop.ShopCategrayFragmentBean;
 import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
 
@@ -101,7 +99,7 @@ public class ShopFeaturedFragment extends BaseFragment {
                 @Override
                 public void onItemClick(XBanner banner, Object model, View view, int position) {
 //                    ToastUS.Error(mList.get(position).getUrl());
-//                    ITTUtils.Jump(BrowserActivity.class, "" + mList.get(position).getUrl());
+//                    ITTUtils.Jump(Main2Activity.class, "" + mList.get(position).getUrl());
                 }
             });
             List<XBannerImageBean> data = new ArrayList<>();

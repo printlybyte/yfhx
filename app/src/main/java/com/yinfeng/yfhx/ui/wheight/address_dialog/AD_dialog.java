@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.lgd.lgd_core.ui.utils.GsonUS;
 import com.lgd.lgd_core.ui.utils.LogUS;
-import com.yinfeng.yfhx.entity.AD_BEAN;
+import com.yinfeng.yfhx.entity.child.AD_BEAN;
 
 import java.io.BufferedReader;
 import java.io.IOException;

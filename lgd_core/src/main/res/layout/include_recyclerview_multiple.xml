@@ -28,6 +28,8 @@
             app:noNetworkView="@layout/custom_no_network_view">
 
 
+
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/include_multiple_recyclerview"
                 android:layout_width="match_parent"

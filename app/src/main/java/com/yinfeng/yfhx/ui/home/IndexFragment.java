@@ -19,10 +19,12 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
+import com.yinfeng.yfhx.Main2Activity;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.home.HomeIndexAdapter;
 import com.yinfeng.yfhx.entity.MultipleTabHomeItem;
 import com.yinfeng.yfhx.entity.TabFragment1Bean;
+import com.yinfeng.yfhx.entity.home.NoticelistBeanandAdListBean;
 import com.yinfeng.yfhx.ui.webview.BrowserActivity;
 
 import java.util.ArrayList;
@@ -137,8 +139,21 @@ public class IndexFragment extends BaseFragment {
         if (response.getData().getTopic() != null) {
             list.add(new MultipleTabHomeItem(MultipleTabHomeItem.topic, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getTopic()));
         }
-        if (response.getData().getNoticelist() != null) {
-            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.noticelist, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getNoticelist()));
+        if (response.getData().getNoticelist() != null && response.getData().getHdlist() != null) {
+            List<NoticelistBeanandAdListBean> mList = new ArrayList<>();
+            for (int i = 0; i < response.getData().getNoticelist().size(); i++) {
+                NoticelistBeanandAdListBean bean = new NoticelistBeanandAdListBean();
+                bean.setmUrl(response.getData().getNoticelist().get(i).getUrl());
+                bean.setTitle(response.getData().getNoticelist().get(i).getTitle());
+                mList.add(bean);
+            }
+            for (int i = 0; i < response.getData().getHdlist().size(); i++) {
+                NoticelistBeanandAdListBean bean = new NoticelistBeanandAdListBean();
+                bean.setmUrl(response.getData().getHdlist().get(i).getUrl());
+                bean.setTitle(response.getData().getHdlist().get(i).getTitle());
+                mList.add(bean);
+            }
+            list.add(new MultipleTabHomeItem(MultipleTabHomeItem.noticelist, MultipleTabHomeItem.TEXT_SPAN_SIZE, mList));
         }
         if (response.getData().getSeckills() != null) {
             list.add(new MultipleTabHomeItem(MultipleTabHomeItem.seckills, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getSeckills()));
@@ -163,7 +178,7 @@ public class IndexFragment extends BaseFragment {
             switch (view.getId()) {
                 case R.id.item_fragment_tab1_topic_layout_img:
                     List<TabFragment1Bean.DataBean.TopicBean> mListTopic = homeIndexAdapter.getData().get(position).getBean();
-                    ITTUtils.Jump(BrowserActivity.class, mListTopic.get(0).getUrl());
+                    ITTUtils.Jump(Main2Activity.class, mListTopic.get(0).getUrl());
                     break;
                 default:
             }

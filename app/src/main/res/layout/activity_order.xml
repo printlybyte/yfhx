@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context=".ui.shop.ShopFragmentHome">
+
+    <include layout="@layout/include_actionbar_back" />
+
+ 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+ 
+
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/activity_order_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/white"
+                app:tabBackground="@color/white"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="fixed"
+                app:tabPaddingEnd="0px"
+                app:tabPaddingStart="0px"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabTextColor="@color/c999999" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/activity_order_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            />
+        </LinearLayout>
+    
+</LinearLayout>

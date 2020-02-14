@@ -1,1 +1,1 @@
-include ':app', ':lgd_core', ':lgd_address'
+include ':app', ':lgd_core', ':lgd_address', ':WxPay', ':status_layout'

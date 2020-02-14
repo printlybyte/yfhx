@@ -12,7 +12,6 @@ import com.lgd.lgd_core.base.BaseActivity;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GsonUS;
 import com.lgd.lgd_core.ui.utils.ITTUtils;
-import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -20,12 +19,10 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.adapter.me.MeCelledGoodsAdapter;
 import com.yinfeng.yfhx.adapter.me.MeCelledStorgeAdapter;
-import com.yinfeng.yfhx.entity.me.MeCelledGoodsActivityBean;
 import com.yinfeng.yfhx.entity.me.MeCelledStorgeActivityBean;
-import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
-import com.yinfeng.yfhx.ui.shop.ShopActivity;
+import com.yinfeng.yfhx.ui.shop.MainShopActivity;
+import com.yinfeng.yfhx.ui.shop.ShopFragmentHome;
 import com.yinfeng.yfhx.ui.utils.DetailsUtils;
 
 import java.util.LinkedHashMap;
@@ -124,7 +121,7 @@ public class MeCelledStorgeActivity extends BaseActivity implements View.OnClick
                     case R.id.ri_me_celled_storge_item_group:
 
 
-                        ITTUtils.Jump(ShopActivity.class, bean.getRu_id() + "");
+                        ITTUtils.Jump(MainShopActivity.class, bean.getRu_id() + "");
                         break;
                     case R.id.ri_me_celled_storge_item_attention:
 

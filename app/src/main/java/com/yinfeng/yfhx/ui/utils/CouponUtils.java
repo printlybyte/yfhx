@@ -6,14 +6,10 @@ import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.yinfeng.yfhx.Api;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
-import com.yinfeng.yfhx.entity.CommonStatusSuccessBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.CouponReceiveBean;
 import com.yinfeng.yfhx.entity.Trade_change_bean;
-import com.yinfeng.yfhx.entity.details.GoodsshippingfeeBean;
-
-import org.json.JSONObject;
 
 import java.util.LinkedHashMap;
 

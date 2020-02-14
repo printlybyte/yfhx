@@ -22,8 +22,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.shop.ShopCouponAdapter;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.shop.ShopCouponFragmentBean;
 import com.yinfeng.yfhx.ui.utils.CouponUtils;
 

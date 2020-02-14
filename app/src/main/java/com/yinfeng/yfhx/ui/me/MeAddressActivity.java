@@ -28,13 +28,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.me.MeAddressAdapter;
-import com.yinfeng.yfhx.entity.CommonAddAddressStatusBean;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
-import com.yinfeng.yfhx.entity.CommonStatusSuccessBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.MeAddressActivityBean;
-import com.yinfeng.yfhx.entity.MeInvoiceActivityBean;
-import com.yinfeng.yfhx.entity.details.FragmentEvaluation_AllBean;
 
 import java.util.LinkedHashMap;
 import java.util.List;

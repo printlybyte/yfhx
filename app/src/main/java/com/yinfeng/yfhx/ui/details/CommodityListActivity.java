@@ -24,7 +24,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.details.CommodityListAdapter;
-import com.yinfeng.yfhx.entity.CommodityListActivityBean;
+import com.yinfeng.yfhx.entity.common.CommodityListActivityBean;
 import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 
 import java.util.LinkedHashMap;
@@ -52,11 +52,11 @@ public class CommodityListActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
         Intent intent = getIntent();
-        jump_cat_id = intent.getStringExtra(IntentUtilsConstant.INTENT_PARAMS_1);
-        if (TextUtils.isEmpty(jump_cat_id)) {
-            ToastUS.Error("请携带查询参数");
-            return;
+        String flags = intent.getStringExtra(IntentUtilsConstant.INTENT_PARAMS_1);
+        if (!TextUtils.isEmpty(flags)) {
+            jump_cat_id = flags;
         }
 
         mIncludeRecyclerview = (RecyclerView) findViewById(R.id.include_multiple_recyclerview);
@@ -136,11 +136,11 @@ public class CommodityListActivity extends BaseActivity {
                         String mProd = commodityListAdapter.getData().get(position).getProd() + "";
                         if (!TextUtils.isEmpty(mProd)) {
                             if (mProd.equals("1")) {
-                                ShopCarUtils.getInstance().add(Goods_id, null,false);
-                            }else {
+                                ShopCarUtils.getInstance().add(Goods_id, null, false, false);
+                            } else {
                                 ITTUtils.Jump(CommodityDetailsActivity.class, commodityListAdapter.getData().get(position).getGoods_id() + "");
                             }
-                        }else {
+                        } else {
                             ToastUS.Warning("err err");
                         }
                         break;

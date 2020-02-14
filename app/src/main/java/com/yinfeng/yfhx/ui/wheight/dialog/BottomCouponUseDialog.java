@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,28 +11,15 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
-import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.dialogFragment.BaseDialogFragment;
-import com.lgd.lgd_core.ui.utils.GsonUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
-import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
-import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
-import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.adapter.dialog.CouponDialogAdapter;
 import com.yinfeng.yfhx.adapter.dialog.CouponUseDialogAdapter;
-import com.yinfeng.yfhx.entity.BottomCouponDialogBean;
 import com.yinfeng.yfhx.entity.CalculationActivityBean;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.Trade_change_bean;
-import com.yinfeng.yfhx.ui.alculation.CalculationActivity;
 import com.yinfeng.yfhx.ui.utils.CouponUtils;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-
-import mlxy.utils.S;
 
 /**
  * ============================================

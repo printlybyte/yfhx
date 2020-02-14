@@ -11,13 +11,16 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 
 import com.blankj.utilcode.util.IntentUtils;
 import com.lgd.lgd_core.base.BaseActivity;
 import com.lgd.lgd_core.ui.utils.IntentUtilsConstant;
+import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.webview.X5WebView;
+import com.orhanobut.hawk.Hawk;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -32,6 +35,7 @@ import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.utils.TbsLog;
+import com.yinfeng.yfhx.Apc;
 import com.yinfeng.yfhx.R;
 
 import java.net.URL;
@@ -60,7 +64,7 @@ public class BrowserActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        Intent intent =getIntent();
+        Intent intent = getIntent();
         mHomeUrl = intent.getStringExtra(IntentUtilsConstant.INTENT_PARAMS_1);
 
         mViewParent = (ViewGroup) findViewById(R.id.webView1);
@@ -70,7 +74,7 @@ public class BrowserActivity extends BaseActivity {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 if (mWebView != null) {
-                    if (TextUtils.isEmpty(mHomeUrl)){
+                    if (TextUtils.isEmpty(mHomeUrl)) {
                         ToastUS.Error("home_url=null");
                         return;
                     }
@@ -112,15 +116,17 @@ public class BrowserActivity extends BaseActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                writeData();
                 // mTestHandler.sendEmptyMessage(MSG_OPEN_TEST_URL);
                 mTestHandler.sendEmptyMessageDelayed(MSG_OPEN_TEST_URL, 5000);// 5s?
 
-                if (smartRefreshLayout!=null){
+                if (smartRefreshLayout != null) {
                     smartRefreshLayout.finishRefresh();
                 }
                 /* mWebView.showLog("test Log"); */
             }
         });
+
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsConfirm(WebView arg0, String arg1, String arg2, JsResult arg3) {
@@ -223,6 +229,11 @@ public class BrowserActivity extends BaseActivity {
         webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
         webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
                 .getPath());
+
+
+//                addjs();
+
+
         // webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
         webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
         // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
@@ -237,8 +248,41 @@ public class BrowserActivity extends BaseActivity {
         TbsLog.d("time-cost", "cost time: " + (System.currentTimeMillis() - time));
         CookieSyncManager.createInstance(this);
         CookieSyncManager.getInstance().sync();
+
+
     }
 
+
+    /**
+     * js交互
+     */
+    private void addjs() {
+        mWebView.addJavascriptInterface(new toJavaScriptinterface(), "jsAndroid");
+    }
+
+    public class toJavaScriptinterface {
+        @JavascriptInterface
+        public void seckill(String txx) {
+            ToastUS.Normal("===" + txx);
+        }
+    }
+
+
+    /**
+     * 登录tocken写入
+     */
+    public void writeData() {
+        String key = "token";
+        String val = Hawk.get(Apc.Apc_token);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            mWebView.evaluateJavascript("window.localStorage.setItem('" + key + "','" + val + "');", null);
+        } else {
+            mWebView.loadUrl("javascript:localStorage.setItem('" + key + "','" + val + "');");
+        }
+
+        LogUS.I("==========" + val);
+
+    }
 
     boolean[] m_selected = new boolean[]{true, true, true, true, false,
             false, true};
@@ -279,8 +323,8 @@ public class BrowserActivity extends BaseActivity {
                 uploadFile.onReceiveValue(null);
                 uploadFile = null;
             }
-
         }
+
 
     }
 

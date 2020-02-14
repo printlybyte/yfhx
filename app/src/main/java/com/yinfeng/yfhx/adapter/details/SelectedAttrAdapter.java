@@ -14,7 +14,9 @@ import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.orhanobut.hawk.Hawk;
 import com.yinfeng.yfhx.Apc;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.entity.CommodityDetailsActivityBean;
+import com.yinfeng.yfhx.entity.Trade_change_bean;
+import com.yinfeng.yfhx.entity.common.CommodityDetailsActivityBean;
+import com.yinfeng.yfhx.ui.utils.CouponUtils;
 import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -57,10 +59,8 @@ public class SelectedAttrAdapter extends BaseQuickAdapter<CommodityDetailsActivi
                     ToastUS.Warning("请选择与商品相对应的规格属性");
                     return;
                 }
-
                 ToastUS.Success("立即购买");
-
-
+                ShopCarUtils.getInstance().add(mGood_id, CommonUtils.getMapValueToJsonArray(mMap_sel_id), true,true);
             }
         });
         mAdd_textView.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +70,7 @@ public class SelectedAttrAdapter extends BaseQuickAdapter<CommodityDetailsActivi
                     ToastUS.Warning("请选择与商品相对应的规格属性");
                     return;
                 }
-                ShopCarUtils.getInstance().add(mGood_id, CommonUtils.getMapValueToJsonArray(mMap_sel_id), true);
+                ShopCarUtils.getInstance().add(mGood_id, CommonUtils.getMapValueToJsonArray(mMap_sel_id), true,false);
             }
         });
     }
@@ -93,8 +93,11 @@ public class SelectedAttrAdapter extends BaseQuickAdapter<CommodityDetailsActivi
         List<String> mList_id = new ArrayList<>();
         List<String> mList_name = new ArrayList<>();
         for (int i = 0; i < mAttrBeanList.size(); i++) {
+            if (i==0){
+                cardListener.OnReceiveChangeCard(1,mAttrBeanList.get(i).getGoods_attr_id() + "" );
+            }
             mList_c.add(mAttrBeanList.get(i).getAttr_value());
-            mList_id.add(mAttrBeanList.get(i).getAttr_id() + "");
+            mList_id.add(mAttrBeanList.get(i).getGoods_attr_id() + "");
             mList_name.add(mAttrBeanList.get(i).getAttr_name() + "");
         }
         String[] strings = new String[mList_c.size()];
@@ -108,7 +111,6 @@ public class SelectedAttrAdapter extends BaseQuickAdapter<CommodityDetailsActivi
         };
 //        tagAdapter.setSelectedList(0);
         helper.tagFlowLayout.setAdapter(tagAdapter);
-
         helper.tagFlowLayout.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
             @Override
             public void onSelected(Set<Integer> selectPosSet) {
@@ -123,15 +125,12 @@ public class SelectedAttrAdapter extends BaseQuickAdapter<CommodityDetailsActivi
                     mName_textView.setText("已选 " + mapValue);
 
                     Hawk.put(Apc.Apc_car_sel_attr_id, mapValue);
-
-
+                    cardListener.OnReceiveChangeCard(1,sel_id+"");
                 } else {
                     mMap_sel_title.remove(helper.getAdapterPosition() + "");
                     mMap_sel_id.remove(helper.getAdapterPosition() + "");
-
                     String mapValue = CommonUtils.getMapValue(mMap_sel_title);
                     mName_textView.setText("已选 " + mapValue);
-
                     Hawk.put(Apc.Apc_car_sel_attr_id, mapValue);
 
                 }
@@ -149,44 +148,13 @@ public class SelectedAttrAdapter extends BaseQuickAdapter<CommodityDetailsActivi
         }
     }
 
-//    public void goodsAttrprice(String jsonArray) {
-//        if (jsonArray == null) {
-//            ToastUS.Warning("请携带参数");
-//            return;
-//        }
-//        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-//        map.put("attr_id", jsonArray);
-//        map.put("goods_id", mGood_id);
-//        map.put("num", "1");
-//        new OKBuilder(Latte.getApplicationContext())
-//                .setNetUrl(Api.goods_attrprice_post)
-//                .setParamsMap(map)
-//                .postStringFormBody()
-//                .setOnCallBackResponse(new CallBackResponseListener() {
-//                    @Override
-//                    public void setOnCallBackResponseSuccess(String response) {
-//                        CommonExternalBean beanx = GsonUS.getIns().getGosn(response, CommonExternalBean.class);
-//                        if (beanx.getStatus().equals("success")) {
-//                            ShopCarCartValueBean bean_s = GsonUS.getIns().getGosn(response, ShopCarCartValueBean.class);
-//                            if (cartValueChangeListener != null) {
-//                                cartValueChangeListener.OnCartValueChange(1, bean_s);
-//                            }
-//                        } else if (beanx.getStatus().equals("failed")) {
-//                            if (beanx != null) {
-//                                CommonStatusErrorBean bean_e = GsonUS.getIns().getGosn(response, CommonStatusErrorBean.class);
-//                                ToastUS.Error(bean_e.getErrors().getMessage());
-//                                if (cartValueChangeListener != null) {
-//                                    cartValueChangeListener.OnCartValueChange(0, null);
-//                                }
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void setOnCallBackResponseError(String response) {
-//                    }
-//                });
-//
-//
-//    }
+    public interface OnReceiveChangeCardListener {
+        void OnReceiveChangeCard(int status, String attr_id);
+    }
+
+    public void setOnChangeCardListener( OnReceiveChangeCardListener dialogListener) {
+        this.cardListener = dialogListener;
+    }
+
+    private static  OnReceiveChangeCardListener cardListener;
 }

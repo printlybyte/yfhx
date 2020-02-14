@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f1f1f1"
+    android:orientation="vertical"
     tools:context=".ui.alculation.CalculationActivity">
 
-    <include
-        layout="@layout/include_actionbar_back"
-        android:visibility="gone" />
+
+    <include layout="@layout/include_actionbar_back"
+        android:id="@+id/asdasdasd"/>
+
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/asdasdasd"
         android:layout_above="@+id/activity_calculation_bottom_bar"
         android:fillViewport="true">
 
@@ -347,6 +350,9 @@
     </android.support.v4.widget.NestedScrollView>
 
 
+
+
+
     <LinearLayout
         android:id="@+id/activity_calculation_bottom_bar"
         android:layout_width="match_parent"
@@ -387,5 +393,6 @@
             android:textSize="14sp" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

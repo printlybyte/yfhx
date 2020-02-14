@@ -25,7 +25,7 @@
             android:background="@drawable/ic_shopcar_img_bga"
             android:padding="0.5dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_svg_glide_photo_placeholder" />
 
         <TextView
             android:id="@+id/df_bottom_selected_specification_price"
@@ -35,7 +35,7 @@
             android:layout_marginTop="30dp"
             android:layout_toRightOf="@+id/df_bottom_selected_specification_img"
             android:gravity="left"
-            android:text="￥25.00"
+            android:text="￥0.00"
             android:textColor="#c84d4f"
             android:textSize="13sp" />
 
@@ -117,18 +117,7 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/df_bottom_selected_specification_buy"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/shape_sele_attr_buy_bga"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:text="立即购买"
-            android:textColor="#ffffff"
-            android:textSize="13sp" />
+
 
         <TextView
             android:id="@+id/df_bottom_selected_specification_add"
@@ -142,7 +131,18 @@
             android:text="加入购物车"
             android:textColor="#ffffff"
             android:textSize="13sp" />
-
+        <TextView
+            android:id="@+id/df_bottom_selected_specification_buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_sele_attr_buy_bga"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="立即购买"
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.yinfeng.yfhx.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -15,7 +14,6 @@ import com.lgd.lgd_core.base.BaseFragment;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GsonUS;
 import com.lgd.lgd_core.ui.utils.ITTUtils;
-import com.lgd.lgd_core.ui.utils.IntentUtilsConstant;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
@@ -26,7 +24,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.details.CommodityListAdapter;
-import com.yinfeng.yfhx.entity.CommodityListActivityBean;
+import com.yinfeng.yfhx.entity.common.CommodityListActivityBean;
 import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
 import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 
@@ -177,7 +175,7 @@ public class GeneralPurposeFragment extends BaseFragment {
                         String mProd = commodityListAdapter.getData().get(position).getProd() + "";
                         if (!TextUtils.isEmpty(mProd)) {
                             if (mProd.equals("1")) {
-                                ShopCarUtils.getInstance().add(Goods_id, null, false);
+                                ShopCarUtils.getInstance().add(Goods_id, null, false,false);
                             } else {
                                 ITTUtils.Jump(CommodityDetailsActivity.class, commodityListAdapter.getData().get(position).getGoods_id() + "");
                             }

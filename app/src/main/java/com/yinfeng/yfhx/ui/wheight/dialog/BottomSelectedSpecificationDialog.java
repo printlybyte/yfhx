@@ -1,33 +1,34 @@
 package com.yinfeng.yfhx.ui.wheight.dialog;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.dialogFragment.BaseDialogFragment;
 import com.lgd.lgd_core.ui.utils.GlideUS;
 import com.lgd.lgd_core.ui.utils.GsonUS;
+import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.details.SelectedAttrAdapter;
-import com.yinfeng.yfhx.entity.CommodityDetailsActivityBean;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
-import com.yinfeng.yfhx.entity.t3.ShopCarCartValueBean;
+import com.yinfeng.yfhx.entity.common.CommodityDetailsActivityBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.details.FragmentEvaluation_AllBean;
+import com.yinfeng.yfhx.entity.details.SelectedAttrpriceBean;
+
+import org.json.JSONArray;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -70,6 +71,7 @@ public class BottomSelectedSpecificationDialog extends BaseDialogFragment implem
 
     public BottomSelectedSpecificationDialog(CommodityDetailsActivityBean beanx) {
         mList = beanx.getData().getAttr();
+
         mGood_id = beanx.getData().getGoods_id() + "";
         bean = beanx;
     }
@@ -87,6 +89,7 @@ public class BottomSelectedSpecificationDialog extends BaseDialogFragment implem
     @Override
     protected void initView(View view) {
         mDfBottomSelectedSpecificationImg = (ImageView) view.findViewById(R.id.df_bottom_selected_specification_img);
+
         mDfBottomSelectedSpecificationPrice = (TextView) view.findViewById(R.id.df_bottom_selected_specification_price);
         mIncludeRecyclerview = (RecyclerView) view.findViewById(R.id.include_recyclerview);
         mDfBottomSelectedSpecificationBuy = (TextView) view.findViewById(R.id.df_bottom_selected_specification_buy);
@@ -94,8 +97,6 @@ public class BottomSelectedSpecificationDialog extends BaseDialogFragment implem
         mDfBottomSelectedSpecificationDismis = (ImageView) view.findViewById(R.id.df_bottom_selected_specification_dismis);
         mDfBottomSelectedSpecificationDismis.setOnClickListener(this);
         mDfBottomSelectedSpecificationTitle = (TextView) view.findViewById(R.id.df_bottom_selected_specification_title);
-
-
         setAdapter();
     }
 
@@ -110,10 +111,20 @@ public class BottomSelectedSpecificationDialog extends BaseDialogFragment implem
                 , mDfBottomSelectedSpecificationBuy, mDfBottomSelectedSpecificationAdd);
         selectedAttrAdapter.openLoadAnimation();
         mIncludeRecyclerview.setAdapter(selectedAttrAdapter);
+        selectedAttrAdapter.setOnChangeCardListener(new SelectedAttrAdapter.OnReceiveChangeCardListener() {
+            @Override
+            public void OnReceiveChangeCard(int status, String attr_id) {
+                if (status == 1) {
+                    ToastUS.Normal(attr_id);
+                    requestAttrDate(attr_id);
+                }
+            }
+        });
         selectedAttrAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()) {
+
 
                 }
             }
@@ -128,12 +139,46 @@ public class BottomSelectedSpecificationDialog extends BaseDialogFragment implem
         switch (v.getId()) {
             default:
                 break;
-
             case R.id.df_bottom_selected_specification_dismis:
                 this.dismiss();
                 break;
         }
     }
 
+    private void requestAttrDate(String attr_id) {
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.put(attr_id);
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        map.put("goods_id", mGood_id);
+        map.put("num", "1");
+        map.put("attr_id", jsonArray.toString());
+        new OKBuilder(Latte.getApplicationContext())
+                .setNetUrl(Api.goods_attrprice_post)
+                .setParamsMap(map)
+                .postStringFormBody()
+                .setOnCallBackResponse(new CallBackResponseListener() {
+                    @Override
+                    public void setOnCallBackResponseSuccess(String response) {
+                        CommonExternalBean beanx = GsonUS.getIns().getGosn(response, CommonExternalBean.class);
+                        if (beanx.getStatus().equals("success")) {
+                            SelectedAttrpriceBean bean = GsonUS.getIns().getGosn(response, SelectedAttrpriceBean.class);
+                            mDfBottomSelectedSpecificationPrice.setText(bean.getData().getGoods_price_formated());
+                            GlideUS.loadPhoto(bean.getData().getAttr_img(), mDfBottomSelectedSpecificationImg);
+                        } else if (beanx.getStatus().equals("failed")) {
+                            if (beanx != null) {
+                                CommonStatusErrorBean bean_e = GsonUS.getIns().getGosn(response, CommonStatusErrorBean.class);
+                                ToastUS.Error(bean_e.getErrors().getMessage());
+                            }
+                        }
 
+
+                    }
+
+                    @Override
+                    public void setOnCallBackResponseError(String response) {
+
+                    }
+                })
+        ;
+    }
 }

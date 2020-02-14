@@ -28,6 +28,7 @@ public class GsonUS {
         try {
             return (T) gson.fromJson(response, tClass);
         } catch (Exception e) {
+
             ToastUS.Error(e.getMessage() + '\n' + tClass.getName());
             LogUS.E(e.getMessage());
             return null;

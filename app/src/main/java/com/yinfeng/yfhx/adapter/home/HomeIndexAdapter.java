@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.just.agentweb.AgentWeb;
 import com.lgd.lgd_core.entity.XBannerImageBean;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.marqueenview.AutoVerticalViewDataData;
@@ -23,11 +24,14 @@ import com.lgd.lgd_core.ui.utils.ITTUtils;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.XbannerUtils;
 import com.stx.xhb.xbanner.XBanner;
+import com.yinfeng.yfhx.Main2Activity;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.entity.MultipleTabHomeItem;
 import com.yinfeng.yfhx.entity.TabFragment1Bean;
+import com.yinfeng.yfhx.entity.home.NoticelistBeanandAdListBean;
 import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
-import com.yinfeng.yfhx.ui.shop.ShopActivity;
+import com.yinfeng.yfhx.ui.shop.MainShopActivity;
+import com.yinfeng.yfhx.ui.shop.ShopFragmentHome;
 import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 import com.yinfeng.yfhx.ui.webview.BrowserActivity;
 
@@ -64,7 +68,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
 
                 break;
             case MultipleTabHomeItem.noticelist:
-                List<TabFragment1Bean.DataBean.NoticelistBean> mListNotice = item.getBean();
+                List<NoticelistBeanandAdListBean> mListNotice = item.getBean();
                 setNoticeAdapter(helper, mListNotice);
                 break;
             case MultipleTabHomeItem.seckills:
@@ -98,7 +102,8 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
                 @Override
                 public void onItemClick(XBanner banner, Object model, View view, int position) {
                     ToastUS.Error(mList.get(position).getUrl());
-                    ITTUtils.Jump(BrowserActivity.class, "" + mList.get(position).getUrl());
+                    ITTUtils.Jump(Main2Activity.class, "" + mList.get(position).getUrl());
+
                 }
             });
             List<XBannerImageBean> data = new ArrayList<>();
@@ -146,14 +151,15 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
         }
     }
 
-    private void setNoticeAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.NoticelistBean> mList) {
+
+    private void setNoticeAdapter(MyHolder helper, List<NoticelistBeanandAdListBean> mList) {
         if (mList != null && mList.size() > 0) {
             final List<AutoVerticalViewDataData> data = new ArrayList<AutoVerticalViewDataData>();
             for (int i = 0; i < mList.size(); i++) {
-                data.add(new AutoVerticalViewDataData("公告", mList.get(i).getTitle() + "", mList.get(i).getUrl() + ""));
-                data.add(new AutoVerticalViewDataData("公告", mList.get(i).getTitle() + "", mList.get(i).getUrl() + ""));
-                data.add(new AutoVerticalViewDataData("互动", "特朗普任内对朝采取军事行动？ 美或为此付出代价", "5"));
-                data.add(new AutoVerticalViewDataData("互动", "特朗普任内对朝采取军事行动？ 美或为此付出代价", "5"));
+                data.add(new AutoVerticalViewDataData("公告", mList.get(i).getTitle() + "", mList.get(i).getmUrl() + ""));
+                data.add(new AutoVerticalViewDataData("公告", mList.get(i).getTitle() + "", mList.get(i).getmUrl() + ""));
+//                data.add(new AutoVerticalViewDataData("互动", "特朗普任内对朝采取军事行动？ 美或为此付出代价", "5"));
+//                data.add(new AutoVerticalViewDataData("互动", "特朗普任内对朝采取军事行动？ 美或为此付出代价", "5"));
             }
             helper.autoVerticalViewView_notice.setViews(data);
             helper.autoVerticalViewView_notice.setOnItemClickListener(new AutoVerticalViewView.OnItemClickListener() {
@@ -166,35 +172,35 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
     }
 
     private void setSeckillsAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.SeckillsBean> mList) {
-        if (mList != null && mList.size() > 0 && mList.size() == 3) {
-            GlideUS.loadPhoto(mList.get(0).getGoods_img(), helper.imageView_seckils1);
-            GlideUS.loadPhoto(mList.get(1).getGoods_img(), helper.imageView_seckils2);
-            GlideUS.loadPhoto(mList.get(2).getGoods_img(), helper.imageView_seckils3);
-            helper.linearLayout_seckils1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ToastUS.Error("" + mList.get(0).getGoods_name());
-                }
-            });
-            helper.linearLayout_seckils2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ToastUS.Error("" + mList.get(1).getGoods_name());
-                }
-            });
-            helper.linearLayout_seckils3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ToastUS.Error("" + mList.get(2).getGoods_name());
-                }
-            });
+
+        if (mList != null && mList.size() > 0) {
+
             helper.textView_seckils_query_all.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastUS.Error("all");
+
+                    String mUrl="http://kaifa.yinfengnet.com/mobile#/seckill";
+                    ITTUtils.Jump(Main2Activity.class, mUrl);
                 }
             });
+            SeckillsAdapter seckillsAdapter = new SeckillsAdapter(R.layout.item_fragment_tab1_seckills_item, mList);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(Latte.getApplicationContext(), 3);
+            helper.recyclerView_seckills.setLayoutManager(gridLayoutManager);
+            helper.recyclerView_seckills.setAdapter(seckillsAdapter);
+            seckillsAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+                @Override
+                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                    switch (view.getId()) {
+                        case R.id.item_fragment_tab1_seckills_item_group1:
+                            ITTUtils.Jump(Main2Activity.class, mList.get(position).getUrl());
+                            break;
+                    }
+                }
+
+            });
         }
+
+
     }
 
     private void setAdsAdapter(MyHolder helper, List<TabFragment1Bean.DataBean.AdsBean> mList) {
@@ -206,27 +212,27 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
             helper.imageView_ads1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ITTUtils.Jump(BrowserActivity.class, mList.get(0).getUrl());
+                    ITTUtils.Jump(Main2Activity.class, mList.get(0).getUrl());
                 }
             });
             helper.imageView_ads2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ITTUtils.Jump(BrowserActivity.class, mList.get(1).getUrl());
+                    ITTUtils.Jump(Main2Activity.class, mList.get(1).getUrl());
 
                 }
             });
             helper.imageView_ads3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ITTUtils.Jump(BrowserActivity.class, mList.get(2).getUrl());
+                    ITTUtils.Jump(Main2Activity.class, mList.get(2).getUrl());
 
                 }
             });
             helper.imageView_ads4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ITTUtils.Jump(BrowserActivity.class, mList.get(3).getUrl());
+                    ITTUtils.Jump(Main2Activity.class, mList.get(3).getUrl());
 
                 }
             });
@@ -264,7 +270,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
                     TabFragment1Bean.DataBean.StoresBean bean = storesAdapter.getData().get(position);
                     switch (view.getId()) {
                         case R.id.ri_home_stores_item_group:
-                            ITTUtils.Jump(ShopActivity.class, bean.getRu_id() + "");
+                            ITTUtils.Jump(MainShopActivity.class, bean.getRu_id() + "");
                             break;
                         case R.id.ri_home_stores_item_mark_group1:
                             TabFragment1Bean.DataBean.StoresBean.GoodsBean goodsBean1 = bean.getGoods().get(0);
@@ -280,8 +286,6 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
                             TabFragment1Bean.DataBean.StoresBean.GoodsBean goodsBean3 = bean.getGoods().get(2);
                             ITTUtils.Jump(CommodityDetailsActivity.class, goodsBean3.getGoods_id() + "");
                             break;
-
-
                         default:
                     }
                 }
@@ -319,7 +323,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
                             String mProd = newGoodsAdapter.getData().get(position).getProd() + "";
                             if (!TextUtils.isEmpty(mProd)) {
                                 if (mProd.equals("1")) {
-                                    ShopCarUtils.getInstance().add(Goods_id, null, false);
+                                    ShopCarUtils.getInstance().add(Goods_id, null, false, false);
                                 } else {
                                     ITTUtils.Jump(CommodityDetailsActivity.class, Goods_id);
                                 }
@@ -358,10 +362,9 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
 
     class MyHolder extends BaseViewHolder {
         XBanner mBanner;
-        RecyclerView recyclerView_nav, recyclerView_stores, recyclerView_newgoods;
-        ImageView imageView_topic, imageView_ads1, imageView_ads2, imageView_ads3, imageView_ads4, imageView_seckils1, imageView_seckils2, imageView_seckils3;
+        RecyclerView recyclerView_nav, recyclerView_stores, recyclerView_newgoods, recyclerView_seckills;
+        ImageView imageView_topic, imageView_ads1, imageView_ads2, imageView_ads3, imageView_ads4 ;
         AutoVerticalViewView autoVerticalViewView_notice;
-        LinearLayout linearLayout_seckils1, linearLayout_seckils2, linearLayout_seckils3;
         TextView textView_seckils_query_all;
 
         public MyHolder(View view) {
@@ -370,6 +373,7 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
 //            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtilsx.getScreenWidthx(mContext) / 2);
 //            mBanner.setLayoutParams(layoutParams);
             recyclerView_nav = view.findViewById(R.id.item_fragment_tab1_navs_layout_recyclerview);
+            recyclerView_seckills = view.findViewById(R.id.include_recyclerview_seckills);
             imageView_topic = view.findViewById(R.id.item_fragment_tab1_topic_layout_img);
             autoVerticalViewView_notice = view.findViewById(R.id.item_fragment_tab1_notice_layout_sview);
             imageView_ads1 = view.findViewById(R.id.item_fragment_tab1_ads_layout_img1);
@@ -378,12 +382,6 @@ public class HomeIndexAdapter extends BaseMultiItemQuickAdapter<MultipleTabHomeI
             imageView_ads4 = view.findViewById(R.id.item_fragment_tab1_ads_layout_img4);
             recyclerView_stores = view.findViewById(R.id.item_fragment_tab1_stores_layout_recyclerview);
             recyclerView_newgoods = view.findViewById(R.id.item_fragment_tab1_newgoods_layout_recyclerview);
-            imageView_seckils1 = view.findViewById(R.id.item_fragment_tab1_seckills_layout_img1);
-            imageView_seckils2 = view.findViewById(R.id.item_fragment_tab1_seckills_layout_img2);
-            imageView_seckils3 = view.findViewById(R.id.item_fragment_tab1_seckills_layout_img3);
-            linearLayout_seckils1 = view.findViewById(R.id.item_fragment_tab1_seckills_layout_group1);
-            linearLayout_seckils2 = view.findViewById(R.id.item_fragment_tab1_seckills_layout_group2);
-            linearLayout_seckils3 = view.findViewById(R.id.item_fragment_tab1_seckills_layout_group3);
             textView_seckils_query_all = view.findViewById(R.id.item_fragment_tab1_seckills_layout_query_all);
         }
     }

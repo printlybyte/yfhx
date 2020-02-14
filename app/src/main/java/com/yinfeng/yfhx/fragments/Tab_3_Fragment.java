@@ -4,20 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ActivityUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.classic.common.MultipleStatusView;
 import com.lgd.lgd_core.base.BaseFragment;
 import com.lgd.lgd_core.event.ActResultRequest;
+import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GsonUS;
 import com.lgd.lgd_core.ui.utils.ITTUtils;
+import com.lgd.lgd_core.ui.utils.IntentUtilsConstant;
 import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
@@ -27,14 +30,16 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
+import com.yinfeng.yfhx.adapter.shopcar.GoodsGuessAdapter;
 import com.yinfeng.yfhx.adapter.shopcar.T3Adapter;
+import com.yinfeng.yfhx.entity.shopcar.ShopCarGoodsGuessBean;
 import com.yinfeng.yfhx.entity.t3.ShopCarCartValueBean;
 import com.yinfeng.yfhx.entity.t3.T3_ContentsBean;
 import com.yinfeng.yfhx.entity.t3.T3_Section;
 import com.yinfeng.yfhx.entity.t3.Tab_3_FragmentBean;
 import com.yinfeng.yfhx.ui.alculation.CalculationActivity;
 import com.yinfeng.yfhx.ui.details.CommodityDetailsActivity;
-import com.yinfeng.yfhx.ui.shop.ShopActivity;
+import com.yinfeng.yfhx.ui.shop.MainShopActivity;
 import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 
 import org.json.JSONArray;
@@ -54,6 +59,7 @@ import java.util.List;
  **/
 public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener {
     private RecyclerView mIncludeRecyclerview;
+    private RecyclerView mIncludeRecyclerviewSiglne;
     private SmartRefreshLayout mRefreshLayout;
     private MultipleStatusView mMultipleStatusView;
     /**
@@ -88,6 +94,7 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
     @Override
     protected void initView(View view) {
         mIncludeRecyclerview = (RecyclerView) view.findViewById(R.id.include_multiple_recyclerview);
+        mIncludeRecyclerviewSiglne = (RecyclerView) view.findViewById(R.id.include_recyclerview);
         mRefreshLayout = (SmartRefreshLayout) view.findViewById(R.id.include_multiple_refreshLayout);
         mMultipleStatusView = (MultipleStatusView) view.findViewById(R.id.include_multiple_status_view);
         mRefreshLayout.setOnRefreshListener(onRefreshListener);
@@ -132,7 +139,6 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
 
     @Override
     protected void initData() {
-
     }
 
     @Override
@@ -180,6 +186,8 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
                             } else {
                                 setAdapter(bean);
                             }
+                            goods_goodsguess_post();
+
                             mIncludeShopcarCalculationConfirm.setEnabled(true);
                         }
                     }
@@ -287,7 +295,6 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
                         } else {
                             ShopCarUtils.getInstance().check(jsonArray, "1", false);
                         }
-
                         ShopCarUtils.getInstance().setOnChangeValueListener(new ShopCarUtils.OnCheckValueChangeListener() {
                             @Override
                             public void onChangeValueClick(int status, List<Integer> bean) {
@@ -305,8 +312,7 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
                         break;
                     case R.id.item_fragment_tab3_header_layout_title:
 //                        ToastUS.Warning(position + "" + mySection.header);
-
-                        ITTUtils.Jump(ShopActivity.class, mySection.getStore_id() + "");
+                        ITTUtils.Jump(MainShopActivity.class, mySection.getStore_id() + "");
 
                         break;
                     case R.id.item_fragment_tab3_content_layout_del:
@@ -346,7 +352,6 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
                         mIncludeShopcarCalculationCheck.setChecked(true);
                     } else {
                         mIncludeShopcarCalculationCheck.setChecked(false);
-
                     }
                 } else {
                     mIncludeShopcarCalculationPeice.setText(0 + "");
@@ -361,6 +366,7 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
         @Override
         public void onRefresh(@NonNull RefreshLayout refreshLayout) {
             requestDate(1);
+
             mRefreshLayout.finishRefresh(1000);
         }
     };
@@ -381,14 +387,15 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
             default:
                 break;
             case R.id.include_shopcar_calculation_confirm:
+
+
                 actResultRequest.startForResult(new Intent(getActivity(), CalculationActivity.class)
-//                                .putExtra(FinalUtils.JUMP_INTENT_KEY, bean.getScripId() + "")
                         , new ActResultRequest.Callback() {
                             @Override
                             public void onActivityResult(int resultCode, Intent data) {
                                 if (resultCode == 26) { //
 //                                    if (data != null) {
-                                        requestDate(0);
+                                    requestDate(0);
 //                                    }
                                 }
                             }
@@ -400,4 +407,77 @@ public class Tab_3_Fragment extends BaseFragment implements View.OnClickListener
     }
 
 
+    /**
+     * 猜你喜欢
+     */
+
+    private void goods_goodsguess_post() {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        map.put("warehouse_id", "0");
+        map.put("area_id", "0");
+        new OKBuilder(getActivity())
+                .setNetUrl(Api.goods_goodsguess_post)
+                .setParamsMap(map)
+                .postStringFormBody()
+                .setOnCallBackResponse(new CallBackResponseListener() {
+                    @Override
+                    public void setOnCallBackResponseSuccess(String response) {
+                        ShopCarGoodsGuessBean bean = GsonUS.getIns().getGosn(response, ShopCarGoodsGuessBean.class);
+                        if (bean != null && bean.getData() != null && bean.getData().size() > 0) {
+                            setGoodGuessAdapter(bean);
+                        } else {
+
+//                            mMultipleStatusView.showEmpty();
+                        }
+                    }
+
+                    @Override
+                    public void setOnCallBackResponseError(String response) {
+                    }
+                });
+    }
+
+
+    private void setGoodGuessAdapter(ShopCarGoodsGuessBean bean) {
+        GoodsGuessAdapter goodsGuessAdapter = new GoodsGuessAdapter(R.layout.ri_goodguess_item, bean.getData());
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(Latte.getApplicationContext(), 2) {
+            @Override
+            public boolean canScrollVertically() {
+                //禁止滑动
+                return false;
+            }
+        };
+        mIncludeRecyclerviewSiglne.setLayoutManager(gridLayoutManager);
+        mIncludeRecyclerviewSiglne.setAdapter(goodsGuessAdapter);
+        goodsGuessAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (view.getId()) {
+
+
+                    case R.id.ri_goodguess_item_group:
+                        ITTUtils.Jump(CommodityDetailsActivity.class, goodsGuessAdapter.getData().get(position).getGoods_id() + "");
+                        break;
+                    case R.id.ri_goodguess_item_add_shop:
+
+                        String Goods_id = goodsGuessAdapter.getData().get(position).getGoods_id() + "";
+//                        String mProd = goodsGuessAdapter.getData().get(position).getProd() + "";
+
+
+
+//                        if (!TextUtils.isEmpty(mProd)) {
+//                            if (mProd.equals("1")) {
+//                                ShopCarUtils.getInstance().add(Goods_id, null, false, false);
+//                            } else {
+                                ITTUtils.Jump(CommodityDetailsActivity.class, goodsGuessAdapter.getData().get(position).getGoods_id() + "");
+//                            }
+//                        } else {
+                            ToastUS.Warning("err err");
+//                        }
+//                    ToastUS.Warning("" + goodsGuessAdapter.getData().get(position).getCat_name());
+//                ITTUtils.Jump(CommodityListActivity.class, "" + goodsGuessAdapter.getData().get(position).getCat_id());
+                }
+            }
+        });
+    }
 }

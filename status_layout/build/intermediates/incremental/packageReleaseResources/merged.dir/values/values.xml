@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="stfImageColor">#FF4081</color>
+    <dimen name="stfImageSize">80dp</dimen>
+    <dimen name="stfProgressSize">60dp</dimen>
+    <string name="stfButtonText">Retry</string>
+    <string name="stfEmptyMessage">There are no items</string>
+    <string name="stfErrorMessage">An error occurred please try again later</string>
+    <string name="stfLoadingMessage">Loading..</string>
+    <string name="stfLocationOffMessage">Please enable location services</string>
+    <string name="stfOfflineMessage">Please check your connection</string>
+    <style name="stfButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="stfContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="stfImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:tint">@color/stfImageColor</item>-->
+    </style>
+    <style name="stfMessage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="stfProgress">
+        <item name="android:layout_width">@dimen/stfProgressSize</item>
+        <item name="android:layout_height">@dimen/stfProgressSize</item>
+    </style>
+    <declare-styleable name="stfStatefulLayout">
+        <attr format="boolean" name="stfAnimationEnabled"/>
+        <attr format="reference" name="stfInAnimation"/>
+        <attr format="reference" name="stfOutAnimation"/>
+    </declare-styleable>
+</resources>

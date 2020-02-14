@@ -30,14 +30,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.order.OrderActivity"></activity>
-        <activity android:name=".ui.search.SearchActivity"></activity>
-        <activity android:name=".ui.search.SearchListActivity"></activity>
+        <activity android:name=".ui.login.BindActivity"></activity>
+        <activity android:name=".ui.order.OrderRefoundRequestListDetailsActivity" />
+        <activity android:name=".ui.order.OrderActivity" />
+        <activity android:name=".ui.search.SearchActivity" />
+        <activity android:name=".ui.search.SearchListActivity" />
         <activity android:name=".ui.me.HistoryIndexActivity" />
         <activity android:name=".ui.me.MeCelledGoodsActivity" />
         <activity android:name=".ui.me.MeCelledStorgeActivity" />
         <activity android:name=".ui.alculation.CalculationActivity" />
-        <activity android:name=".ui.shop.ShopActivity" />
+        <activity android:name=".ui.shop.MainShopActivity" />
         <activity android:name=".ui.me.coupon.MeCouponActivity" />
         <activity android:name=".ui.me.savecard.MeSaveCardActivity" />
         <activity android:name=".ui.me.redpack.MeReadPackActivity" />
@@ -48,9 +50,26 @@
         <activity android:name=".ui.me.PersonalInfoActivity" />
         <activity android:name=".ui.details.CommodityListActivity" />
         <activity android:name=".ui.details.CommodityDetailsActivity" />
+        <activity android:name=".ui.order.OrderDetailsActivity" />
+        <activity android:name=".ui.order.OrderRefoundActivity" />
+        <activity android:name=".ui.order.OrderDaiPingJiaListActivity" />
+        <activity android:name=".ui.order.OrderDaipingjiaDetailsActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".Main2Activity" />
+        <activity
+            android:name=".Main2Activity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="true"></activity>
+        <activity android:name=".ui.order.OrderRefoundRequestListActivity" /> <!-- 微信支付 -->
+        <activity
+            android:name="com.jpay.wxpay.WXPayEntryActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <activity-alias
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.jpay.wxpay.WXPayEntryActivity" /> <!-- 微信支付 end -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />

@@ -1,0 +1,8 @@
+<resources>
+    <string name="stfErrorMessage">An error occurred please try again later</string>
+    <string name="stfOfflineMessage">Please check your connection</string>
+    <string name="stfLocationOffMessage">Please enable location services</string>
+    <string name="stfEmptyMessage">There are no items</string>
+    <string name="stfLoadingMessage">Loading..</string>
+    <string name="stfButtonText">Retry</string>
+</resources>

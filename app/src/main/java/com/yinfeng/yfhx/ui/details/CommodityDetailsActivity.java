@@ -22,6 +22,7 @@ import com.lgd.lgd_core.ui.dialogFragment.BaseDialogFragment;
 import com.lgd.lgd_core.ui.gproview.ProviewImageLoader;
 import com.lgd.lgd_core.ui.utils.GlideUS;
 import com.lgd.lgd_core.ui.utils.GsonUS;
+import com.lgd.lgd_core.ui.utils.ITTUtils;
 import com.lgd.lgd_core.ui.utils.IntentUtilsConstant;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.XbannerUtils;
@@ -32,12 +33,17 @@ import com.sackcentury.shinebuttonlib.ShineButton;
 import com.stx.xhb.xbanner.XBanner;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.entity.CommodityDetailsActivityBean;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.common.CommodityDetailsActivityBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.Trade_done_bean;
 import com.yinfeng.yfhx.entity.details.GoodsshippingfeeBean;
+import com.yinfeng.yfhx.ui.alculation.CalculationActivity;
+import com.yinfeng.yfhx.ui.shop.MainShopActivity;
 import com.yinfeng.yfhx.ui.utils.DetailsUtils;
+import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 import com.yinfeng.yfhx.ui.wheight.dialog.BottomCouponDialog;
+import com.yinfeng.yfhx.ui.wheight.dialog.BottomDialog;
 import com.yinfeng.yfhx.ui.wheight.dialog.BottomSelectedSpecificationDialog;
 
 import org.json.JSONObject;
@@ -46,12 +52,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import chihane.jdaddressselector.BottomDialog;
-import chihane.jdaddressselector.OnAddressSelectedListener;
-import chihane.jdaddressselector.model.City;
-import chihane.jdaddressselector.model.County;
-import chihane.jdaddressselector.model.Province;
-import chihane.jdaddressselector.model.Street;
+import chihane.jdaddressselector.ADBottomDialog;
+import chihane.jdaddressselector.ISelectAble;
+import chihane.jdaddressselector.SelectedListener;
+
 
 /**
  * ============================================
@@ -292,7 +296,7 @@ public class CommodityDetailsActivity extends AppCompatActivity implements View.
                 @Override
                 public void onItemClick(XBanner banner, Object model, View view, int position) {
                     ToastUS.Error(mList.get(position).getImg_original());
-//                    ITTUtils.Jump(BrowserActivity.class, "" + mList.get(position).getUrl());
+//                    ITTUtils.Jump(Main2Activity.class, "" + mList.get(position).getUrl());
                 }
             });
             List<XBannerImageBean> data = new ArrayList<>();
@@ -404,8 +408,10 @@ public class CommodityDetailsActivity extends AppCompatActivity implements View.
         }
         mRu_id = bean.getBasic_info().getRu_id() + "";
 
+
     }
 
+    String mProd = "";
     List<String> titles = new ArrayList<>();
     List<Fragment> fragments = new ArrayList<>();
 
@@ -509,6 +515,8 @@ public class CommodityDetailsActivity extends AppCompatActivity implements View.
 
                 break;
             case R.id.include_details_bootom_bar_shop_oc:
+                  ITTUtils.Jump(MainShopActivity.class, mRu_id + "");
+
                 ToastUS.Success("店铺");
                 break;
             case R.id.include_details_bootom_bar_add:
@@ -523,15 +531,44 @@ public class CommodityDetailsActivity extends AppCompatActivity implements View.
 
                 break;
             case R.id.include_details_bootom_bar_buy:
+
+
+                List<CommodityDetailsActivityBean.DataBean.AttrBean> mProd = bean.getData().getAttr() ;
+                if (mProd!=null) {
+                    if (mProd.size()==0) {
+
+                        ShopCarUtils.getInstance().add(jump_goods_id, null, false,true);
+                        ShopCarUtils.getInstance().setOnAddChangeListener(new ShopCarUtils.OnAddChangeListener() {
+                            @Override
+                            public void onOnAddChangeClick(int status, Trade_done_bean bean) {
+                                if (status==1){
+
+
+
+                                Intent intent = new Intent(CommodityDetailsActivity.this, CalculationActivity.class);
+                                intent.putExtra(IntentUtilsConstant.INTENT_PARAMS_1, "10");
+                                startActivityForResult(intent, 131);
+
+
+
+                                }
+                            }
+                        });
+                    } else {
+                        ITTUtils.Jump(CommodityDetailsActivity.class, jump_goods_id);
+                    }
+                } else {
+                    ToastUS.Warning("err err");
+                }
+
+
                 break;
             case R.id.include_activity_commodity_details_header_attention:
                 if (mCollect_shop == 0) {
                     mIncludeActivityCommodityDetailsHeaderAttention.setImageResource(R.mipmap.ic_details_attention_yes);
-
                     mCollect_shop = 1;
                 } else {
                     mIncludeActivityCommodityDetailsHeaderAttention.setImageResource(R.mipmap.ic_details_attention_no);
-
                     mCollect_shop = 0;
                 }
                 break;
@@ -540,17 +577,17 @@ public class CommodityDetailsActivity extends AppCompatActivity implements View.
 
     //地址选择
     private void showAddressDialog() {
+        ADBottomDialog dialog = new ADBottomDialog(CommodityDetailsActivity.this);
+        dialog.setOnAddressSelectedListener(new SelectedListener() {
+            @Override
+            public void onAddressSelected(ArrayList<ISelectAble> selectAbles) {
 
-
-        BottomDialog dialog = new BottomDialog(CommodityDetailsActivity.this);
-        dialog.setOnAddressSelectedListener(onAddressSelectedListener);
+            }
+        });
         dialog.show();
     }
 
-    OnAddressSelectedListener onAddressSelectedListener = new OnAddressSelectedListener() {
-        @Override
-        public void onAddressSelected(Province province, City city, County county, Street street) {
 
-        }
-    };
+
+
 }

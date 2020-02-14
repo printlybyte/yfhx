@@ -15,18 +15,10 @@ import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.entity.CommonStatusSuccessBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusSuccessBean;
 import com.yinfeng.yfhx.ui.wheight.address_dialog.AD_dialog;
 
 import java.util.LinkedHashMap;
-
-import chihane.jdaddressselector.ADBottomDialog;
-import chihane.jdaddressselector.BottomDialog;
-import chihane.jdaddressselector.OnAddressSelectedListener;
-import chihane.jdaddressselector.model.City;
-import chihane.jdaddressselector.model.County;
-import chihane.jdaddressselector.model.Province;
-import chihane.jdaddressselector.model.Street;
 
 public class AddMeInvoiceActivity extends BaseActivity implements View.OnClickListener {
 

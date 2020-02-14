@@ -6,7 +6,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.classic.common.MultipleStatusView;
 import com.lgd.lgd_core.base.BaseFragment;
@@ -21,18 +20,11 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.details.Evaluation_All_Adapter;
-import com.yinfeng.yfhx.adapter.me.MeAddressAdapter;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
-import com.yinfeng.yfhx.entity.details.FragmentEvaluationListTitleBean;
-import com.yinfeng.yfhx.entity.MeAddressActivityBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.details.FragmentEvaluation_AllBean;
-import com.yinfeng.yfhx.ui.details.FragmentEvaluationList;
-import com.yinfeng.yfhx.ui.details.FragmentShopDetails;
 
 import java.util.LinkedHashMap;
-
-import mlxy.utils.S;
 
 /**
  * ============================================

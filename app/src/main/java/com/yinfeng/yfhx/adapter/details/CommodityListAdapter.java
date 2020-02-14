@@ -3,15 +3,13 @@ package com.yinfeng.yfhx.adapter.details;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GlideUS;
 import com.yinfeng.yfhx.R;
-import com.yinfeng.yfhx.entity.CommodityListActivityBean;
-import com.yinfeng.yfhx.entity.TabFragment1Bean;
+import com.yinfeng.yfhx.entity.common.CommodityListActivityBean;
 
 import java.util.List;
 
@@ -37,11 +35,10 @@ public class CommodityListAdapter extends BaseQuickAdapter<CommodityListActivity
         GlideUS.loadPhoto(item.getGoods_img(), helper.imageView);
         String tipStr = Latte.getApplicationContext().getResources().getString(R.string.re_empty_date_tip_txt);
         helper.setText(R.id.ri_details_commodilylist_item_title, item.getGoods_bill_name() == "" ? tipStr : item.getGoods_bill_name());
-        helper.setText(R.id.ri_details_commodilylist_item_price, item.getMarket_price() == "" ? tipStr : item.getMarket_price());
+        helper.setText(R.id.ri_details_commodilylist_item_price, item.getCost_price() == "" ? tipStr : item.getCost_price());
         helper.setText(R.id.ri_details_commodilylist_item_sales_volume, item.getSales_volume() + "" == "" ? tipStr : item.getSales_volume() + "人已购买");
         helper.addOnClickListener(R.id.ri_details_commodilylist_item_group);
         helper.addOnClickListener(R.id.ri_details_commodilylist_item_add_shop);
-
     }
 
     class MyHolder extends BaseViewHolder {

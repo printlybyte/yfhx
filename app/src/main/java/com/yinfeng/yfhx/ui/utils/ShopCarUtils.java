@@ -10,16 +10,17 @@ import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
 import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.entity.CalculationActivityBean;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
-import com.yinfeng.yfhx.entity.CommonStatusSuccessBean;
-import com.yinfeng.yfhx.entity.CommonStatusSuccessBeantest;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusSuccessBeantest;
 import com.yinfeng.yfhx.entity.TAB3CounterUpdateBean;
 import com.yinfeng.yfhx.entity.TAB3CounterUpdateErrBean;
-import com.yinfeng.yfhx.entity.Trade_change_bean;
 import com.yinfeng.yfhx.entity.Trade_done_bean;
 import com.yinfeng.yfhx.entity.Trade_done_extra_bean;
 import com.yinfeng.yfhx.entity.child.ChildInvoiceBean;
+import com.yinfeng.yfhx.entity.pay.PaycheckBean;
+import com.yinfeng.yfhx.entity.pay.WxPayDateBean;
+import com.yinfeng.yfhx.entity.pay.WxPayResultBean;
 import com.yinfeng.yfhx.entity.t3.ChangeValueArrBean;
 import com.yinfeng.yfhx.entity.t3.ShopCarCartValueBean;
 
@@ -52,7 +53,7 @@ public class ShopCarUtils {
     /**
      * 添加购物车
      */
-    public void add(String goods_id, JSONArray jsonArray, boolean isPord) {
+    public void add(String goods_id, JSONArray jsonArray, boolean isPord, boolean isPayLiji) {
         LinkedHashMap<String, Object> map = new LinkedHashMap<>();
         map.put("goods_id", goods_id);
         map.put("num", "1");
@@ -66,7 +67,14 @@ public class ShopCarUtils {
         map.put("warehouse_id", "0");
         map.put("area_id", "0");
         map.put("parent_id", "0");
-        map.put("rec_type", "0");
+
+        //商品类型 默认0普通商品 立即购买10 秒杀6
+        if (isPayLiji) {
+            map.put("rec_type", "10");
+        } else {
+            map.put("rec_type", "0");
+        }
+
         new OKBuilder(Latte.getApplicationContext())
                 .setNetUrl(Api.cart_add_post)
                 .setParamsMap(map)
@@ -78,10 +86,17 @@ public class ShopCarUtils {
                         if (beanx.getStatus().equals("success")) {
 //                            LoginBean bean_s = GsonUS.getIns().getGosn(response, LoginBean.class);
                             ToastUS.Success("添加成功");
+                            if (addChangeListener != null && isPayLiji) {
+                                addChangeListener.onOnAddChangeClick(1, null);
+                            }
                         } else if (beanx.getStatus().equals("failed")) {
                             if (beanx != null) {
                                 CommonStatusErrorBean bean_e = GsonUS.getIns().getGosn(response, CommonStatusErrorBean.class);
                                 ToastUS.Error(bean_e.getErrors().getMessage());
+                            }
+
+                            if (addChangeListener != null) {
+                                addChangeListener.onOnAddChangeClick(2, null);
                             }
                         }
                     }
@@ -229,6 +244,8 @@ public class ShopCarUtils {
     public void cart_update(String rec_id, String num) {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
         map.put("rec_id", rec_id);
+
+
         map.put("num", num);
         new OKBuilder(Latte.getApplicationContext())
                 .setNetUrl(Api.cart_update_post)
@@ -334,24 +351,24 @@ public class ShopCarUtils {
                         CommonExternalBean beanx = GsonUS.getIns().getGosn(response, CommonExternalBean.class);
                         if (beanx.getStatus().equals("success")) {
                             Trade_done_extra_bean extra_bean = GsonUS.getIns().getGosn(response, Trade_done_extra_bean.class);
-
                             if (extra_bean.getData().getError() == 0) {
                                 Trade_done_bean bean_e = GsonUS.getIns().getGosn(response, Trade_done_bean.class);
-                                if (mTradeDoneListener != null) {
-                                    mTradeDoneListener.onTradeDoneClick(1,bean_e);
-                                }
+                                trade_paycheck_post(bean_e.getData().getOrder_sn());
+
                             } else {
                                 CommonStatusSuccessBeantest bean_e = GsonUS.getIns().getGosn(response, CommonStatusSuccessBeantest.class);
                                 ToastUS.Error(bean_e.getData().getMsg());
+
+                                if (mTradeDoneListener != null) {
+                                    mTradeDoneListener.onTradeDoneClick(0, null);
+                                }
                             }
-
-
                         } else if (beanx.getStatus().equals("failed")) {
                             if (beanx != null) {
                                 CommonStatusErrorBean bean_e = GsonUS.getIns().getGosn(response, CommonStatusErrorBean.class);
                                 ToastUS.Error(bean_e.getErrors().getMessage());
                                 if (mTradeDoneListener != null) {
-                                    mTradeDoneListener.onTradeDoneClick(0,null);
+                                    mTradeDoneListener.onTradeDoneClick(0, null);
                                 }
                             }
                         }
@@ -359,6 +376,46 @@ public class ShopCarUtils {
 
                     @Override
                     public void setOnCallBackResponseError(String response) {
+                    }
+                });
+    }
+
+
+    public void trade_paycheck_post(String order_sn) {
+        LinkedHashMap<String, Object> map = new LinkedHashMap<>();
+        map.put("order_sn", order_sn);//订单编号
+        new OKBuilder(Latte.getApplicationContext())
+                .setNetUrl(Api.trade_paycheck_post)
+                .setParamsMap(map)
+                .postStringFormBody()
+                .setOnCallBackResponse(new CallBackResponseListener() {
+                    @Override
+                    public void setOnCallBackResponseSuccess(String response) {
+                        CommonExternalBean beanx = GsonUS.getIns().getGosn(response, CommonExternalBean.class);
+
+
+                        if (beanx.getStatus().equals("success")) {
+                            PaycheckBean beanxx = GsonUS.getIns().getGosn(response, PaycheckBean.class);
+                            if (mTradeDoneListener != null) {
+                                mTradeDoneListener.onTradeDoneClick(1, beanxx);
+                            }
+                        } else if (beanx.getStatus().equals("failed")) {
+                            if (beanx != null) {
+
+                                if (mTradeDoneListener != null) {
+                                    mTradeDoneListener.onTradeDoneClick(0, null);
+                                }
+                                CommonStatusErrorBean bean_e = GsonUS.getIns().getGosn(response, CommonStatusErrorBean.class);
+                                ToastUS.Error(bean_e.getErrors().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void setOnCallBackResponseError(String response) {
+                        if (mTradeDoneListener != null) {
+                            mTradeDoneListener.onTradeDoneClick(0, null);
+                        }
                     }
                 });
     }
@@ -401,7 +458,7 @@ public class ShopCarUtils {
      * 下单
      */
     public interface OnTradeDoneListener {
-        void onTradeDoneClick(int status,Trade_done_bean bean);
+        void onTradeDoneClick(int status, PaycheckBean bean);
     }
 
     public void setOnTradeDoneListener(OnTradeDoneListener tradeDoneListener) {
@@ -409,4 +466,18 @@ public class ShopCarUtils {
     }
 
     private static OnTradeDoneListener mTradeDoneListener;
+
+
+    /**
+     * 添加成功
+     */
+    public interface OnAddChangeListener {
+        void onOnAddChangeClick(int status, Trade_done_bean bean);
+    }
+
+    public void setOnAddChangeListener(OnAddChangeListener tradeDoneListener) {
+        this.addChangeListener = tradeDoneListener;
+    }
+
+    private static OnAddChangeListener addChangeListener;
 }

@@ -1,16 +1,18 @@
 package com.yinfeng.yfhx.ui.alculation;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.jpay.wxpay.JPay;
 import com.kongzue.dialog.interfaces.OnDismissListener;
 import com.kongzue.dialog.v3.TipDialog;
 import com.kongzue.dialog.v3.WaitDialog;
@@ -19,6 +21,7 @@ import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.GsonUS;
 import com.lgd.lgd_core.ui.utils.ITTUtils;
 import com.lgd.lgd_core.ui.utils.IntentUtilsConstant;
+import com.lgd.lgd_core.ui.utils.LogUS;
 import com.lgd.lgd_core.ui.utils.ToastUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
@@ -26,13 +29,17 @@ import com.yinfeng.yfhx.Api;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.adapter.calculation.CalculationAdapter;
 import com.yinfeng.yfhx.entity.CalculationActivityBean;
-import com.yinfeng.yfhx.entity.CommonExternalBean;
-import com.yinfeng.yfhx.entity.CommonStatusErrorBean;
+import com.yinfeng.yfhx.entity.common.CommonExternalBean;
+import com.yinfeng.yfhx.entity.common.CommonStatusErrorBean;
 import com.yinfeng.yfhx.entity.Trade_done_bean;
 import com.yinfeng.yfhx.entity.child.ChildInvoiceBean;
+import com.yinfeng.yfhx.entity.details.GoodsshippingfeeBean;
+import com.yinfeng.yfhx.entity.pay.PaycheckBean;
+import com.yinfeng.yfhx.entity.pay.WxPayDateBean;
 import com.yinfeng.yfhx.ui.me.MeAddressActivity;
 import com.yinfeng.yfhx.ui.me.MeInvoiceActivity;
-import com.yinfeng.yfhx.ui.shop.ShopActivity;
+import com.yinfeng.yfhx.ui.shop.MainShopActivity;
+import com.yinfeng.yfhx.ui.utils.PayUtils;
 import com.yinfeng.yfhx.ui.utils.ShopCarUtils;
 import com.yinfeng.yfhx.ui.wheight.dialog.BottomCouponUseDialog;
 import com.yinfeng.yfhx.ui.wheight.dialog.BottomRedpackUseDialog;
@@ -102,9 +109,19 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
         return R.layout.activity_calculation;
     }
 
+
+    /**
+     * 默认购物车  类型==0 秒杀6 普通 10
+     */
+    String mRec_type = "0";
+
     @Override
     protected void initView() {
-
+        Intent intent = getIntent();
+        String flags = intent.getStringExtra(IntentUtilsConstant.INTENT_PARAMS_1);
+        if (!TextUtils.isEmpty(flags)) {
+            mRec_type = flags;
+        }
         mActivityCalculationAddressName = (TextView) findViewById(R.id.activity_calculation_address_name);
         mActivityCalculationAddressDetails = (TextView) findViewById(R.id.activity_calculation_address_details);
         mActivityCalculationAmountFormated = (TextView) findViewById(R.id.activity_calculation_amount_formated);
@@ -145,6 +162,7 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initData() {
         requestDate();
+        setTitle("结算页");
     }
 
     void setAdapter(CalculationActivityBean bean) {
@@ -158,7 +176,7 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
                 switch (view.getId()) {
                     case R.id.ri_calculation_item_shop_name:
                         String mRu_id = calculationAdapter.getData().get(position).getRu_id() + "";
-                        ITTUtils.Jump(ShopActivity.class, mRu_id + "");
+                        ITTUtils.Jump(MainShopActivity.class, mRu_id + "");
                         break;
                 }
             }
@@ -169,8 +187,16 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
 
     private CalculationActivityBean bean;
 
+    /**
+     * rec_type=10 普通  rec_type=6 秒杀
+     */
     private void requestDate() {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
+
+
+        map.put("rec_type", mRec_type);
+
+
         new OKBuilder(Latte.getApplicationContext())
                 .setNetUrl(Api.trade_orderinfo_post)
                 .setParamsMap(map)
@@ -276,37 +302,33 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
             case R.id.activity_calculation_coupon:
 
 
+//
+
                 break;
             case R.id.activity_calculation_confirm_btn:
                 if (bean != null) {
                     if (bean.getData().getNoshipping_list() != null && bean.getData().getNoshipping_list().size() == 0) {
                         //下单
                         WaitDialog.show(CalculationActivity.this, "请稍候...");
-                        ShopCarUtils.getInstance().trade_done_post(bean.getData(), childInvoiceBean);
-                        ShopCarUtils.getInstance().setOnTradeDoneListener(new ShopCarUtils.OnTradeDoneListener() {
-                            @Override
-                            public void onTradeDoneClick(int status, Trade_done_bean bean) {
-                                if (status==1){
-                                    TipDialog.show(CalculationActivity.this, "成功！", TipDialog.TYPE.SUCCESS).setOnDismissListener(new OnDismissListener() {
-                                        @Override
-                                        public void onDismiss() {
 
+                        double resu_D;
+                        String resu = mActivityCalculationTotalPrice.getText().toString();
+                        if (!TextUtils.isEmpty(resu)) {
+                            if (resu.contains("¥")) {
+                                resu = resu.replace("¥", "").trim();
+                                resu = resu.replace(" ", "");
+                                resu_D = Double.parseDouble(resu);
+                                ToastUS.Normal("" + resu_D);
+                                if (resu_D > 0) {
+                                    cv();
 
-
-                                        }
-                                    });
-                                }else {
-                                    TipDialog.show(CalculationActivity.this, "失败", TipDialog.TYPE.SUCCESS).setOnDismissListener(new OnDismissListener() {
-                                        @Override
-                                        public void onDismiss() {
-
-
-
-                                        }
-                                    });
+                                } else if (resu_D == 0) {
+                                    cv();
                                 }
                             }
-                        });
+                        }
+
+
                     } else {
                         ToastUS.Error("有不支持配送的商品,请重新选择地址");
                     }
@@ -314,16 +336,81 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
                     ToastUS.Error("bean==null");
                 }
                 break;
-            case R.id.activity_calculation_address_oc:
 
+            case R.id.activity_calculation_address_oc:
                 Intent intent2 = new Intent(CalculationActivity.this, MeAddressActivity.class);
                 intent2.putExtra(IntentUtilsConstant.INTENT_PARAMS_1, "address");
                 startActivityForResult(intent2, address_request_code);
-
                 break;
         }
     }
 
+
+    /**
+     * 微信结算
+     */
+    private void cvc(String appId,String partnerId,String prepayId,String nonceStr,String timeStamp,String sign) {
+
+        com.jpay.wxpay.JPay.getIntance(mContext).toWxPay(appId, partnerId, prepayId, nonceStr, timeStamp, sign, new com.jpay.wxpay.JPay.WxPayListener() {
+            @Override
+            public void onPaySuccess() {
+                Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPayError(int error_code, String message) {
+                LogUS.I("支付失败>" + error_code + " " + message);
+                Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPayCancel() {
+                Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /**
+     * 普通结算
+     */
+    private void cv() {
+        ShopCarUtils.getInstance().trade_done_post(bean.getData(), childInvoiceBean);
+        ShopCarUtils.getInstance().setOnTradeDoneListener(new ShopCarUtils.OnTradeDoneListener() {
+            @Override
+            public void onTradeDoneClick(int status, PaycheckBean bean) {
+                if (status == 1) {
+                    TipDialog.show(CalculationActivity.this, "成功！", TipDialog.TYPE.SUCCESS).setOnDismissListener(new OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            String getOrder_sn = bean.getData().getOrder_sn();
+                            String getLog_id = bean.getData().getLog_id() + "";
+                            String getOrder_amount = bean.getData().getOrder_amount();
+                            PayUtils.getInstance().payment(getOrder_sn, getLog_id, getOrder_amount);
+                            PayUtils.getInstance().setOnPayChangeListener(new PayUtils.OnPayChangeListener() {
+                                @Override
+                                public void OnPayChange(int status, WxPayDateBean person, String msg) {
+                                    String getAppid = person.getAppid();
+                                    String getPartnerid = person.getPartnerid();
+                                    String getPrepayid = person.getPrepayid();
+                                    String getNoncestr = person.getNoncestr();
+                                    String getTimestamp = person.getTimestamp()+"";
+                                    String getSign = person.getSign()+"";
+                                    cvc(getAppid,getPartnerid,getPrepayid,getNoncestr,getTimestamp,getSign);
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    TipDialog.show(CalculationActivity.this, "失败", TipDialog.TYPE.SUCCESS).setOnDismissListener(new OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+
+                        }
+                    });
+                }
+            }
+        });
+    }
 
     int invoice_request_code = 686;
     int address_request_code = 786;
@@ -351,12 +438,11 @@ public class CalculationActivity extends BaseActivity implements View.OnClickLis
 
             mActivityCalculationInvoiceContent.setText(Company_name);
 
-        }else if (requestCode==address_request_code){
+        } else if (requestCode == address_request_code) {
 
-             requestDate();
+            requestDate();
         }
     }
-
 
 
 }

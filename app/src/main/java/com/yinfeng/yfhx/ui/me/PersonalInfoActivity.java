@@ -1,11 +1,13 @@
 package com.yinfeng.yfhx.ui.me;
 
-import android.content.ContentUris;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ActivityUtils;
+import com.lgd.lgd_core.base.AppManager;
 import com.lgd.lgd_core.base.BaseActivity;
 import com.lgd.lgd_core.event.Latte;
 import com.lgd.lgd_core.ui.utils.CommonUtils;
@@ -13,9 +15,13 @@ import com.lgd.lgd_core.ui.utils.GlideUS;
 import com.lgd.lgd_core.ui.utils.GsonUS;
 import com.lgd.lgd_core.ui.utils.okgoutils.CallBackResponseListener;
 import com.lgd.lgd_core.ui.utils.okgoutils.OKBuilder;
+import com.orhanobut.hawk.Hawk;
+import com.yinfeng.yfhx.Apc;
 import com.yinfeng.yfhx.Api;
+import com.yinfeng.yfhx.App;
 import com.yinfeng.yfhx.R;
 import com.yinfeng.yfhx.entity.Tab_4_FragmentBean;
+import com.yinfeng.yfhx.ui.login.LoginActivity;
 
 /**
  * ============================================
@@ -26,7 +32,7 @@ import com.yinfeng.yfhx.entity.Tab_4_FragmentBean;
  * 创建时间：2019/10/12 10:48
  * ============================================
  **/
-public class PersonalInfoActivity extends BaseActivity {
+public class PersonalInfoActivity extends BaseActivity implements View.OnClickListener {
 
 
     private ImageView mActivityPersonalInfoHeader;
@@ -58,6 +64,10 @@ public class PersonalInfoActivity extends BaseActivity {
      * 运营部
      */
     private TextView mActivityPersonalDepartment;
+    /**
+     * 退出登录
+     */
+    private TextView mActivityPersonalInfoBtn;
 
     @Override
     protected int getContentLayoutId() {
@@ -75,6 +85,8 @@ public class PersonalInfoActivity extends BaseActivity {
         mActivityPersonalCardId = (TextView) findViewById(R.id.activity_personal_card_id);
         mActivityPersonalCompany = (TextView) findViewById(R.id.activity_personal_company);
         mActivityPersonalDepartment = (TextView) findViewById(R.id.activity_personal_department);
+        mActivityPersonalInfoBtn = (TextView) findViewById(R.id.activity_personal_info_btn);
+        mActivityPersonalInfoBtn.setOnClickListener(this);
     }
 
     @Override
@@ -127,4 +139,18 @@ public class PersonalInfoActivity extends BaseActivity {
     }
 
 
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            default:
+                break;
+            case R.id.activity_personal_info_btn:
+                 Hawk.put(Apc.Apc_already_login_yfhx, "0");
+                AppManager.getInstance().finishAllActivity();
+                ActivityUtils.startActivity(LoginActivity.class);
+                break;
+        }
+    }
 }

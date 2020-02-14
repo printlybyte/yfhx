@@ -7,13 +7,30 @@
     android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/ic_home_search_logo" />
+
+        <include layout="@layout/include_search_layout_reagbga" />
+
+    </LinearLayout>
+
     <include layout="@layout/include_sliding_tablayout" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/fragment_tab_1_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
 
 </LinearLayout>

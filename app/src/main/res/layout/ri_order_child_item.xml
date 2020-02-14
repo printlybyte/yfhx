@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+
+        android:id="@+id/ri_order_child_item_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+
+        <ImageView
+            android:id="@+id/ri_order_child_item_goods_img"
+            android:layout_width="@dimen/dp66"
+            android:layout_height="@dimen/dp66"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_shopcar_img_bga"
+            android:padding="0.5dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ri_order_child_item_goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:maxLength="15"
+                android:text="得力大铅笔盒"
+                android:textColor="@color/c464646"
+                android:textSize="@dimen/sp12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:text="黑色"
+                android:textColor="@color/c999999"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal"
+            android:paddingRight="20dp">
+
+
+            <TextView
+                android:id="@+id/ri_order_child_item_goods_nums"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:text="共1款"
+                android:textColor="#949494"
+                android:textSize="9sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_jiantou_right_black" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
