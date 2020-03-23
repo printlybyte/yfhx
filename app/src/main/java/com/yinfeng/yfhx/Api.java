@@ -16,8 +16,8 @@ public interface Api {
     /**
      * main
      */
-//    String DO_MAIN = "http://mall.yinfengnet.com";
-    String DO_MAIN = "http://kaifa.yinfengnet.com";
+    String DO_MAIN = "http://mall.yinfengnet.com";
+//    String DO_MAIN = "http://kaifa.yinfengnet.com";
     /**
      * Tab 1
      */

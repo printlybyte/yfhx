@@ -129,7 +129,7 @@ public class IndexFragment extends BaseFragment {
 
     public List<MultipleTabHomeItem> parserMultipleItemData(TabFragment1Bean response) {
         List<MultipleTabHomeItem> list = new ArrayList<>();
-        if (response.getData().getNavs() != null) {
+        if (response.getData().getBanners() != null) {
             list.add(new MultipleTabHomeItem(MultipleTabHomeItem.banners, MultipleTabHomeItem.TEXT_SPAN_SIZE, response.getData().getBanners()));
         }
 

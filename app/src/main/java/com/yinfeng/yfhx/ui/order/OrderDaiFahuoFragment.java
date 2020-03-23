@@ -43,7 +43,8 @@ public class OrderDaiFahuoFragment extends BaseFragment {
     private SmartRefreshLayout mRefreshLayout;
     private MultipleStatusView mMultipleStatusView;
     private OrderDaifahuoAdapter daifahuoAdapter;
-    public static OrderDaiFahuoFragment newInstance( ) {
+
+    public static OrderDaiFahuoFragment newInstance() {
         Bundle args = new Bundle();
         OrderDaiFahuoFragment generalPurposeFragment = new OrderDaiFahuoFragment();
         generalPurposeFragment.setArguments(args);
@@ -63,12 +64,12 @@ public class OrderDaiFahuoFragment extends BaseFragment {
         mRefreshLayout.setOnRefreshListener(onRefreshListener);
         mRefreshLayout.setOnLoadMoreListener(onLoadMoreListener);
 
-        mMultipleStatusView.setOnRetryClickListener(mRetryClickListener);    mRefreshLayout.autoRefresh();
+        mMultipleStatusView.setOnRetryClickListener(mRetryClickListener);
+        mRefreshLayout.autoRefresh();
     }
 
     @Override
     protected void initData() {
-
 
 
     }
@@ -131,8 +132,6 @@ public class OrderDaiFahuoFragment extends BaseFragment {
 //                    ToastUS.Error("申请售后");
 //
 //                    break;
-
-
 
 
                 default:

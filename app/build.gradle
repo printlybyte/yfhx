@@ -71,17 +71,13 @@ dependencies {
 
     implementation 'cn.bingoogolapple:bga-baseadapter:1.2.9@aar'
     implementation 'cn.bingoogolapple:bga-photopicker:1.2.9@aar'
-
     //微信支付
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
-
 //    implementation 'com.github.javen205.JPay:AliPay:0.0.5'
 //    implementation 'com.github.javen205.JPay:WxPay:0.0.6'
     implementation project(':WxPay')
     implementation project(':status_layout')
-
     implementation 'io.github.rockerhieu:emojicon:1.4.2'
-
     api 'com.just.agentweb:agentweb:4.1.2'
 
 
